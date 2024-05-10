@@ -1,8 +1,8 @@
 extends Node
 
-const AudioSettings = preload("res://views/settings_menu/audio_settings.gd")
+const AudioSettingsMenu = preload("res://views/settings_menu/audio_settings.gd")
 
-var audio_settings = AudioSettings.new()
+var audio_settings = AudioSettingsMenu.new()
 
 func _ready():
 	audio_settings = GameState.load_game_state(audio_settings)
