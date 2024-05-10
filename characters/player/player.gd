@@ -17,7 +17,7 @@ func _ready():
 	player_health_updated.emit(health)
 	set_motion_mode(MOTION_MODE_FLOATING)
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("ActionButton1"):
 		shoot()
 		
@@ -45,7 +45,6 @@ func movement_loop(delta):
 func shoot():
 	var target = get_global_mouse_position()
 	var target_degrees = rad_to_deg((target - $Marker2D.global_position).angle())
-	print(target_degrees)
 	var c = Basic_Card.instantiate()
 	add_child(c)
 	c.spawn($Marker2D.position, target_degrees)

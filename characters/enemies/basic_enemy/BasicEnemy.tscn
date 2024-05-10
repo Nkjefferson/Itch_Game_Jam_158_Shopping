@@ -17,7 +17,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jhayr"]
 size = Vector2(14, 15)
 
-[node name="BasicEnemy" type="CharacterBody2D"]
+[node name="BasicEnemy" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 4
 collision_mask = 11
 script = ExtResource("1_nccpe")

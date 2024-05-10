@@ -34,20 +34,19 @@ func take_damage(damage_taken):
 
 func move_to_player(delta):
 	var parent = get_parent()
-	var destination = parent.get_node("Player").position
+	destination = parent.get_node("Player").position
 	speed += acceleration * delta
 	if speed > move_speed:
 		speed = move_speed
 	velocity = position.direction_to(destination) * speed
 	if position.distance_to(destination) > 5:
-		print(velocity)
 		move_and_slide()
 
 func check_collision():
 	if $DamageTickTimer.is_stopped():
 		for index in get_slide_collision_count():
 			var collision = get_slide_collision(index)
-			if collision.get_collider().is_in_group("Player"):
+			if collision.get_collider().is_in_group("player"):
 				collision.get_collider().take_damage(damage)
 				$DamageTickTimer.set_wait_time(damage_tick_rate)
 				$DamageTickTimer.start()
