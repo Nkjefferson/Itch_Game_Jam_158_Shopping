@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcnhlcbvtet3p"]
+
+[ext_resource type="PackedScene" uid="uid://dvv8k7luo64yn" path="res://views/settings_menu/settings_menu_hud.tscn" id="1_v8ikv"]
+
+[node name="SettingsMenu" type="Node2D"]
+
+[node name="Settings_Menu_HUD" parent="." instance=ExtResource("1_v8ikv")]
