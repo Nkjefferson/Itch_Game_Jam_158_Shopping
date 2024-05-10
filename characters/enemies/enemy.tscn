@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://b362ikkvilv7h"]
+
+[ext_resource type="Script" path="res://characters/enemies/enemy.gd" id="1_uir6y"]
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 4
+collision_mask = 11
+script = ExtResource("1_uir6y")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="DamageTickTimer" type="Timer" parent="."]
+one_shot = true

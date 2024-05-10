@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfyijfd4fcofb"]
+
+[ext_resource type="Script" path="res://characters/enemies/basic_enemy/BasicEnemy.gd" id="1_nccpe"]
+[ext_resource type="Texture2D" uid="uid://cwknpifxdce0d" path="res://assets/art/entities/lizardt1_16x16.png" id="2_iq4ys"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rerql"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_iq4ys")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jhayr"]
+size = Vector2(14, 15)
+
+[node name="BasicEnemy" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 4
+collision_mask = 11
+script = ExtResource("1_nccpe")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_rerql")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0.5)
+shape = SubResource("RectangleShape2D_jhayr")
+
+[node name="DamageTickTimer" type="Timer" parent="."]
+one_shot = true
