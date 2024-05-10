@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxojd2uxsy3rn"]
+
+[ext_resource type="Script" path="res://environment/first_level/first_level.gd" id="1_hme0k"]
+[ext_resource type="PackedScene" uid="uid://b3sq3c75nikjf" path="res://environment/bookshelf.tscn" id="2_xuj4j"]
+
+[node name="FirstLevel" type="Node2D"]
+script = ExtResource("1_hme0k")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1461.0
+offset_bottom = 883.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.0950568, 0.189672, 0.389965, 1)
+
+[node name="Bookshelf" parent="." instance=ExtResource("2_xuj4j")]
+position = Vector2(374, 251)
+width = 5
+length = 5
+
+[node name="Bookshelf2" parent="." instance=ExtResource("2_xuj4j")]
+position = Vector2(777, 545)
+length = 10
+
+[node name="Bookshelf4" parent="." instance=ExtResource("2_xuj4j")]
+position = Vector2(832, 544)
+length = 10
+
+[node name="Bookshelf5" parent="." instance=ExtResource("2_xuj4j")]
+position = Vector2(715, 545)
+length = 10
+
+[node name="Bookshelf3" parent="." instance=ExtResource("2_xuj4j")]
+position = Vector2(830, 218)
+width = 10
