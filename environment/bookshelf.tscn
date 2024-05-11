@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3sq3c75nikjf"]
+[gd_scene load_steps=5 format=3 uid="uid://b3sq3c75nikjf"]
 
 [ext_resource type="Script" path="res://environment/bookshelf.gd" id="1_rii15"]
 [ext_resource type="Texture2D" uid="uid://byc8c74y5illa" path="res://assets/art/environment/wood_tile1_16x16.png" id="2_vchij"]
+[ext_resource type="PackedScene" uid="uid://ctv18vupqt8uq" path="res://environment/interactables/restocker/restocker.tscn" id="3_vgdb6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ldihf"]
 size = Vector2(16, 16)
@@ -17,3 +18,5 @@ texture = ExtResource("2_vchij")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_ldihf")
 debug_color = Color(0, 0.6, 0.690196, 0.439216)
+
+[node name="Restocker" parent="StaticBody2D" instance=ExtResource("3_vgdb6")]

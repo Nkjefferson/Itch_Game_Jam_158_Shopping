@@ -11,6 +11,7 @@ signal update_card_count(index, count)
 
 class Card_Slot:
 	var card : PackedScene
+	var max_stack : int
 	var count : int
 	
 var Slot0
@@ -23,15 +24,18 @@ var loadout
 func _ready():
 	Slot0 = Card_Slot.new()
 	Slot0.card = Basic_Card
-	Slot0.count = max_basic_cards
+	Slot0.max_stack = max_basic_cards
+	Slot0.count = Slot0.max_stack
 	
 	Slot1 = Card_Slot.new()
 	Slot1.card = Piercing_Card
-	Slot1.count = max_piercing_cards
+	Slot1.max_stack = max_piercing_cards
+	Slot1.count = Slot1.max_stack
 	
 	Slot2 = Card_Slot.new()
 	Slot2.card = Triple_Card
-	Slot2.count = max_triple_cards
+	Slot2.max_stack = max_triple_cards
+	Slot2.count = Slot2.max_stack
 	
 	Slot3 = Card_Slot.new()
 	Slot3.card = Basic_Card
@@ -43,6 +47,9 @@ func _ready():
 	
 	loadout = [Slot0, Slot1, Slot2, Slot3, Slot4]
 
+func restock():
+	loadout[0].count = loadout[0].max_stack
+	update_card_count.emit(0, loadout[0].count)
 
 func refresh_hotbar():
 	for index in range(loadout.size()):
@@ -54,7 +61,6 @@ func shoot(index):
 		update_card_count.emit(index, loadout[index].count)
 		return loadout[index].card
 	else:
-		print("no bullets left")
 		return null
 
 
