@@ -5,7 +5,7 @@ signal update_gold_amount(amount)
 
 var gold = 10
 
-@export var Basic_Card : PackedScene
+@export var Standard_Card : PackedScene
 @export var max_basic_cards : int = 52
 @export var Piercing_Card : PackedScene
 @export var max_piercing_cards : int = 10
@@ -26,7 +26,7 @@ var loadout
 
 func _ready():
 	Slot0 = Card_Slot.new()
-	Slot0.card = Basic_Card
+	Slot0.card = Standard_Card
 	Slot0.max_stack = max_basic_cards
 	Slot0.count = Slot0.max_stack
 	
@@ -41,11 +41,11 @@ func _ready():
 	Slot2.count = Slot2.max_stack
 	
 	Slot3 = Card_Slot.new()
-	Slot3.card = Basic_Card
+	Slot3.card = Standard_Card
 	Slot3.count = 0
 	
 	Slot4 = Card_Slot.new()
-	Slot4.card = Basic_Card
+	Slot4.card = Standard_Card
 	Slot4.count = 0
 	
 	loadout = [Slot0, Slot1, Slot2, Slot3, Slot4]

@@ -7,6 +7,6 @@
 
 [node name="Inventory" type="Node2D"]
 script = ExtResource("1_a2g51")
-Basic_Card = ExtResource("2_2h6i5")
+Standard_Card = ExtResource("2_2h6i5")
 Piercing_Card = ExtResource("3_1o3k5")
 Triple_Card = ExtResource("4_qmwpa")
