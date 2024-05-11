@@ -9,7 +9,9 @@ signal died
 @export var damage : int = 10
 @export var score_value : int = 100
 @export var damage_tick_rate : float = 0.5
+@export var gold_reward : int = 5
 @export var sprite : AnimatedSprite2D = null
+@export var gold : PackedScene = preload("res://environment/gold/gold.tscn")
 
 
 
@@ -25,12 +27,16 @@ func _ready():
 	$DamageTickTimer.set_one_shot(true)
 	$DamageTickTimer.stop()
 	set_motion_mode(MOTION_MODE_FLOATING)
+	self.z_index = 2
 
 
 func take_damage(damage_taken):
 	health -= damage_taken
 	if health <= 0:
 		died.emit(score_value)
+		var g = gold.instantiate()
+		get_parent().get_parent().add_child(g)
+		g.spawn(position, gold_reward)
 		die()
 
 func move_to_player(delta):
