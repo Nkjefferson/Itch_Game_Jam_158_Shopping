@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://cai5r3al5226r"]
+
+[ext_resource type="Script" path="res://characters/cards/piercing_card/piercing_card.gd" id="1_i21gh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2bl64"]
+size = Vector2(12, 8)
+
+[node name="PiercingCard" type="Area2D"]
+collision_layer = 8
+collision_mask = 5
+script = ExtResource("1_i21gh")
+speed = 500
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = -4.0
+offset_right = 6.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.94484, 0.949109, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2bl64")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,3 +1,4 @@
+class_name Basic_Card
 extends Area2D
 
 @export var speed: int = 250
