@@ -51,12 +51,11 @@ func movement_loop(delta):
 
 func shoot(slot):
 	var target = get_global_mouse_position()
-	var target_degrees = rad_to_deg((target - $Marker2D.global_position).angle())
 	var card_type = $Inventory.shoot(slot)
 	if card_type != null:
 		var c = card_type.instantiate()
-		self.add_child(c)
-		c.spawn($Marker2D.position, target_degrees)
+		get_parent().add_child(c)
+		c.spawn(self, velocity, target)
 		MusicManager.play_sound_effect(c.throw_sound)
 
 func take_damage(damage):
