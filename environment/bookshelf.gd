@@ -9,6 +9,7 @@ func _ready():
 	$StaticBody2D/CollisionShape2D.scale = Vector2(width, length)
 	#$StaticBody2D/CollisionShape2D.shape.extents = Vector2(width * BASE_PIXEL_SIZE, length * BASE_PIXEL_SIZE)
 	$Sprite2D.scale = Vector2(width, length)
+	$StaticBody2D/Restocker.spawn()
 
 func _process(_delta):
 	pass
