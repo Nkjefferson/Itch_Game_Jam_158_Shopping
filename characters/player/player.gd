@@ -54,6 +54,7 @@ func shoot(card_scene):
 	var c = card_scene.instantiate()
 	add_child(c)
 	c.spawn($Marker2D.position, target_degrees)
+	MusicManager.play_sound_effect(c.throw_sound)
 
 func take_damage(damage):
 	health -= damage
