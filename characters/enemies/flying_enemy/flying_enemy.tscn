@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://bd6d1s68uchgg"]
+
+[ext_resource type="Texture2D" uid="uid://du4acsvr68twy" path="res://assets/art/entities/ghost1_16x16.png" id="1_mk3o6"]
+[ext_resource type="Script" path="res://characters/enemies/flying_enemy/flying_enemy.gd" id="1_ym7nv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ka77u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mk3o6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0jcij"]
+size = Vector2(14, 15)
+
+[node name="FlyingEnemy" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_ym7nv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ka77u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0.5)
+shape = SubResource("RectangleShape2D_0jcij")
+
+[node name="DamageTickTimer" type="Timer" parent="."]
+one_shot = true
