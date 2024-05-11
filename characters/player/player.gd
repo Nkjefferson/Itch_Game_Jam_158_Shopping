@@ -11,13 +11,10 @@ var destination : Vector2 = Vector2.ZERO
 var moving : bool = false
 var speed : float = 0.0
 
-@export var Basic_Card : PackedScene
-@export var Piercing_Card : PackedScene
-@export var Triple_Card : PackedScene
-
 func _ready():
 	player_health_updated.emit(health)
 	set_motion_mode(MOTION_MODE_FLOATING)
+	$Inventory.refresh_hotbar()
 
 func _process(_delta):
 	if Input.is_action_just_pressed("ActionButton1"):
@@ -51,8 +48,12 @@ func movement_loop(delta):
 func shoot(slot):
 	var target = get_global_mouse_position()
 	var target_degrees = rad_to_deg((target - $Marker2D.global_position).angle())
-	$Inventory.shoot(slot, $Marker2D.position, target_degrees)
-	#MusicManager.play_sound_effect(c.throw_sound)
+	var card_type = $Inventory.shoot(slot)
+	if card_type != null:
+		var c = card_type.instantiate()
+		self.add_child(c)
+		c.spawn($Marker2D.position, target_degrees)
+		MusicManager.play_sound_effect(c.throw_sound)
 
 func take_damage(damage):
 	health -= damage
