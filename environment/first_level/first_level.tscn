@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bxojd2uxsy3rn"]
+[gd_scene load_steps=19 format=3 uid="uid://bxojd2uxsy3rn"]
 
 [ext_resource type="Script" path="res://environment/first_level/first_level.gd" id="1_hme0k"]
 [ext_resource type="Texture2D" uid="uid://526rqhd2g1lp" path="res://assets/art/environment/stone_tile1_16x16.png" id="2_54lve"]
@@ -7,9 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://c50gxclw2vawf" path="res://characters/player/player.tscn" id="4_qdl0j"]
 [ext_resource type="PackedScene" uid="uid://c1g6c6bf2rtfe" path="res://views/player_hud/player_hud.tscn" id="5_m61fm"]
 [ext_resource type="PackedScene" uid="uid://dfyijfd4fcofb" path="res://characters/enemies/basic_enemy/BasicEnemy.tscn" id="6_8o3ex"]
+[ext_resource type="PackedScene" uid="uid://4xy0xmxmekd1" path="res://environment/spawner/spawner.tscn" id="8_73ag8"]
 [ext_resource type="PackedScene" uid="uid://b1703q1b3fsnp" path="res://environment/shop/shop.tscn" id="8_va8ok"]
 [ext_resource type="Texture2D" uid="uid://c2xlqf2r0nfmu" path="res://assets/art/items/potion1_16x16.png" id="9_3wpwn"]
+[ext_resource type="Script" path="res://environment/spawner/spawned_entity.gd" id="9_55bv6"]
 [ext_resource type="PackedScene" uid="uid://dwqo1fucc1bt" path="res://environment/interactables/booster_pack/booster_pack.tscn" id="9_pusf4"]
+[ext_resource type="PackedScene" uid="uid://bd6d1s68uchgg" path="res://characters/enemies/flying_enemy/flying_enemy.tscn" id="10_mlibu"]
 [ext_resource type="Texture2D" uid="uid://cvro88j7dxrbp" path="res://assets/art/environment/box1_16x16.png" id="11_m6axb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v6hi2"]
@@ -23,9 +26,18 @@ texture = ExtResource("2_54lve")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_v6hi2")
 
+[sub_resource type="Resource" id="Resource_8fco4"]
+script = ExtResource("9_55bv6")
+entity = ExtResource("6_8o3ex")
+spawn_weight = 2.5
+
+[sub_resource type="Resource" id="Resource_cembe"]
+script = ExtResource("9_55bv6")
+entity = ExtResource("10_mlibu")
+spawn_weight = 2.5
+
 [node name="FirstLevel" type="Node2D"]
 script = ExtResource("1_hme0k")
-mob_scene = ExtResource("6_8o3ex")
 game_over_scene = ExtResource("3_60f3n")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -74,22 +86,8 @@ zoom = Vector2(2, 2)
 
 [node name="PlayerHud" parent="Player/Camera2D" instance=ExtResource("5_m61fm")]
 
-[node name="EnemySpawners" type="Node2D" parent="."]
-
-[node name="Spawner1" type="Marker2D" parent="EnemySpawners"]
-position = Vector2(742, 51)
-
-[node name="Spawner2" type="Marker2D" parent="EnemySpawners"]
-position = Vector2(739, 852)
-
-[node name="Spawner3" type="Marker2D" parent="EnemySpawners"]
-position = Vector2(1416, 393)
-
-[node name="Spawner4" type="Marker2D" parent="EnemySpawners"]
-position = Vector2(31, 384)
-
-[node name="SpawnTimer" type="Timer" parent="EnemySpawners"]
-autostart = true
+[node name="Spawner" parent="." instance=ExtResource("8_73ag8")]
+spawned_entities = Array[ExtResource("9_55bv6")]([SubResource("Resource_8fco4"), SubResource("Resource_cembe")])
 
 [node name="ScoreTimer" type="Timer" parent="."]
 autostart = true
@@ -103,5 +101,4 @@ position = Vector2(755, 391)
 shop_type = ExtResource("9_pusf4")
 shop_sprite_texture = ExtResource("11_m6axb")
 
-[connection signal="timeout" from="EnemySpawners/SpawnTimer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
