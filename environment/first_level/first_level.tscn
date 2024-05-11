@@ -20,6 +20,7 @@ sources/0 = SubResource("TileSetAtlasSource_v6hi2")
 
 [node name="FirstLevel" type="Node2D"]
 script = ExtResource("1_hme0k")
+mob_scene = ExtResource("6_8o3ex")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1461.0
@@ -68,3 +69,22 @@ zoom = Vector2(2, 2)
 [node name="PlayerHud" parent="Player/Camera2D" instance=ExtResource("5_m61fm")]
 
 [node name="BasicEnemy" parent="." instance=ExtResource("6_8o3ex")]
+
+[node name="EnemySpawners" type="Node2D" parent="."]
+
+[node name="Spawner1" type="Marker2D" parent="EnemySpawners"]
+position = Vector2(742, 51)
+
+[node name="Spawner2" type="Marker2D" parent="EnemySpawners"]
+position = Vector2(739, 852)
+
+[node name="Spawner3" type="Marker2D" parent="EnemySpawners"]
+position = Vector2(1416, 393)
+
+[node name="Spawner4" type="Marker2D" parent="EnemySpawners"]
+position = Vector2(31, 384)
+
+[node name="SpawnTimer" type="Timer" parent="EnemySpawners"]
+autostart = true
+
+[connection signal="timeout" from="EnemySpawners/SpawnTimer" to="." method="_on_spawn_timer_timeout"]
