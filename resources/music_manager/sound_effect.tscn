@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://n3a5c3siosha"]
+
+[ext_resource type="Script" path="res://resources/music_manager/sound_effect.gd" id="1_aw82x"]
+
+[node name="SoundEffect" type="Node"]
+script = ExtResource("1_aw82x")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Sound Effects"

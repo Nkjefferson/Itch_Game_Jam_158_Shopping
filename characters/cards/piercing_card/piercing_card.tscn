@@ -1,6 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cai5r3al5226r"]
+[gd_scene load_steps=6 format=3 uid="uid://cai5r3al5226r"]
 
 [ext_resource type="Script" path="res://characters/cards/piercing_card/piercing_card.gd" id="1_i21gh"]
+[ext_resource type="AudioStream" uid="uid://dpiq8sjd2ra4g" path="res://assets/audio/sound_effects/Card_Throw.wav" id="2_5hnyl"]
+[ext_resource type="AudioStream" uid="uid://d0jbd845ja0dm" path="res://assets/audio/sound_effects/Card_Hit_Wall.wav" id="3_7g4wv"]
+[ext_resource type="AudioStream" uid="uid://b54bk2et5o0id" path="res://assets/audio/sound_effects/card_hit_enemy.wav" id="4_kloyj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2bl64"]
 size = Vector2(12, 8)
@@ -10,6 +13,9 @@ collision_layer = 8
 collision_mask = 5
 script = ExtResource("1_i21gh")
 speed = 500
+throw_sound = ExtResource("2_5hnyl")
+wall_hit_sound = ExtResource("3_7g4wv")
+enemy_hit_sound = ExtResource("4_kloyj")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 8

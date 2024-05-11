@@ -1,6 +1,7 @@
 extends Node
 
 const AudioSettingsMenu = preload("res://views/settings_menu/audio_settings.gd")
+const SoundEffect = preload("res://resources/music_manager/sound_effect.tscn")
 
 var audio_settings = AudioSettingsMenu.new()
 
@@ -18,7 +19,14 @@ func play_music(music_path):
 		$Music.stream = load(music_path)
 		$Music.play()
 
+func play_sound_effect(sound_effect_path,volume=0.0):
+	var effect = SoundEffect.instantiate()
+	add_child(effect)
+	effect.connect("effect_ended",_on_sound_effect_finished)
+	effect.play_effect(sound_effect_path,volume)
 
+func _on_sound_effect_finished(effect):
+	effect.queue_free()
 
 func _on_music_finished():
 	$Music.play()
