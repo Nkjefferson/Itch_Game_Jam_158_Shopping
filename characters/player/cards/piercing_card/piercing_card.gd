@@ -2,7 +2,7 @@ extends Basic_Card
 
 @export var enemies_to_pierce = 3
 
-var bodies_encountered : Array[Area2D]
+var bodies_encountered : Array[CharacterBody2D]
 
 func _on_body_entered(body):
 	if body.is_in_group("enemies"):
