@@ -15,7 +15,7 @@ signal death
 
 
 var destination : Vector2 = Vector2.ZERO
-var moving : bool = false
+var moving : bool = true
 var speed : float = 0.0
 
 # Called when the node enters the scene tree for the first time.
@@ -41,7 +41,7 @@ func move_to_player(delta):
 	if speed > move_speed:
 		speed = move_speed
 	velocity = position.direction_to(destination) * speed
-	if position.distance_to(destination) > 5:
+	if position.distance_to(destination) > 5 and moving:
 		move_and_slide()
 
 func check_collision():

@@ -11,6 +11,10 @@ var gold = 10
 @export var max_piercing_cards : int = 10
 @export var Triple_Card : PackedScene
 @export var max_triple_cards : int = 5
+@export var Entangle_Card : PackedScene
+@export var max_entangle_cards : int = 5
+@export var Orbit_Card : PackedScene
+@export var max_orbit_cards : int = 5
 
 class Card_Slot:
 	var card : PackedScene
@@ -41,12 +45,14 @@ func _ready():
 	Slot2.count = Slot2.max_stack
 	
 	Slot3 = Card_Slot.new()
-	Slot3.card = Standard_Card
-	Slot3.count = 0
+	Slot3.card = Entangle_Card
+	Slot3.max_stack = max_entangle_cards
+	Slot3.count = Slot3.max_stack
 	
 	Slot4 = Card_Slot.new()
-	Slot4.card = Standard_Card
-	Slot4.count = 0
+	Slot4.card = Orbit_Card
+	Slot4.max_stack = max_orbit_cards
+	Slot4.count = Slot4.max_stack
 	
 	loadout = [Slot0, Slot1, Slot2, Slot3, Slot4]
 
