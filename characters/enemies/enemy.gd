@@ -1,7 +1,7 @@
 class_name Enemy
 extends CharacterBody2D
 
-signal died
+signal death
 
 @export var move_speed : int = 100
 @export var acceleration : int = 50
@@ -24,7 +24,6 @@ func _ready():
 		$AnimatedSprite2D.play()
 	self.add_to_group("enemies")
 	$DamageTickTimer.set_one_shot(true)
-	$DamageTickTimer.stop()
 	set_motion_mode(MOTION_MODE_FLOATING)
 	self.z_index = 2
 
@@ -32,7 +31,7 @@ func _ready():
 func take_damage(damage_taken):
 	health -= damage_taken
 	if health <= 0:
-		died.emit(self)
+		death.emit(self)
 		die()
 
 func move_to_player(delta):

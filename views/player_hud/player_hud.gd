@@ -3,11 +3,6 @@ extends CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var player = self.get_parent().get_parent()
-	player.connect("player_health_updated",_update_health_value)
-	var inventory = player.get_node("Inventory")
-	inventory.connect("update_card_count", _update_card_hotbar)
-	inventory.connect("update_gold_amount", _update_gold)
 	set_hotkey_labels()
 
 func set_hotkey_labels():

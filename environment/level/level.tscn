@@ -1,21 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://bxojd2uxsy3rn"]
+[gd_scene load_steps=11 format=3 uid="uid://bxojd2uxsy3rn"]
 
 [ext_resource type="Script" path="res://environment/level/level.gd" id="1_hme0k"]
 [ext_resource type="PackedScene" uid="uid://fxwtdxpumr3b" path="res://views/game_over_menu/game_over.tscn" id="3_60f3n"]
 [ext_resource type="PackedScene" uid="uid://dq8rkn7bk8esv" path="res://environment/maps/map_1/map_1.tscn" id="3_o4p56"]
 [ext_resource type="PackedScene" uid="uid://c50gxclw2vawf" path="res://characters/player/player.tscn" id="4_qdl0j"]
-[ext_resource type="PackedScene" uid="uid://c1g6c6bf2rtfe" path="res://views/player_hud/player_hud.tscn" id="5_m61fm"]
 [ext_resource type="PackedScene" uid="uid://dfyijfd4fcofb" path="res://characters/enemies/basic_enemy/BasicEnemy.tscn" id="6_8o3ex"]
 [ext_resource type="PackedScene" uid="uid://4xy0xmxmekd1" path="res://environment/spawner/spawner.tscn" id="8_73ag8"]
 [ext_resource type="Script" path="res://environment/spawner/spawned_entity.gd" id="9_55bv6"]
 [ext_resource type="PackedScene" uid="uid://bd6d1s68uchgg" path="res://characters/enemies/flying_enemy/flying_enemy.tscn" id="10_mlibu"]
-
-[sub_resource type="InputEventAction" id="InputEventAction_oor3q"]
-action = &"escape"
-pressed = true
-
-[sub_resource type="Shortcut" id="Shortcut_omj64"]
-events = [SubResource("InputEventAction_oor3q")]
 
 [sub_resource type="Resource" id="Resource_8fco4"]
 script = ExtResource("9_55bv6")
@@ -36,22 +28,10 @@ game_over_scene = ExtResource("3_60f3n")
 [node name="Player" parent="." instance=ExtResource("4_qdl0j")]
 position = Vector2(113, 98)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(2, 2)
-position_smoothing_enabled = true
-
-[node name="PlayerHud" parent="Player/Camera2D" instance=ExtResource("5_m61fm")]
-
-[node name="Button" type="Button" parent="Player/Camera2D/PlayerHud"]
-offset_right = 8.0
-offset_bottom = 8.0
-shortcut = SubResource("Shortcut_omj64")
-
 [node name="Spawner" parent="." instance=ExtResource("8_73ag8")]
 spawned_entities = Array[ExtResource("9_55bv6")]([SubResource("Resource_8fco4"), SubResource("Resource_cembe")])
 
 [node name="ScoreTimer" type="Timer" parent="."]
 autostart = true
 
-[connection signal="pressed" from="Player/Camera2D/PlayerHud/Button" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]

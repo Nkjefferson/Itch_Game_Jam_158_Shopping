@@ -15,8 +15,8 @@ var game_over = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	MusicManager.play_music("res://assets/audio/House In a Forest Loop Reversed.ogg")
-	$Player.connect("player_death",_on_game_over)
-	self.connect("score_update",$Player/Camera2D/PlayerHud._update_score)
+	$Player.connect("death",_on_game_over)
+	self.connect("score_update",$Player.player_hud._update_score)
 	var points : Array[Vector2] = [Vector2(10,411),Vector2(678,11),Vector2(1444,393),Vector2(729,869)]
 	$Spawner.create_spawners(1.0,_on_enemy_death,points)
 	self.z_index = 0
@@ -34,6 +34,9 @@ func pause_level():
 	self.add_child(pause_screen)
 	pause_screen.connect("resume",resume_level)
 	get_tree().paused = true
+
+func stop_level():
+	$Spawner.stop_spawner()
 
 func resume_level():
 	get_tree().paused = false

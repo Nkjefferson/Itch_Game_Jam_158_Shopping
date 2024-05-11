@@ -6,8 +6,6 @@ var spawners : Array[Marker2D]
 var weighted_sum : float = 0.0
 var _entity_cleanup_handler : Callable
 
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
@@ -18,7 +16,7 @@ func spawn_entities():
 		var spawn_location = spawners[randi()%spawners.size()].global_position
 		entity.global_position = spawn_location
 		if _entity_cleanup_handler:
-			entity.connect("died",_entity_cleanup_handler)
+			entity.connect("death",_entity_cleanup_handler)
 		get_parent().add_child(entity)
 	else:
 		printerr("Failed to spawn entity: no entitys defined")
