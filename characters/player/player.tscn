@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c50gxclw2vawf"]
+[gd_scene load_steps=8 format=3 uid="uid://c50gxclw2vawf"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_gu78s"]
 [ext_resource type="Texture2D" uid="uid://c7utb0lm4suh0" path="res://assets/art/entities/guy1_16x16.png" id="1_ibsf6"]
 [ext_resource type="PackedScene" uid="uid://cgkusoo418s4v" path="res://characters/cards/basic_card/basic_card.tscn" id="2_wtsjd"]
 [ext_resource type="PackedScene" uid="uid://cai5r3al5226r" path="res://characters/cards/piercing_card/piercing_card.tscn" id="3_jdef8"]
+[ext_resource type="PackedScene" uid="uid://cea66o0vd2v5n" path="res://characters/cards/triple_card/triple_card.tscn" id="4_2rlxc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_aavnv"]
 animations = [{
@@ -25,6 +26,7 @@ collision_mask = 5
 script = ExtResource("1_gu78s")
 Basic_Card = ExtResource("2_wtsjd")
 Piercing_Card = ExtResource("3_jdef8")
+Triple_Card = ExtResource("4_2rlxc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_aavnv")
