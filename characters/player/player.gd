@@ -51,12 +51,9 @@ func create_player_hud():
 func _process(_delta):
 	var mouse_direction = position.direction_to(get_global_mouse_position()).x
 	$AnimatedSprite2D.flip_h = mouse_direction < 0
-	if Input.is_action_just_pressed("ActionButton1"):
-		shoot(0)
-	if Input.is_action_just_pressed("ActionButton2"):
-		shoot(1)
-	if Input.is_action_just_pressed("ActionButton3"):
-		shoot(2)
+	for i in range(0,4):
+		if Input.is_action_just_pressed(("ActionButton" + str(i+1))):
+			shoot(i)
 		
 func _physics_process(delta):
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
