@@ -35,15 +35,17 @@ func create_spawners(spawn_rate:float, _on_entity_cleanup_handler:Callable, poin
 	if spawned_entities:
 		for entity in spawned_entities:
 			weighted_sum += entity.spawn_weight
+	print(weighted_sum)
 
 func get_spawn_index():
 	var rand_val = randf_range(0.0,weighted_sum)
-	var index = 0;
+	print(rand_val)
+	var index = 0
 	for i in spawned_entities.size():
-		if !((rand_val - spawned_entities[i].spawn_weight) <= 0):
-			rand_val = rand_val - spawned_entities[i]
-			index = i
+		if !((rand_val - spawned_entities[i].spawn_weight) < 0):
+			rand_val = rand_val - spawned_entities[i].spawn_weight
 		else:
+			index = i
 			break
 	return index
 
