@@ -7,6 +7,7 @@ func _ready():
 	player.connect("player_health_updated",_update_health_value)
 	var inventory = player.get_node("Inventory")
 	inventory.connect("update_card_count", _update_card_hotbar)
+	inventory.connect("update_gold_amount", _update_gold)
 	set_hotkey_labels()
 
 func set_hotkey_labels():
@@ -22,6 +23,9 @@ func _update_health_value(health):
 	
 func _update_score(score):
 	$HUD/ScoreTicker/Value.text = str(score)
+	
+func _update_gold(gold):
+	$HUD/CurrencyTicker/Value.text = str(gold)
 
 func _unhandled_key_input(event):
 	if event.is_action_pressed("ActionButton1"):

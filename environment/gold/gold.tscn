@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0lmwiclxyg2n"]
+
+[ext_resource type="Texture2D" uid="uid://nytx6rkgx0sq" path="res://assets/art/items/dagger1_16x16.png" id="1_esp6r"]
+[ext_resource type="Script" path="res://environment/gold/gold.gd" id="1_pacxi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rqx6c"]
+size = Vector2(16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kutvs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_esp6r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Gold" type="Area2D"]
+collision_layer = 32
+collision_mask = 2
+script = ExtResource("1_pacxi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rqx6c")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kutvs")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

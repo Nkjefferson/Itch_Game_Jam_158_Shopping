@@ -17,6 +17,8 @@ func _ready():
 	player_health_updated.emit(health)
 	set_motion_mode(MOTION_MODE_FLOATING)
 	$Inventory.refresh_hotbar()
+	$Inventory.update_gold_amount.emit($Inventory.gold)
+	self.z_index = 2
 
 func _process(_delta):
 	if Input.is_action_just_pressed("ActionButton1"):

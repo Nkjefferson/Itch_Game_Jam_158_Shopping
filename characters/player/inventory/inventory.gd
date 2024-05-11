@@ -1,6 +1,9 @@
 extends Node2D
 
 signal update_card_count(index, count)
+signal update_gold_amount(amount)
+
+var gold = 10
 
 @export var Basic_Card : PackedScene
 @export var max_basic_cards : int = 52
@@ -63,6 +66,20 @@ func shoot(index):
 		return loadout[index].card
 	else:
 		return null
+
+func add_gold(amount):
+	gold += amount
+	update_gold_amount.emit(gold)
+	
+func pay_gold(amount):
+	gold = clamp(gold-amount,0, gold)
+	update_gold_amount.emit(gold)
+	
+func check_funds(cost):
+	if (gold - cost) < 0:
+		return false
+	else:
+		return true 
 
 
 
