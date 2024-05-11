@@ -1,3 +1,4 @@
+class_name Enemy
 extends CharacterBody2D
 
 signal died
@@ -20,7 +21,7 @@ var speed : float = 0.0
 func _ready():
 	if(sprite != null):
 		$AnimatedSprite2D.play()
-	self.add_to_group("Enemy")
+	self.add_to_group("enemies")
 	$DamageTickTimer.set_one_shot(true)
 	$DamageTickTimer.stop()
 	set_motion_mode(MOTION_MODE_FLOATING)

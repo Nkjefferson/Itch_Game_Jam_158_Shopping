@@ -1,4 +1,4 @@
-extends "res://characters/enemies/enemy.gd"
+extends Enemy
 
 # Exported Variable Values:
 # Move Speed: 200
