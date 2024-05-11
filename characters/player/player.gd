@@ -10,8 +10,10 @@ signal player_death
 var destination : Vector2 = Vector2.ZERO
 var moving : bool = false
 var speed : float = 0.0
+var max_health : int
 
 func _ready():
+	max_health = health
 	player_health_updated.emit(health)
 	set_motion_mode(MOTION_MODE_FLOATING)
 	$Inventory.refresh_hotbar()
@@ -60,4 +62,8 @@ func take_damage(damage):
 	if health <= 0:
 		health = 0
 		player_death.emit()
+	player_health_updated.emit(health)
+
+func heal(damage):
+	health = clamp(health+damage, health, max_health)
 	player_health_updated.emit(health)

@@ -1,5 +1,4 @@
 extends Interactable
 
-
 func interact():
-	player_body.get_node("Inventory").restock()
+	player_body.get_node("Inventory").restock(0)

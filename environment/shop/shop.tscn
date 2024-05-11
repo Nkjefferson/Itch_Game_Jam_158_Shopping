@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1703q1b3fsnp"]
+
+[ext_resource type="Script" path="res://environment/shop/shop.gd" id="1_8uwtw"]
+[ext_resource type="PackedScene" uid="uid://doe5a2exfiguy" path="res://environment/interactables/gamer_supp/gamer_supp.tscn" id="2_1atse"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_orpbg"]
+size = Vector2(16, 16)
+
+[node name="Shop" type="StaticBody2D"]
+script = ExtResource("1_8uwtw")
+shop_type = ExtResource("2_1atse")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_orpbg")
+debug_color = Color(0, 0.6, 0.690196, 0.439216)
