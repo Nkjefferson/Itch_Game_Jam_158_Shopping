@@ -47,9 +47,10 @@ func _ready():
 	
 	loadout = [Slot0, Slot1, Slot2, Slot3, Slot4]
 
-func restock():
-	loadout[0].count = loadout[0].max_stack
-	update_card_count.emit(0, loadout[0].count)
+func restock(index):
+	if index >= 0 and index < loadout.size(): 
+		loadout[index].count = loadout[index].max_stack
+		update_card_count.emit(index, loadout[index].count)
 
 func refresh_hotbar():
 	for index in range(loadout.size()):
