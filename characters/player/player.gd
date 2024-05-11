@@ -9,10 +9,13 @@ var moving : bool = false
 var speed : float = 0.0
 
 @export var Basic_Card : PackedScene
+@export var Piercing_Card : PackedScene
 
 func _process(delta):
 	if Input.is_action_just_pressed("ActionButton1"):
-		shoot()
+		shoot(Basic_Card)
+	if Input.is_action_just_pressed("ActionButton2"):
+		shoot(Piercing_Card)
 		
 func _physics_process(delta):
 	
@@ -35,10 +38,9 @@ func movement_loop(delta):
 	else:
 		moving = false
 
-func shoot():
+func shoot(card_scene):
 	var target = get_global_mouse_position()
 	var target_degrees = rad_to_deg((target - $Marker2D.global_position).angle())
-	print(target_degrees)
-	var c = Basic_Card.instantiate()
+	var c = card_scene.instantiate()
 	add_child(c)
 	c.spawn($Marker2D.position, target_degrees)
