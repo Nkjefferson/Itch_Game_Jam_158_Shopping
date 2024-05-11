@@ -1,9 +1,53 @@
-[gd_scene load_steps=3 format=3 uid="uid://dttu56qr7unyk"]
+[gd_scene load_steps=4 format=3 uid="uid://dttu56qr7unyk"]
 
 [ext_resource type="Script" path="res://views/main_menu/main_menu.gd" id="1_2fu1s"]
-[ext_resource type="PackedScene" uid="uid://cuc04tntwpqpc" path="res://views/main_menu/main_menu_hud.tscn" id="1_bsvxa"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_ysuik"]
+action = &"escape"
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_vu131"]
+events = [SubResource("InputEventAction_ysuik")]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_2fu1s")
 
-[node name="Main_Menu_HUD" parent="." instance=ExtResource("1_bsvxa")]
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(1280, 720)
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -220.0
+offset_right = 100.0
+offset_bottom = -87.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 20
+
+[node name="Start_Btn" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Start Game"
+
+[node name="Settings_Btn" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+
+[node name="Quit_Btn" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+shortcut = SubResource("Shortcut_vu131")
+text = "Quit
+"
+
+[connection signal="pressed" from="Control/VBoxContainer/Start_Btn" to="." method="_on_start_btn_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/Settings_Btn" to="." method="_on_settings_btn_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/Quit_Btn" to="." method="_on_quit_btn_pressed"]

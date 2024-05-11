@@ -1,24 +1,51 @@
 extends CharacterBody2D
 
 signal player_health_updated(int)
-signal player_death
+signal death
 
 @export var max_speed : int  = 200
 @export var acceleration : int = 700
-@export var health : int = 100
+@export var max_health : int = 100
+@export var player_hud_scene : PackedScene
 
+var player_camera : Camera2D
 var destination : Vector2 = Vector2.ZERO
 var moving : bool = false
 var speed : float = 0.0
-var max_health : int
+var health : int
+var player_hud
 
 func _ready():
-	max_health = health
-	player_health_updated.emit(health)
-	set_motion_mode(MOTION_MODE_FLOATING)
-	$Inventory.refresh_hotbar()
-	$Inventory.update_gold_amount.emit($Inventory.gold)
 	self.z_index = 2
+	health = max_health
+	self.add_to_group("player")
+	set_motion_mode(MOTION_MODE_FLOATING)
+	# Create player sub-elements
+	create_player_camera()
+	create_player_hud()
+	# Inventory and signal management
+	$Inventory.update_gold_amount.emit($Inventory.gold)
+	$Inventory.connect("update_card_count", player_hud._update_card_hotbar)
+	$Inventory.connect("update_gold_amount", player_hud._update_gold)
+	self.connect("player_health_updated",player_hud._update_health_value)
+	# Push initial player health
+	player_health_updated.emit(health)
+	$Inventory.refresh_hotbar()
+
+func create_player_camera():
+	player_camera = Camera2D.new()
+	player_camera.zoom = (Vector2(2,2))
+	self.add_child(player_camera)
+
+func create_player_hud():
+	if player_camera:
+		if player_hud_scene:
+			player_hud = player_hud_scene.instantiate()
+			player_camera.add_child(player_hud)
+		else:
+			printerr("Could not create player HUD: no PackedScene provided")
+	else:
+		printerr("Could not create player HUD, no camera to attach to")
 
 func _process(_delta):
 	if Input.is_action_just_pressed("ActionButton1"):
@@ -62,7 +89,7 @@ func take_damage(damage):
 	health -= damage
 	if health <= 0:
 		health = 0
-		player_death.emit()
+		death.emit()
 	player_health_updated.emit(health)
 
 func heal(damage):

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://c50gxclw2vawf"]
+[gd_scene load_steps=7 format=3 uid="uid://c50gxclw2vawf"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_gu78s"]
 [ext_resource type="Texture2D" uid="uid://c7utb0lm4suh0" path="res://assets/art/entities/guy1_16x16.png" id="1_ibsf6"]
+[ext_resource type="PackedScene" uid="uid://c1g6c6bf2rtfe" path="res://views/player_hud/player_hud.tscn" id="2_wm45i"]
 [ext_resource type="PackedScene" uid="uid://caera8evwn5y3" path="res://characters/player/inventory/inventory.tscn" id="6_y75rb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_aavnv"]
@@ -18,10 +19,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p2ioo"]
 size = Vector2(13, 16)
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 53
 script = ExtResource("1_gu78s")
+player_hud_scene = ExtResource("2_wm45i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_aavnv")

@@ -1,7 +1,7 @@
 class_name Enemy
 extends CharacterBody2D
 
-signal died
+signal death
 
 @export var move_speed : int = 100
 @export var acceleration : int = 50
@@ -11,7 +11,6 @@ signal died
 @export var damage_tick_rate : float = 0.5
 @export var gold_reward : int = 5
 @export var sprite : AnimatedSprite2D = null
-@export var gold : PackedScene = preload("res://environment/gold/gold.tscn")
 
 
 
@@ -25,7 +24,6 @@ func _ready():
 		$AnimatedSprite2D.play()
 	self.add_to_group("enemies")
 	$DamageTickTimer.set_one_shot(true)
-	$DamageTickTimer.stop()
 	set_motion_mode(MOTION_MODE_FLOATING)
 	self.z_index = 2
 
@@ -33,10 +31,7 @@ func _ready():
 func take_damage(damage_taken):
 	health -= damage_taken
 	if health <= 0:
-		died.emit(score_value)
-		var g = gold.instantiate()
-		get_parent().get_parent().add_child(g)
-		g.spawn(position, gold_reward)
+		death.emit(self)
 		die()
 
 func move_to_player(delta):

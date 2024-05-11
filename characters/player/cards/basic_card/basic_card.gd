@@ -26,7 +26,6 @@ func _physics_process(delta):
 		position += velocity * delta
 
 func _on_body_entered(body):
-	print(global_position,parent_object.global_position)
 	if body.is_in_group("enemies"):
 		body.take_damage(self.damage)
 		# Level the audio based on distance from player on impact
