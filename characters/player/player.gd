@@ -31,6 +31,7 @@ func _ready():
 	# Push initial player health
 	player_health_updated.emit(health)
 	$Inventory.refresh_hotbar()
+	$AnimatedSprite2D.play("Idle")
 
 func create_player_camera():
 	player_camera = Camera2D.new()
@@ -48,6 +49,8 @@ func create_player_hud():
 		printerr("Could not create player HUD, no camera to attach to")
 
 func _process(_delta):
+	var mouse_direction = position.direction_to(get_global_mouse_position()).x
+	$AnimatedSprite2D.flip_h = mouse_direction < 0
 	if Input.is_action_just_pressed("ActionButton1"):
 		shoot(0)
 	if Input.is_action_just_pressed("ActionButton2"):
@@ -56,15 +59,15 @@ func _process(_delta):
 		shoot(2)
 		
 func _physics_process(delta):
-	
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		destination = get_global_mouse_position()
 		moving = true
+		$AnimatedSprite2D.play("Run")
 	
 	movement_loop(delta)
 	
 func movement_loop(delta):
-	if moving ==false:
+	if moving == false:
 		speed = 0
 	else:
 		speed += acceleration * delta
@@ -75,6 +78,7 @@ func movement_loop(delta):
 		move_and_slide()
 	else:
 		moving = false
+		$AnimatedSprite2D.play("Idle")
 
 func shoot(slot):
 	var target = get_global_mouse_position()
@@ -89,6 +93,10 @@ func take_damage(damage):
 	health -= damage
 	if health <= 0:
 		health = 0
+		$AnimatedSprite2D.play("Die")
+		self.set_physics_process(false)
+		$CollisionShape2D.disabled=true
+		await $AnimatedSprite2D.animation_finished
 		death.emit()
 	player_health_updated.emit(health)
 
