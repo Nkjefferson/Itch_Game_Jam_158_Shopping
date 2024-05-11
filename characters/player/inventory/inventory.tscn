@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://caera8evwn5y3"]
+[gd_scene load_steps=7 format=3 uid="uid://caera8evwn5y3"]
 
 [ext_resource type="Script" path="res://characters/player/inventory/inventory.gd" id="1_a2g51"]
 [ext_resource type="PackedScene" uid="uid://cgkusoo418s4v" path="res://characters/player/cards/basic_card/basic_card.tscn" id="2_2h6i5"]
 [ext_resource type="PackedScene" uid="uid://cai5r3al5226r" path="res://characters/player/cards/piercing_card/piercing_card.tscn" id="3_1o3k5"]
 [ext_resource type="PackedScene" uid="uid://cea66o0vd2v5n" path="res://characters/player/cards/triple_card/triple_card.tscn" id="4_qmwpa"]
 [ext_resource type="PackedScene" uid="uid://c7ubvsfedj1ky" path="res://characters/player/cards/entangle_card/entangle_Card.tscn" id="5_jke3n"]
+[ext_resource type="PackedScene" uid="uid://ddgpn3j018pi3" path="res://characters/player/cards/orbit_card/orbit_card.tscn" id="6_plrbs"]
 
 [node name="Inventory" type="Node2D"]
 script = ExtResource("1_a2g51")
@@ -12,3 +13,5 @@ Standard_Card = ExtResource("2_2h6i5")
 Piercing_Card = ExtResource("3_1o3k5")
 Triple_Card = ExtResource("4_qmwpa")
 Entangle_Card = ExtResource("5_jke3n")
+Orbit_Card = ExtResource("6_plrbs")
+max_orbit_cards = 6

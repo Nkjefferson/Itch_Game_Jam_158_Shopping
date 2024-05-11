@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://ddgpn3j018pi3"]
+
+[ext_resource type="Script" path="res://characters/player/cards/orbit_card/orbit_card.gd" id="1_axcj7"]
+[ext_resource type="AudioStream" uid="uid://dpiq8sjd2ra4g" path="res://assets/audio/sound_effects/Card_Throw.wav" id="2_wwqdg"]
+[ext_resource type="AudioStream" uid="uid://d0jbd845ja0dm" path="res://assets/audio/sound_effects/Card_Hit_Wall.wav" id="3_s8lef"]
+[ext_resource type="AudioStream" uid="uid://b54bk2et5o0id" path="res://assets/audio/sound_effects/card_hit_enemy.wav" id="4_eb6i0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ipbiy"]
+size = Vector2(12, 8)
+
+[node name="OrbitCard" type="Area2D"]
+collision_layer = 9
+collision_mask = 5
+script = ExtResource("1_axcj7")
+throw_sound = ExtResource("2_wwqdg")
+wall_hit_sound = ExtResource("3_s8lef")
+enemy_hit_sound = ExtResource("4_eb6i0")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = -4.0
+offset_right = 6.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.230195, 0.995955, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ipbiy")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

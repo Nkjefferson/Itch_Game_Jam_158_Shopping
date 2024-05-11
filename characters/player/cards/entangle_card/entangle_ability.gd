@@ -10,7 +10,6 @@ func _on_body_entered(body):
 		affected_enemies.append(body)
 		body.moving = false
 
-
 func _on_timer_timeout():
 	for enemy in affected_enemies:
 		enemy.moving = true
