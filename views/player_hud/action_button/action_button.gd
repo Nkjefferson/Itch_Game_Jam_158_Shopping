@@ -5,6 +5,7 @@ extends Control
 var unselected_style
 var hovered_style
 var selected_style
+var empty_selected_style
 var greyed_out_shader_material
 
 var card
@@ -17,6 +18,8 @@ func _ready():
 	hovered_style.set_border_width_all(2)
 	selected_style = hovered_style.duplicate()
 	selected_style.border_color = Color(0.0,0.8,0.0,1)
+	empty_selected_style = hovered_style.duplicate()
+	empty_selected_style.border_color = Color(0.8,0.0,0.0,1)
 	greyed_out_shader_material = ShaderMaterial.new()
 	greyed_out_shader_material.shader = load("res://views/player_hud/action_button/grey_scale.gdshader")
 	$Panel.add_theme_stylebox_override("panel",unselected_style)
@@ -25,7 +28,13 @@ func _ready():
 func set_selected(selected):
 	var style;
 	if selected:
-		style = selected_style
+		if $Panel/Count.text == "0":
+			style = empty_selected_style
+		else:
+			style = selected_style
 	else:
 		style = unselected_style
 	$Panel.add_theme_stylebox_override("panel",style)
+	
+func set_count(num):
+	$Panel/Count.text=str(num);

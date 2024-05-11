@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cgkusoo418s4v"]
 
-[ext_resource type="Script" path="res://characters/cards/basic_card/basic_card.gd" id="1_h7fu5"]
+[ext_resource type="Script" path="res://characters/player/cards/basic_card/basic_card.gd" id="1_h7fu5"]
 [ext_resource type="AudioStream" uid="uid://dpiq8sjd2ra4g" path="res://assets/audio/sound_effects/Card_Throw.wav" id="2_xjnr6"]
 [ext_resource type="AudioStream" uid="uid://d0jbd845ja0dm" path="res://assets/audio/sound_effects/Card_Hit_Wall.wav" id="3_o7e3h"]
 [ext_resource type="AudioStream" uid="uid://b54bk2et5o0id" path="res://assets/audio/sound_effects/card_hit_enemy.wav" id="4_hxvgp"]
