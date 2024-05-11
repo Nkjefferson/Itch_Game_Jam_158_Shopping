@@ -1,11 +1,8 @@
 extends CharacterBody2D
 
-signal player_health_updated(int)
-signal player_death
 
-@export var max_speed : int  = 200
-@export var acceleration : int = 700
-@export var health : int = 100
+const MAX_SPEED = 200.0
+const ACCELERATION : float = 700
 
 var destination : Vector2 = Vector2.ZERO
 var moving : bool = false
@@ -19,7 +16,9 @@ func _ready():
 
 func _process(_delta):
 	if Input.is_action_just_pressed("ActionButton1"):
-		shoot()
+		shoot(Basic_Card)
+	if Input.is_action_just_pressed("ActionButton2"):
+		shoot(Piercing_Card)
 		
 func _physics_process(delta):
 	
@@ -42,16 +41,9 @@ func movement_loop(delta):
 	else:
 		moving = false
 
-func shoot():
+func shoot(card_scene):
 	var target = get_global_mouse_position()
 	var target_degrees = rad_to_deg((target - $Marker2D.global_position).angle())
-	var c = Basic_Card.instantiate()
+	var c = card_scene.instantiate()
 	add_child(c)
 	c.spawn($Marker2D.position, target_degrees)
-
-func take_damage(damage):
-	health -= damage
-	if health <= 0:
-		health = 0
-		player_death.emit()
-	player_health_updated.emit(health)
