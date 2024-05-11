@@ -9,6 +9,8 @@ var moving : bool = false
 var speed : float = 0.0
 
 @export var Basic_Card : PackedScene
+@export var Piercing_Card : PackedScene
+@export var Triple_Card : PackedScene
 
 func _ready():
 	player_health_updated.emit(health)
@@ -19,6 +21,8 @@ func _process(_delta):
 		shoot(Basic_Card)
 	if Input.is_action_just_pressed("ActionButton2"):
 		shoot(Piercing_Card)
+	if Input.is_action_just_pressed("ActionButton3"):
+		shoot(Triple_Card)
 		
 func _physics_process(delta):
 	
