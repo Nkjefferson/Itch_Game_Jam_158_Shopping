@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bxojd2uxsy3rn"]
+[gd_scene load_steps=10 format=3 uid="uid://bxojd2uxsy3rn"]
 
 [ext_resource type="Script" path="res://environment/first_level/first_level.gd" id="1_hme0k"]
 [ext_resource type="Texture2D" uid="uid://526rqhd2g1lp" path="res://assets/art/environment/stone_tile1_16x16.png" id="2_54lve"]
 [ext_resource type="PackedScene" uid="uid://b3sq3c75nikjf" path="res://environment/bookshelf.tscn" id="2_xuj4j"]
+[ext_resource type="PackedScene" uid="uid://fxwtdxpumr3b" path="res://views/game_over_menu/game_over.tscn" id="3_60f3n"]
 [ext_resource type="PackedScene" uid="uid://c50gxclw2vawf" path="res://characters/player/player.tscn" id="4_qdl0j"]
 [ext_resource type="PackedScene" uid="uid://c1g6c6bf2rtfe" path="res://views/player_hud/player_hud.tscn" id="5_m61fm"]
 [ext_resource type="PackedScene" uid="uid://dfyijfd4fcofb" path="res://characters/enemies/basic_enemy/BasicEnemy.tscn" id="6_8o3ex"]
@@ -21,6 +22,7 @@ sources/0 = SubResource("TileSetAtlasSource_v6hi2")
 [node name="FirstLevel" type="Node2D"]
 script = ExtResource("1_hme0k")
 mob_scene = ExtResource("6_8o3ex")
+game_over_scene = ExtResource("3_60f3n")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1461.0
@@ -68,8 +70,6 @@ zoom = Vector2(2, 2)
 
 [node name="PlayerHud" parent="Player/Camera2D" instance=ExtResource("5_m61fm")]
 
-[node name="BasicEnemy" parent="." instance=ExtResource("6_8o3ex")]
-
 [node name="EnemySpawners" type="Node2D" parent="."]
 
 [node name="Spawner1" type="Marker2D" parent="EnemySpawners"]
@@ -87,4 +87,8 @@ position = Vector2(31, 384)
 [node name="SpawnTimer" type="Timer" parent="EnemySpawners"]
 autostart = true
 
+[node name="ScoreTimer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="timeout" from="EnemySpawners/SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]

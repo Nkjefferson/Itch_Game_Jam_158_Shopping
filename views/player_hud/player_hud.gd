@@ -19,6 +19,9 @@ func _update_card_hotbar(index, count):
 
 func _update_health_value(health):
 	$HUD/HealthBar/Value.text = str(health)
+	
+func _update_score(score):
+	$HUD/ScoreTicker/Value.text = str(score)
 
 func _unhandled_key_input(event):
 	if event.is_action_pressed("ActionButton1"):

@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://fxwtdxpumr3b"]
+[gd_scene load_steps=4 format=3 uid="uid://fxwtdxpumr3b"]
 
 [ext_resource type="Script" path="res://views/game_over_menu/game_over.gd" id="1_fdy3n"]
+
+[sub_resource type="Gradient" id="Gradient_m7qrq"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nuxba"]
+gradient = SubResource("Gradient_m7qrq")
+width = 1280
+height = 720
+fill_from = Vector2(0.321739, 0.82963)
+fill_to = Vector2(0.956522, 0.118841)
 
 [node name="GameOver" type="CanvasLayer"]
 script = ExtResource("1_fdy3n")
@@ -12,6 +21,36 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_nuxba")
+
+[node name="ScoreTicker" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -85.0
+offset_top = 150.0
+offset_right = 85.0
+offset_bottom = 217.0
+grow_horizontal = 2
+
+[node name="ScoreLabel" type="Label" parent="Control/ScoreTicker"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "SCORE:"
+
+[node name="Value" type="Label" parent="Control/ScoreTicker"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "0"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control"]
 layout_mode = 1
@@ -30,7 +69,7 @@ theme_override_constants/separation = 20
 
 [node name="Start_Btn" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
-text = "Start Game"
+text = "Play Again?"
 
 [node name="Settings_Btn" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2

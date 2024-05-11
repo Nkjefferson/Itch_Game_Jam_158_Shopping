@@ -29,7 +29,7 @@ func _ready():
 func take_damage(damage_taken):
 	health -= damage_taken
 	if health <= 0:
-		died.emit()
+		died.emit(score_value)
 		die()
 
 func move_to_player(delta):
