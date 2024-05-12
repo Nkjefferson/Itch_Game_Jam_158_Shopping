@@ -1,7 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://doe5a2exfiguy"]
+[gd_scene load_steps=6 format=3 uid="uid://doe5a2exfiguy"]
 
 [ext_resource type="Script" path="res://environment/interactables/gamer_supp/gamer_supp.gd" id="1_ooaci"]
 [ext_resource type="AudioStream" uid="uid://dk5semms1r581" path="res://assets/audio/sound_effects/Chug.wav" id="2_j4mk7"]
+[ext_resource type="Texture2D" uid="uid://btacdalsfaefv" path="res://assets/art/items/icon_juice_ready.png" id="3_cjs58"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fxa2k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_cjs58")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4c777"]
 
@@ -10,6 +22,7 @@ collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_ooaci")
 interact_sound = ExtResource("2_j4mk7")
+sprite_frames = SubResource("SpriteFrames_fxa2k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_4c777")
