@@ -9,8 +9,11 @@ var music_path_chill = ""
 var song_name = ""
 var chill_state = false
 
+var audio_fade
+
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	audio_fade = get_tree().create_tween()
 	audio_settings = GameState.load_game_state(audio_settings)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), -80 + audio_settings.master_volume_slider_value)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), -80 + audio_settings.music_volume_slider_value)
@@ -30,8 +33,10 @@ func play_music(music_name):
 		$MusicCalm.stream = load(music_path_chill)
 		$MusicCalm.play()
 	if chill_state:
-		$Music.volume_db = -70
-		$MusicCalm.volume_db = 0
+		audio_fade.tween_property($Music,"volume_db",-70,1.0)
+		audio_fade.tween_property($MusicCalm,"volume_db",0,1.0)
+		#$Music.volume_db = -70
+		#$MusicCalm.volume_db = 0
 	else:
 		$Music.volume_db = 0
 		$MusicCalm.volume_db = -70
