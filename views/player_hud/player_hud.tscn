@@ -40,10 +40,6 @@ offset_top = 10.0
 offset_right = 510.0
 offset_bottom = 37.0
 
-[node name="Label" type="Label" parent="HUD/HealthBar"]
-layout_mode = 2
-text = "Health:"
-
 [node name="ValueProgressBar" type="TextureProgressBar" parent="HUD/HealthBar"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -52,7 +48,19 @@ value = 50.0
 texture_under = SubResource("GradientTexture2D_i8vkl")
 texture_progress = SubResource("GradientTexture2D_lnmww")
 tint_over = Color(1, 1, 1, 0)
-tint_progress = Color(0.711632, 0.00729282, 3.85046e-07, 1)
+tint_progress = Color(0.709804, 0.00784314, 0, 0.760784)
+
+[node name="Label" type="Label" parent="HUD/HealthBar/ValueProgressBar"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = -11.5
+offset_right = 60.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "Health:"
 
 [node name="Value" type="Label" parent="HUD/HealthBar/ValueProgressBar"]
 layout_mode = 1
