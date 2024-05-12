@@ -1,14 +1,40 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3sq3c75nikjf"]
+[gd_scene load_steps=8 format=3 uid="uid://b3sq3c75nikjf"]
 
 [ext_resource type="Script" path="res://environment/bookshelf.gd" id="1_rii15"]
 [ext_resource type="Texture2D" uid="uid://byc8c74y5illa" path="res://assets/art/environment/wood_tile1_16x16.png" id="2_vchij"]
 [ext_resource type="PackedScene" uid="uid://ctv18vupqt8uq" path="res://environment/interactables/restocker/restocker.tscn" id="3_vgdb6"]
+[ext_resource type="Texture2D" uid="uid://dgfjjuca3dviv" path="res://assets/art/environment/bookshelves.png" id="4_rxdpb"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rv6fi"]
+texture = ExtResource("4_rxdpb")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/next_alternative_id = 3
+0:1/0 = 0
+0:1/1 = 1
+0:1/1/flip_h = true
+1:1/0 = 0
+0:2/next_alternative_id = 2
+0:2/0 = 0
+0:2/1 = 1
+0:2/1/flip_h = true
+1:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_g0f4d"]
+sources/0 = SubResource("TileSetAtlasSource_rv6fi")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ldihf"]
 size = Vector2(16, 16)
 
 [node name="Bookshelf" type="Node2D"]
 script = ExtResource("1_rii15")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_g0f4d")
+format = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_vchij")

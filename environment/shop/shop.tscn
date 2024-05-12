@@ -1,6 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://b1703q1b3fsnp"]
+[gd_scene load_steps=28 format=3 uid="uid://b1703q1b3fsnp"]
 
 [ext_resource type="Script" path="res://environment/shop/shop.gd" id="1_8uwtw"]
+[ext_resource type="Texture2D" uid="uid://7y1ggaqc6gku" path="res://assets/art/environment/display_case.png" id="3_i8fvq"]
 [ext_resource type="Texture2D" uid="uid://r1lukhj3d2ln" path="res://assets/art/environment/slurp_juice.png" id="3_p8o8s"]
 [ext_resource type="Texture2D" uid="uid://bb8uduhs7kbfo" path="res://assets/art/environment/booster_pack_dispenser.png" id="3_wtr8t"]
 
@@ -38,6 +39,34 @@ region = Rect2(96, 0, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_3ofgm"]
 atlas = ExtResource("3_wtr8t")
 region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7jwv"]
+atlas = ExtResource("3_i8fvq")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4x08m"]
+atlas = ExtResource("3_i8fvq")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmj7m"]
+atlas = ExtResource("3_i8fvq")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yikql"]
+atlas = ExtResource("3_i8fvq")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qmahb"]
+atlas = ExtResource("3_i8fvq")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8b65"]
+atlas = ExtResource("3_i8fvq")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r45x3"]
+atlas = ExtResource("3_i8fvq")
+region = Rect2(96, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_58owe"]
 atlas = ExtResource("3_p8o8s")
@@ -96,6 +125,32 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_b7jwv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4x08m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmj7m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yikql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qmahb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8b65")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r45x3")
+}],
+"loop": true,
+"name": &"display_case",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_58owe")
 }, {
 "duration": 1.0,
@@ -127,5 +182,4 @@ debug_color = Color(0, 0.6, 0.690196, 0.439216)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fiqyp")
-animation = &"booster_pack"
-frame_progress = 0.812806
+animation = &"display_case"

@@ -16,3 +16,5 @@ func _ready():
 			$AnimatedSprite2D.play("booster_pack")
 		1:
 			$AnimatedSprite2D.play("gamer_supp")
+		2:
+			$AnimatedSprite2D.play("display_case")
