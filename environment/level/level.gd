@@ -41,8 +41,6 @@ func start_level():
 	$Spawner.start_spawner()
 
 func pause_level():
-	MusicManager.set_chill_state(true)
-	MusicManager.play_music("Retailiation")
 	var pause_screen = load("res://views/pause_menu/pause_menu.tscn").instantiate()
 	self.add_child(pause_screen)
 	pause_screen.connect("resume",resume_level)
@@ -53,7 +51,6 @@ func stop_level():
 
 func resume_level():
 	MusicManager.set_chill_state(false)
-	MusicManager.play_music("Retailiation")
 	get_tree().paused = false
 
 func update_score(value):

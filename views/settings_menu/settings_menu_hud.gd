@@ -3,8 +3,12 @@ extends CanvasLayer
 const AudioSettingsMenu = preload("res://views/settings_menu/audio_settings.gd")
 
 var audio_settings = AudioSettingsMenu.new()
+
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	MusicManager.set_chill_state(true)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	audio_settings = GameState.load_game_state(audio_settings)
 	$Control/VBoxContainer/HBoxMaster/Master_Volume_Slider.value = audio_settings.master_volume_slider_value
@@ -22,6 +26,7 @@ func _ready():
 
 # Called when the exit settings button is pressed.
 func _on_exit_btn_pressed():
+	MusicManager.set_chill_state(MusicManager.menu_chill_state)
 	GameState.save_game_state(audio_settings)
 	queue_free()
 

@@ -7,6 +7,7 @@ var Card_Collection = preload("res://views/card_binder_menu/card_binder_menu.tsc
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	MusicManager.set_chill_state(true)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 
@@ -22,6 +23,7 @@ func _on_resume_btn_pressed():
 
 # Called when the settings button is pressed.
 func _on_settings_btn_pressed():
+	MusicManager.set_menu_chill_state(true)
 	var settings_menu = Settings.instantiate()
 	get_parent().add_child(settings_menu)
 
@@ -34,5 +36,6 @@ func _on_main_btn_pressed():
 	get_tree().change_scene_to_file("res://views/main_menu/main_menu.tscn")
 
 func _on_card_collection_btn_pressed():
+	MusicManager.set_menu_chill_state(true)
 	var card_menu = Card_Collection.instantiate()
 	get_parent().add_child(card_menu)
