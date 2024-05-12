@@ -61,11 +61,6 @@ layout_mode = 2
 theme = ExtResource("3_vigk5")
 text = "Settings"
 
-[node name="Card_Collection_Btn" type="Button" parent="Control/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("3_vigk5")
-text = "Card Collection"
-
 [node name="Quit_Btn" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_vigk5")
@@ -87,7 +82,7 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_kcsvp")
-text = "Game to be Named!"
+text = "Retailiation!"
 
 [node name="Bookshelves" type="TileMap" parent="."]
 tile_set = ExtResource("5_tldyu")
@@ -96,5 +91,4 @@ layer_0/tile_data = PackedInt32Array(327707, 0, 3, 393243, 0, 3, 458779, 0, 3, 7
 
 [connection signal="pressed" from="Control/VBoxContainer/Start_Btn" to="." method="_on_start_btn_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/Settings_Btn" to="." method="_on_settings_btn_pressed"]
-[connection signal="pressed" from="Control/VBoxContainer/Card_Collection_Btn" to="." method="_on_card_collection_btn_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/Quit_Btn" to="." method="_on_quit_btn_pressed"]
