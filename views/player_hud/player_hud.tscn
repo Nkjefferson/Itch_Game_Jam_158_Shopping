@@ -1,6 +1,8 @@
-[gd_scene load_steps=32 format=3 uid="uid://c1g6c6bf2rtfe"]
+[gd_scene load_steps=34 format=3 uid="uid://c1g6c6bf2rtfe"]
 
 [ext_resource type="Script" path="res://views/player_hud/player_hud.gd" id="1_unnjh"]
+[ext_resource type="Theme" uid="uid://blem1dnpbfmm1" path="res://assets/themes/button_theme.tres" id="2_7xjn2"]
+[ext_resource type="LabelSettings" uid="uid://c0sgp66c8rapj" path="res://assets/themes/card_binder_menu.tres" id="2_jklyp"]
 [ext_resource type="PackedScene" uid="uid://dw0a0adakonek" path="res://views/player_hud/action_button/action_button.tscn" id="2_lvbhi"]
 [ext_resource type="Texture2D" uid="uid://303e88y73vww" path="res://assets/art/items/coin.png" id="2_mpvuq"]
 [ext_resource type="Texture2D" uid="uid://cxqy6xyikgyjf" path="res://assets/art/items/icon_normal_cards.png" id="4_auvi2"]
@@ -210,7 +212,9 @@ offset_top = -11.5
 offset_right = 60.0
 offset_bottom = 11.5
 grow_vertical = 2
-text = "Health:"
+theme = ExtResource("2_7xjn2")
+text = "Social Battery:"
+label_settings = ExtResource("2_jklyp")
 
 [node name="Value" type="Label" parent="HUD/HealthBar/ValueProgressBar"]
 layout_mode = 1
@@ -225,7 +229,9 @@ offset_right = 0.5
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_7xjn2")
 text = "0%"
+label_settings = ExtResource("2_jklyp")
 
 [node name="CurrencyTicker" type="HBoxContainer" parent="HUD"]
 layout_mode = 1
@@ -239,7 +245,9 @@ grow_horizontal = 0
 
 [node name="Value" type="Label" parent="HUD/CurrencyTicker"]
 layout_mode = 2
+theme = ExtResource("2_7xjn2")
 text = "0 :"
+label_settings = ExtResource("2_jklyp")
 
 [node name="Control" type="Control" parent="HUD/CurrencyTicker"]
 custom_minimum_size = Vector2(25, 0)
@@ -267,12 +275,16 @@ grow_vertical = 0
 
 [node name="Label" type="Label" parent="HUD/ScoreTicker"]
 layout_mode = 2
+theme = ExtResource("2_7xjn2")
 text = "Score: "
+label_settings = ExtResource("2_jklyp")
 
 [node name="Value" type="Label" parent="HUD/ScoreTicker"]
 layout_mode = 2
+theme = ExtResource("2_7xjn2")
 text = "0
 "
+label_settings = ExtResource("2_jklyp")
 
 [node name="Actionbar" type="HBoxContainer" parent="HUD"]
 layout_mode = 1
