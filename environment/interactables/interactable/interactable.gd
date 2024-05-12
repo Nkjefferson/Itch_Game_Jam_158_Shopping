@@ -8,7 +8,7 @@ extends Node2D
 @export var cooldown : float = 5.0
 
 var enable_input_monitoring : bool = false
-var hitbox_scl : int  = 1
+var hitbox_scl : int  = 3
 var player_body
 var animated_sprite : AnimatedSprite2D
 var indicator_sprite : AnimatedSprite2D
