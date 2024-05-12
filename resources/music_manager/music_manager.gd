@@ -6,6 +6,7 @@ const SoundEffect = preload("res://resources/music_manager/sound_effect.tscn")
 var audio_settings = AudioSettingsMenu.new()
 
 func _ready():
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	audio_settings = GameState.load_game_state(audio_settings)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), -80 + audio_settings.master_volume_slider_value)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), -80 + audio_settings.music_volume_slider_value)
