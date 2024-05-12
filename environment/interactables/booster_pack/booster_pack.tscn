@@ -23,6 +23,7 @@ collision_mask = 2
 script = ExtResource("1_2v8a6")
 interact_sound = ExtResource("2_4whs0")
 sprite_frames = SubResource("SpriteFrames_c2mel")
+cooldown = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_nao04")

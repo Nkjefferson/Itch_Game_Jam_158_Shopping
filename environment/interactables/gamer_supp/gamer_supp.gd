@@ -12,4 +12,6 @@ func interact():
 			MusicManager.play_sound_effect(interact_sound)
 		else:
 			printerr("No interactive SFX found in: ",self.name)
+	else :
+		MusicManager.play_sound_effect(insufficient_funds_sound)
 	
