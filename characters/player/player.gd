@@ -38,6 +38,7 @@ func _ready():
 	# Push initial player health
 	player_health_updated.emit(health)
 	$Inventory.refresh_hotbar()
+	player_hud._update_gold($Inventory.gold)
 	$AnimatedSprite2D.play("Idle")
 	
 	marker = AnimatedSprite2D.new()
