@@ -4,7 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://dk5semms1r581" path="res://assets/audio/sound_effects/Chug.wav" id="2_j4mk7"]
 [ext_resource type="Texture2D" uid="uid://btacdalsfaefv" path="res://assets/art/items/icon_juice_ready.png" id="3_cjs58"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_fxa2k"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_bykku"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -22,7 +22,7 @@ collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_ooaci")
 interact_sound = ExtResource("2_j4mk7")
-sprite_frames = SubResource("SpriteFrames_fxa2k")
+sprite_frames = SubResource("SpriteFrames_bykku")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_4c777")

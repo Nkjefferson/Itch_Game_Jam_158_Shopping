@@ -49,14 +49,12 @@ func _on_body_exited(body):
 		enable_input_monitoring = false
 
 func interact():
-	print("interacted")
 	available = false
 	interaction_timer.start()
 	if animated_sprite:
 		animated_sprite.visible = false
 
 func refresh():
-	print("cooldown refreshed")
 	available = true
 	if animated_sprite:
 		animated_sprite.visible = true

@@ -22,7 +22,7 @@ func spawn(parent, initial_velocity, target):
 	rotation_degrees = rad_to_deg((target - initial_position).angle())
 	
 	if $Sprite2D.hframes > 1:
-		$Sprite2D.frame = randi_range(1,4)
+		$Sprite2D.frame = randi_range(0,3)
 	
 func _physics_process(delta):
 	if velocity:
