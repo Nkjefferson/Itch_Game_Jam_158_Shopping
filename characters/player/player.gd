@@ -108,6 +108,7 @@ func take_damage(damage):
 	if alive:
 		health -= damage
 		if health <= 0:
+			alive = false
 			health = 0
 			$AnimatedSprite2D.play("Die")
 			if death_sound:
@@ -119,7 +120,7 @@ func take_damage(damage):
 			await $AnimatedSprite2D.animation_finished
 			death.emit()
 		else:
-			MusicManager.play_sound_effect(hurt_sound)
+			MusicManager.play_sound_effect(hurt_sound,20)
 		player_health_updated.emit(health)
 		
 
