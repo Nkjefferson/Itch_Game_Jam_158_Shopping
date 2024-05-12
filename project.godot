@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Godot_2D_Template"
+config/name="Retailiation"
 run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://assets/art/icon.svg"
@@ -24,10 +24,11 @@ MusicManager="*res://resources/music_manager/music_manager_singleton.tscn"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/size/mode=2
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
 window/stretch/scale_mode="integer"
 mouse_cursor/custom_image="res://assets/art/mouse.png"
+window/name="Godot_2D_Template"
 
 [input]
 
