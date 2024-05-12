@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bxojd2uxsy3rn"]
+[gd_scene load_steps=15 format=3 uid="uid://bxojd2uxsy3rn"]
 
 [ext_resource type="Script" path="res://environment/level/level.gd" id="1_hme0k"]
 [ext_resource type="PackedScene" uid="uid://fxwtdxpumr3b" path="res://views/game_over_menu/game_over.tscn" id="3_60f3n"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://environment/spawner/spawned_entity.gd" id="9_55bv6"]
 [ext_resource type="PackedScene" uid="uid://bqgq34mkxbcsv" path="res://characters/enemies/strong_enemy/strong_enemy.tscn" id="9_r3dlt"]
 [ext_resource type="PackedScene" uid="uid://bd6d1s68uchgg" path="res://characters/enemies/flying_enemy/flying_enemy.tscn" id="10_mlibu"]
+[ext_resource type="PackedScene" uid="uid://dnpmbda45tv7q" path="res://characters/enemies/fast_enemy/fast_enemy.tscn" id="10_ptk4x"]
 
 [sub_resource type="Resource" id="Resource_8fco4"]
 script = ExtResource("9_55bv6")
@@ -23,7 +24,12 @@ spawn_weight = 2.5
 [sub_resource type="Resource" id="Resource_xedc0"]
 script = ExtResource("9_55bv6")
 entity = ExtResource("9_r3dlt")
-spawn_weight = 10.0
+spawn_weight = 0.5
+
+[sub_resource type="Resource" id="Resource_3ce7f"]
+script = ExtResource("9_55bv6")
+entity = ExtResource("10_ptk4x")
+spawn_weight = 1.0
 
 [node name="FirstLevel" type="Node2D"]
 script = ExtResource("1_hme0k")
@@ -35,7 +41,7 @@ game_over_scene = ExtResource("3_60f3n")
 position = Vector2(113, 98)
 
 [node name="Spawner" parent="." instance=ExtResource("8_73ag8")]
-spawned_entities = Array[ExtResource("9_55bv6")]([SubResource("Resource_8fco4"), SubResource("Resource_cembe"), SubResource("Resource_xedc0")])
+spawned_entities = Array[ExtResource("9_55bv6")]([SubResource("Resource_8fco4"), SubResource("Resource_cembe"), SubResource("Resource_xedc0"), SubResource("Resource_3ce7f")])
 
 [node name="ScoreTimer" type="Timer" parent="."]
 autostart = true
