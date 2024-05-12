@@ -69,6 +69,7 @@ collision_mask = 15
 script = ExtResource("1_phh45")
 move_speed = 50
 acceleration = 400
+health = 5
 damage = 30
 damage_tick_rate = 1.0
 
