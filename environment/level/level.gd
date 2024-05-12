@@ -14,7 +14,7 @@ var game_over = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	MusicManager.play_music("res://assets/audio/House In a Forest Loop Reversed.ogg")
+	MusicManager.play_music("res://assets/audio/Retailiation.wav")
 	$Player.connect("death",_on_game_over)
 	self.connect("score_update",$Player.player_hud._update_score)
 	var points : Array[Vector2] = [Vector2(-70,279),Vector2(816,-73),Vector2(1386,81),Vector2(304,856)]
