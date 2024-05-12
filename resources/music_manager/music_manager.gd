@@ -8,6 +8,7 @@ var music_path = ""
 var music_path_chill = ""
 var song_name = ""
 var chill_state = false
+var menu_chill_state = false
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -23,21 +24,26 @@ func play_music(music_name):
 	song_name = music_name
 	music_path = "res://assets/audio/" + music_name + ".ogg"
 	music_path_chill = "res://assets/audio/" + music_name + "Chill.ogg"
+	$Music.volume_db = 0
+	$MusicCalm.volume_db = -60
 	if $Music.stream == null or $Music.stream.resource_path != music_path:
 		$Music.stream = load(music_path)
 		$Music.play()
 	if $MusicCalm.stream == null or $MusicCalm.stream.resource_path != music_path_chill:
 		$MusicCalm.stream = load(music_path_chill)
 		$MusicCalm.play()
-	if chill_state:
-		$Music.volume_db = -70
-		$MusicCalm.volume_db = 0
-	else:
-		$Music.volume_db = 0
-		$MusicCalm.volume_db = -70
-		
+
 func set_chill_state(chill):
+	if chill and !chill_state:
+		$Music.volume_db = -60
+		$MusicCalm.volume_db = -4
+	if !chill and chill_state:
+		$Music.volume_db = 0
+		$MusicCalm.volume_db = -60
 	chill_state = chill
+
+func set_menu_chill_state(chill):
+	menu_chill_state = chill
 
 func play_sound_effect(sound_effect_path,volume=0.0):
 	var effect = SoundEffect.instantiate()
