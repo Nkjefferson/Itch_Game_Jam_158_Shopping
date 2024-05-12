@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://bk4x4v4yb24o2"]
+
+[ext_resource type="Script" path="res://environment/consumables/booster_pack/booster_pack.gd" id="1_btbeh"]
+[ext_resource type="Texture2D" uid="uid://me4uytt8s6jr" path="res://assets/art/items/icon_booster_pack_ready.png" id="1_ujdxn"]
+[ext_resource type="AudioStream" uid="uid://brwqxwq1ymh1m" path="res://assets/audio/sound_effects/Purchase.wav" id="2_uqnat"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_656i1"]
+size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxgqn"]
+atlas = ExtResource("1_ujdxn")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l2i20"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxgqn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BoosterPack" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_btbeh")
+interact_sound = ExtResource("2_uqnat")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_656i1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_l2i20")
+autoplay = "default"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
