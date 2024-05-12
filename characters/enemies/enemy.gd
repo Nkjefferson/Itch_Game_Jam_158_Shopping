@@ -48,7 +48,7 @@ func check_collision():
 	if $DamageTickTimer.is_stopped():
 		for index in get_slide_collision_count():
 			var collision = get_slide_collision(index)
-			if collision and collision.get_collider().is_in_group("player"):
+			if collision.get_collider() and collision.get_collider().is_in_group("player"):
 				collision.get_collider().take_damage(damage)
 				$DamageTickTimer.set_wait_time(damage_tick_rate)
 				$DamageTickTimer.start()

@@ -19,12 +19,12 @@ size = Vector2(13, 14)
 
 [node name="StrongEnemy" type="CharacterBody2D"]
 collision_layer = 4
-collision_mask = 11
+collision_mask = 15
 script = ExtResource("1_phh45")
 move_speed = 50
 acceleration = 100
 damage = 30
-damage_tick_rate = 0.25
+damage_tick_rate = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ae2hc")
