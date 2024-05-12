@@ -41,6 +41,7 @@ func move_to_player(delta):
 	if speed > move_speed:
 		speed = move_speed
 	velocity = position.direction_to(destination) * speed
+	$AnimatedSprite2D.flip_h = position.direction_to(destination).x < 0
 	if position.distance_to(destination) > 5 and moving:
 		move_and_slide()
 
