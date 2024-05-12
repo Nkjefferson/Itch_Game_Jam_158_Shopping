@@ -79,7 +79,7 @@ text = "Settings"
 [node name="Card_Collection_Btn" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_pai02")
-text = "Card Collection"
+text = "Cards"
 
 [node name="Quit_Btn" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
