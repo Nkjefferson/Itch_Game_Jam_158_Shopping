@@ -1,17 +1,63 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfyijfd4fcofb"]
+[gd_scene load_steps=12 format=3 uid="uid://dfyijfd4fcofb"]
 
 [ext_resource type="Script" path="res://characters/enemies/basic_enemy/BasicEnemy.gd" id="1_nccpe"]
-[ext_resource type="Texture2D" uid="uid://cwknpifxdce0d" path="res://assets/art/entities/lizardt1_16x16.png" id="2_iq4ys"]
+[ext_resource type="Texture2D" uid="uid://bplic2rbc5ijp" path="res://assets/art/entities/enemy_nerd.png" id="2_qifdd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1c6cf"]
+atlas = ExtResource("2_qifdd")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmhwl"]
+atlas = ExtResource("2_qifdd")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3vbx"]
+atlas = ExtResource("2_qifdd")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uryej"]
+atlas = ExtResource("2_qifdd")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqad3"]
+atlas = ExtResource("2_qifdd")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66l7f"]
+atlas = ExtResource("2_qifdd")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_csoo1"]
+atlas = ExtResource("2_qifdd")
+region = Rect2(96, 16, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rerql"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_iq4ys")
+"texture": SubResource("AtlasTexture_1c6cf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmhwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3vbx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uryej")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqad3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66l7f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_csoo1")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jhayr"]
@@ -25,6 +71,7 @@ health = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_rerql")
+autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 0.5)

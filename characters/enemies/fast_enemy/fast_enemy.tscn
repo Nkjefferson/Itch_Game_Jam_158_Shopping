@@ -1,17 +1,63 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnpmbda45tv7q"]
+[gd_scene load_steps=12 format=3 uid="uid://dnpmbda45tv7q"]
 
 [ext_resource type="Script" path="res://characters/enemies/fast_enemy/fast_enemy.gd" id="1_3pgb4"]
-[ext_resource type="Texture2D" uid="uid://cd0kmek35gihu" path="res://assets/art/entities/goblin1_16x16.png" id="2_qfp2b"]
+[ext_resource type="Texture2D" uid="uid://kmxgbxsib8r5" path="res://assets/art/entities/enemy_karen.png" id="2_1q0y5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32i3b"]
+atlas = ExtResource("2_1q0y5")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5iot5"]
+atlas = ExtResource("2_1q0y5")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7yht"]
+atlas = ExtResource("2_1q0y5")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6mpu"]
+atlas = ExtResource("2_1q0y5")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1urh3"]
+atlas = ExtResource("2_1q0y5")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hn7nh"]
+atlas = ExtResource("2_1q0y5")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qamt2"]
+atlas = ExtResource("2_1q0y5")
+region = Rect2(96, 16, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cx2i8"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_qfp2b")
+"texture": SubResource("AtlasTexture_32i3b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5iot5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7yht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6mpu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1urh3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hn7nh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qamt2")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_itu8h"]
@@ -28,6 +74,7 @@ damage_tick_rate = 0.25
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_cx2i8")
+autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_itu8h")

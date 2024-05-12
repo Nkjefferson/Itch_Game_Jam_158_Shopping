@@ -1,33 +1,28 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgkusoo418s4v"]
+[gd_scene load_steps=7 format=3 uid="uid://cgkusoo418s4v"]
 
 [ext_resource type="Script" path="res://characters/player/cards/basic_card/basic_card.gd" id="1_h7fu5"]
 [ext_resource type="AudioStream" uid="uid://dpiq8sjd2ra4g" path="res://assets/audio/sound_effects/Card_Throw.wav" id="2_xjnr6"]
 [ext_resource type="AudioStream" uid="uid://d0jbd845ja0dm" path="res://assets/audio/sound_effects/Card_Hit_Wall.wav" id="3_o7e3h"]
 [ext_resource type="AudioStream" uid="uid://b54bk2et5o0id" path="res://assets/audio/sound_effects/card_hit_enemy.wav" id="4_hxvgp"]
+[ext_resource type="Texture2D" uid="uid://cxqy6xyikgyjf" path="res://assets/art/items/icon_normal_cards.png" id="5_hjcst"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u0cdr"]
-size = Vector2(12, 8)
+size = Vector2(14, 12)
 
 [node name="BasicCard" type="Area2D"]
 collision_layer = 8
 collision_mask = 5
 script = ExtResource("1_h7fu5")
+speed = null
+damage = null
 throw_sound = ExtResource("2_xjnr6")
 wall_hit_sound = ExtResource("3_o7e3h")
 enemy_hit_sound = ExtResource("4_hxvgp")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -6.0
-offset_top = -4.0
-offset_right = 6.0
-offset_bottom = 4.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("5_hjcst")
+hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_u0cdr")
