@@ -159,7 +159,7 @@ game_over_scene = ExtResource("3_60f3n")
 [node name="FirstLevelMap" parent="." instance=ExtResource("3_o4p56")]
 
 [node name="Player" parent="." instance=ExtResource("4_qdl0j")]
-position = Vector2(113, 98)
+position = Vector2(623, 348)
 marker_frames = SubResource("SpriteFrames_0pol6")
 
 [node name="Spawner" parent="." instance=ExtResource("8_73ag8")]
