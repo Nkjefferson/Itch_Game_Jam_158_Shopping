@@ -10,8 +10,8 @@
 size = Vector2(14, 12)
 
 [node name="OrbitCard" type="Area2D"]
-collision_layer = 9
-collision_mask = 5
+collision_layer = 8
+collision_mask = 4
 script = ExtResource("1_axcj7")
 throw_sound = ExtResource("2_wwqdg")
 wall_hit_sound = ExtResource("3_s8lef")

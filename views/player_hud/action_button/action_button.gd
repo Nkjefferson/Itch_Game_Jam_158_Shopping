@@ -1,6 +1,7 @@
 extends Control
 
 @export var card_scene : PackedScene = null
+@export var sprite_frames : SpriteFrames
 
 var unselected_style
 var hovered_style
@@ -8,10 +9,19 @@ var selected_style
 var empty_selected_style
 var greyed_out_shader_material
 
-var card
+var animated_sprite : AnimatedSprite2D
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if sprite_frames:
+		animated_sprite = AnimatedSprite2D.new()
+		animated_sprite.sprite_frames = sprite_frames
+		animated_sprite.position += $Panel.size/2
+		animated_sprite.z_index = 2
+		animated_sprite.play("default")
+		animated_sprite.scale = Vector2(3,3)
+		$Panel.add_child(animated_sprite)
 	unselected_style = StyleBoxFlat.new()
 	unselected_style.bg_color = Color(0.6,0.6,0.6,0.5)
 	unselected_style.set_corner_radius_all(8)
@@ -24,7 +34,6 @@ func _ready():
 	greyed_out_shader_material = ShaderMaterial.new()
 	greyed_out_shader_material.shader = load("res://views/player_hud/action_button/grey_scale.gdshader")
 	$Panel.add_theme_stylebox_override("panel",unselected_style)
-	# assert(card != null,"Shop Item has no instantiated tower")
 	
 func set_selected(selected):
 	var style;
