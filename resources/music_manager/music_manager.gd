@@ -4,6 +4,7 @@ const AudioSettingsMenu = preload("res://views/settings_menu/audio_settings.gd")
 const SoundEffect = preload("res://resources/music_manager/sound_effect.tscn")
 
 var audio_settings = AudioSettingsMenu.new()
+var cur_song_path = ""
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -19,6 +20,7 @@ func play_music(music_path):
 	if $Music.stream == null or $Music.stream.resource_path != music_path:
 		$Music.stream = load(music_path)
 		$Music.play()
+		cur_song_path = music_path
 
 func play_sound_effect(sound_effect_path,volume=0.0):
 	var effect = SoundEffect.instantiate()
@@ -30,4 +32,7 @@ func _on_sound_effect_finished(effect):
 	effect.queue_free()
 
 func _on_music_finished():
-	$Music.play()
+	if cur_song_path == "res://assets/audio/Retailiation.ogg":
+		$Music.play(4.266)
+	if cur_song_path == "res://assets/audio/Shop-Title.ogg":
+		$Music.play(4.8)

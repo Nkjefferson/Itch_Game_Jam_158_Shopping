@@ -5,7 +5,7 @@ var Settings = preload("res://views/settings_menu/settings_menu_hud.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	MusicManager.play_music("res://assets/audio/House In a Forest Loop.ogg")
+	MusicManager.play_music("res://assets/audio/Shop-Title.ogg")
 
 
 
