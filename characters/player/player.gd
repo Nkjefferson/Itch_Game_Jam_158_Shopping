@@ -72,7 +72,6 @@ func _process(_delta):
 func _physics_process(delta):
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		destination = get_global_mouse_position()
-		print(destination)
 		marker.global_position = destination - Vector2(0,8)
 		if !marker.visible:
 			marker.visible = true
