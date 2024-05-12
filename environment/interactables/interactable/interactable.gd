@@ -18,7 +18,7 @@ func spawn():
 		animated_sprite = AnimatedSprite2D.new()
 		animated_sprite.sprite_frames = sprite_frames
 		animated_sprite.position -= Vector2(0,16)
-		animated_sprite.z_index = 2
+		animated_sprite.z_index = 3
 		animated_sprite.play("default")
 		self.add_child(animated_sprite)
 	else:

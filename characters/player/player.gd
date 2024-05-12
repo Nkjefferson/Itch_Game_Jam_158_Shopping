@@ -17,7 +17,7 @@ var health : int
 var player_hud
 
 func _ready():
-	self.z_index = 3
+	self.z_index = 2
 	health = max_health
 	self.add_to_group("player")
 	set_motion_mode(MOTION_MODE_FLOATING)
