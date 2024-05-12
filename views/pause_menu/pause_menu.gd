@@ -3,6 +3,7 @@ extends CanvasLayer
 signal resume
 
 var Settings = preload("res://views/settings_menu/settings_menu_hud.tscn")
+var Card_Collection = preload("res://views/card_binder_menu/card_binder_menu.tscn");
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,3 +32,7 @@ func _on_quit_btn_pressed():
 func _on_main_btn_pressed():
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://views/main_menu/main_menu.tscn")
+
+func _on_card_collection_btn_pressed():
+	var card_menu = Card_Collection.instantiate()
+	get_parent().add_child(card_menu)

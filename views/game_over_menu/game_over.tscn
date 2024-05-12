@@ -76,6 +76,11 @@ layout_mode = 2
 theme = ExtResource("3_pai02")
 text = "Settings"
 
+[node name="Card_Collection_Btn" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_pai02")
+text = "Card Collection"
+
 [node name="Quit_Btn" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_pai02")
@@ -89,4 +94,5 @@ layer_0/tile_data = PackedInt32Array(327699, 0, 3, 393235, 0, 3, 458771, 0, 3, 5
 
 [connection signal="pressed" from="Control/VBoxContainer/Start_Btn" to="." method="_on_start_btn_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/Settings_Btn" to="." method="_on_settings_btn_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/Card_Collection_Btn" to="." method="_on_card_collection_btn_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/Quit_Btn" to="." method="_on_quit_btn_pressed"]

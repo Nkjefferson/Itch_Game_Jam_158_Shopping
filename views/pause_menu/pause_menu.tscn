@@ -46,9 +46,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -223.0
-offset_top = -66.0
+offset_top = -181.0
 offset_right = 223.0
-offset_bottom = 66.0
+offset_bottom = -49.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_22o40")
@@ -63,9 +63,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -100.0
-offset_top = 132.5
+offset_top = 74.0
 offset_right = 100.0
-offset_bottom = 265.5
+offset_bottom = 274.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
@@ -80,6 +80,11 @@ layout_mode = 2
 theme = ExtResource("3_pukcj")
 text = "Main Menu"
 
+[node name="Card_Collection_Btn" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_pukcj")
+text = "Card Collection"
+
 [node name="Settings_Btn" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_pukcj")
@@ -93,5 +98,6 @@ text = "Quit
 
 [connection signal="pressed" from="Control/VBoxContainer/Resume_Btn" to="." method="_on_resume_btn_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/Main_Btn" to="." method="_on_main_btn_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/Card_Collection_Btn" to="." method="_on_card_collection_btn_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/Settings_Btn" to="." method="_on_settings_btn_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/Quit_Btn" to="." method="_on_quit_btn_pressed"]
