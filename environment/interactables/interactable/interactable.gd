@@ -2,6 +2,7 @@ class_name Interactable
 extends Node2D
 
 @export var interact_sound : Resource
+@export var insufficient_funds_sound : Resource = load("res://assets/audio/sound_effects/Empty.wav")
 @export var sprite_frames : SpriteFrames
 @export var interact_indicator_sprite_frames : SpriteFrames = load("res://environment/interactables/interactable/interaction_default_spriteframes.tres")
 @export var cooldown : float = 5.0
