@@ -28,7 +28,7 @@ func _ready():
 	$Player.connect("death",_on_game_over)
 	self.connect("score_update",$Player.player_hud._update_score)
 	var points : Array[Vector2] = [Vector2(-70,279),Vector2(816,-73),Vector2(1386,81),Vector2(304,856)]
-	$Spawner.create_spawners(1.0,_on_enemy_death,points)
+	$Spawner.create_spawners(3.0,0.75,0.05,_on_enemy_death,points)
 	rng = RandomNumberGenerator.new()
 	self.z_index = 0
 	start_level()

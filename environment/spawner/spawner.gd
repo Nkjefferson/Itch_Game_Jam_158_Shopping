@@ -4,6 +4,8 @@ extends Node2D
 
 var spawners : Array[Marker2D]
 var weighted_sum : float = 0.0
+var spawn_step_rate : float = 0.0
+var max_spawn_rate : float = 0.2
 var _entity_cleanup_handler : Callable
 
 # Called when the node enters the scene tree for the first time.
@@ -21,8 +23,10 @@ func spawn_entities():
 	else:
 		printerr("Failed to spawn entity: no entitys defined")
 
-func create_spawners(spawn_rate:float, _on_entity_cleanup_handler:Callable, points:Array[Vector2]=[global_position]):
-	$SpawnTimer.wait_time = spawn_rate
+func create_spawners(initial_spawn_rate:float, spawner_max_rate:float, spawner_step_rate:float, _on_entity_cleanup_handler:Callable, points:Array[Vector2]=[global_position]):
+	$SpawnTimer.wait_time = initial_spawn_rate
+	spawn_step_rate = spawner_step_rate
+	max_spawn_rate = spawner_max_rate
 	_entity_cleanup_handler = _on_entity_cleanup_handler
 	destroy_spawners()
 	for point in points:
@@ -59,3 +63,6 @@ func destroy_spawners():
 
 func _on_spawn_timer_timeout():
 	spawn_entities()
+	print($SpawnTimer.wait_time)
+	if $SpawnTimer.wait_time - spawn_step_rate > max_spawn_rate:
+		$SpawnTimer.wait_time -= spawn_step_rate
