@@ -84,7 +84,7 @@ func shoot(index):
 		update_card_count.emit(index, loadout[index].count)
 		return loadout[index].card
 	else:
-		MusicManager.play_sound_effect(empty_slot_sound)
+		MusicManager.play_sound_effect(empty_slot_sound, 20)
 		return null
 
 func add_gold(amount):
