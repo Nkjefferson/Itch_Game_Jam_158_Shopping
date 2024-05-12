@@ -17,7 +17,7 @@ func _ready():
 	MusicManager.play_music("res://assets/audio/House In a Forest Loop Reversed.ogg")
 	$Player.connect("death",_on_game_over)
 	self.connect("score_update",$Player.player_hud._update_score)
-	var points : Array[Vector2] = [Vector2(10,411),Vector2(678,11),Vector2(1444,393),Vector2(729,869)]
+	var points : Array[Vector2] = [Vector2(-70,279),Vector2(816,-73),Vector2(1386,81),Vector2(304,856)]
 	$Spawner.create_spawners(1.0,_on_enemy_death,points)
 	self.z_index = 0
 	start_level()
