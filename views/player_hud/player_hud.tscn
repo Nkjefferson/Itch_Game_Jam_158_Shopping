@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://c1g6c6bf2rtfe"]
+[gd_scene load_steps=18 format=3 uid="uid://c1g6c6bf2rtfe"]
 
 [ext_resource type="Script" path="res://views/player_hud/player_hud.gd" id="1_unnjh"]
 [ext_resource type="PackedScene" uid="uid://dw0a0adakonek" path="res://views/player_hud/action_button/action_button.tscn" id="2_lvbhi"]
+[ext_resource type="Texture2D" uid="uid://303e88y73vww" path="res://assets/art/items/coin.png" id="2_mpvuq"]
 
 [sub_resource type="Theme" id="Theme_dytfj"]
 
@@ -21,6 +22,70 @@ colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1)
 gradient = SubResource("Gradient_dbvaf")
 width = 440
 fill_from = Vector2(1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1lpr5"]
+atlas = ExtResource("2_mpvuq")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwh33"]
+atlas = ExtResource("2_mpvuq")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5vh5"]
+atlas = ExtResource("2_mpvuq")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yoher"]
+atlas = ExtResource("2_mpvuq")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jef0j"]
+atlas = ExtResource("2_mpvuq")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bg432"]
+atlas = ExtResource("2_mpvuq")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_da1db"]
+atlas = ExtResource("2_mpvuq")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ni6wf"]
+atlas = ExtResource("2_mpvuq")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_87tds"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1lpr5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwh33")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t5vh5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yoher")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jef0j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bg432")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_da1db")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ni6wf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="PlayerHud" type="CanvasLayer"]
 script = ExtResource("1_unnjh")
@@ -83,17 +148,24 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -71.0
-offset_top = 2.0
-offset_bottom = 25.0
+offset_top = 10.0
+offset_bottom = 33.0
 grow_horizontal = 0
-
-[node name="Label" type="Label" parent="HUD/CurrencyTicker"]
-layout_mode = 2
-text = "Money:"
 
 [node name="Value" type="Label" parent="HUD/CurrencyTicker"]
 layout_mode = 2
-text = "0"
+text = "0 :"
+
+[node name="Control" type="Control" parent="HUD/CurrencyTicker"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HUD/CurrencyTicker/Control"]
+sprite_frames = SubResource("SpriteFrames_87tds")
+autoplay = "default"
+offset = Vector2(8, 0)
 
 [node name="ScoreTicker" type="HBoxContainer" parent="HUD"]
 layout_mode = 1
@@ -102,8 +174,9 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -40.0
+offset_left = -80.0
 offset_top = -40.0
+offset_right = -14.0
 grow_horizontal = 0
 grow_vertical = 0
 
