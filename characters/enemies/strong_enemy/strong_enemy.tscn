@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqgq34mkxbcsv"]
+
+[ext_resource type="Script" path="res://characters/enemies/strong_enemy/strong_enemy.gd" id="1_phh45"]
+[ext_resource type="Texture2D" uid="uid://d06hl5us2mivu" path="res://assets/art/entities/goo1_16x16.png" id="2_7o2cy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ae2hc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7o2cy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n6wwa"]
+size = Vector2(13, 14)
+
+[node name="StrongEnemy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 15
+script = ExtResource("1_phh45")
+move_speed = 50
+acceleration = 100
+damage = 30
+damage_tick_rate = 1.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ae2hc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 1)
+shape = SubResource("RectangleShape2D_n6wwa")
+
+[node name="DamageTickTimer" type="Timer" parent="."]
+one_shot = true
