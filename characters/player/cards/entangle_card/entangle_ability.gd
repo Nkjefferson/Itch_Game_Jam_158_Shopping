@@ -12,5 +12,6 @@ func _on_body_entered(body):
 
 func _on_timer_timeout():
 	for enemy in affected_enemies:
-		enemy.moving = true
+		if enemy:
+			enemy.moving = true
 	queue_free()
