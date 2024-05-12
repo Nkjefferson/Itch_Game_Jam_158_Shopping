@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://cw5vhqerv7pi2"]
+
+[ext_resource type="Script" path="res://environment/consumables/gamer_juice/gamer_juice.gd" id="1_gsvwg"]
+[ext_resource type="Texture2D" uid="uid://btacdalsfaefv" path="res://assets/art/items/icon_juice_ready.png" id="2_pufct"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0nqag"]
+size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rvi2"]
+atlas = ExtResource("2_pufct")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c3lcv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8rvi2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="GamerJuice" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_gsvwg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0nqag")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_c3lcv")
+autoplay = "default"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

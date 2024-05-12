@@ -1,42 +1,42 @@
 [gd_scene load_steps=14 format=3 uid="uid://c0lmwiclxyg2n"]
 
-[ext_resource type="Script" path="res://environment/gold/gold.gd" id="1_pacxi"]
-[ext_resource type="AudioStream" uid="uid://cpqpbmtdu6pbq" path="res://assets/audio/sound_effects/Coin_SFX.wav" id="2_vknqr"]
-[ext_resource type="Texture2D" uid="uid://303e88y73vww" path="res://assets/art/items/coin.png" id="2_x38em"]
+[ext_resource type="Script" path="res://environment/consumables/gold/gold.gd" id="1_7x40w"]
+[ext_resource type="AudioStream" uid="uid://cpqpbmtdu6pbq" path="res://assets/audio/sound_effects/Coin_SFX.wav" id="2_8vr3e"]
+[ext_resource type="Texture2D" uid="uid://303e88y73vww" path="res://assets/art/items/coin.png" id="3_nq2sv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rqx6c"]
 size = Vector2(16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w2ebq"]
-atlas = ExtResource("2_x38em")
+atlas = ExtResource("3_nq2sv")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ioiis"]
-atlas = ExtResource("2_x38em")
+atlas = ExtResource("3_nq2sv")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fnssb"]
-atlas = ExtResource("2_x38em")
+atlas = ExtResource("3_nq2sv")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_82kto"]
-atlas = ExtResource("2_x38em")
+atlas = ExtResource("3_nq2sv")
 region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2lutv"]
-atlas = ExtResource("2_x38em")
+atlas = ExtResource("3_nq2sv")
 region = Rect2(64, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y03b7"]
-atlas = ExtResource("2_x38em")
+atlas = ExtResource("3_nq2sv")
 region = Rect2(80, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uf4jo"]
-atlas = ExtResource("2_x38em")
+atlas = ExtResource("3_nq2sv")
 region = Rect2(96, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p783k"]
-atlas = ExtResource("2_x38em")
+atlas = ExtResource("3_nq2sv")
 region = Rect2(112, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kutvs"]
@@ -74,8 +74,8 @@ animations = [{
 [node name="Gold" type="Area2D"]
 collision_layer = 32
 collision_mask = 2
-script = ExtResource("1_pacxi")
-interact_sound = ExtResource("2_vknqr")
+script = ExtResource("1_7x40w")
+interact_sound = ExtResource("2_8vr3e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_rqx6c")

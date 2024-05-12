@@ -2,7 +2,8 @@ extends Node2D
 
 @export var game_over_scene : PackedScene
 @export var passive_score_tick : float = 2.5
-@export var gold : PackedScene = preload("res://environment/gold/gold.tscn")
+@export var gold : PackedScene = preload("res://environment/consumables/gold/gold.tscn")
+@export var juice : PackedScene = preload("res://environment/consumables/gamer_juice/gamer_juice.tscn")
 
 signal score_update
 
@@ -55,6 +56,10 @@ func _on_enemy_death(enemy):
 	var coin = gold.instantiate()
 	self.call_deferred("add_child",coin)
 	coin.spawn(enemy.global_position, enemy.gold_reward)
+	var j = juice.instantiate()
+	self.call_deferred("add_child", j)
+	j.spawn(enemy.global_position+Vector2(1,1), 10)
+	
 
 func _on_pack_collected_score(value):
 	update_score(value);
