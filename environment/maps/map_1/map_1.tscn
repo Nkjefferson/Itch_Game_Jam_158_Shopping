@@ -1,12 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://dq8rkn7bk8esv"]
+[gd_scene load_steps=11 format=3 uid="uid://dq8rkn7bk8esv"]
 
 [ext_resource type="Script" path="res://environment/maps/map_1/map_1.gd" id="1_8hpxl"]
 [ext_resource type="PackedScene" uid="uid://b3sq3c75nikjf" path="res://environment/bookshelf.tscn" id="2_cwjon"]
 [ext_resource type="PackedScene" uid="uid://b1703q1b3fsnp" path="res://environment/shop/shop.tscn" id="4_ytt30"]
-[ext_resource type="Texture2D" uid="uid://c2xlqf2r0nfmu" path="res://assets/art/items/potion1_16x16.png" id="5_kdpr3"]
+[ext_resource type="PackedScene" uid="uid://doe5a2exfiguy" path="res://environment/interactables/gamer_supp/gamer_supp.tscn" id="5_owwl2"]
 [ext_resource type="PackedScene" uid="uid://dwqo1fucc1bt" path="res://environment/interactables/booster_pack/booster_pack.tscn" id="6_dberp"]
 [ext_resource type="Texture2D" uid="uid://bnqe0ax8bvgbs" path="res://assets/art/environment/Magic_The_Scattering_Shop_Tileset.png" id="7_0q44x"]
-[ext_resource type="Texture2D" uid="uid://cvro88j7dxrbp" path="res://assets/art/environment/box1_16x16.png" id="7_mqgc6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vpo65"]
 texture = ExtResource("7_0q44x")
@@ -351,13 +350,13 @@ position = Vector2(830, 218)
 width = 10
 
 [node name="Gamer Fuel Shop" parent="." instance=ExtResource("4_ytt30")]
-position = Vector2(568, 394)
-shop_sprite_texture = ExtResource("5_kdpr3")
+position = Vector2(568, 392)
+shop_interactable = ExtResource("5_owwl2")
+shop_type = 1
 
 [node name="Booster Pack Shop" parent="." instance=ExtResource("4_ytt30")]
-position = Vector2(678, 312)
-shop_type = ExtResource("6_dberp")
-shop_sprite_texture = ExtResource("7_mqgc6")
+position = Vector2(665, 312)
+shop_interactable = ExtResource("6_dberp")
 
 [node name="Walls" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_6ikrr")
