@@ -4,14 +4,14 @@
 [ext_resource type="AudioStream" uid="uid://brwqxwq1ymh1m" path="res://assets/audio/sound_effects/Purchase.wav" id="2_4whs0"]
 [ext_resource type="Texture2D" uid="uid://me4uytt8s6jr" path="res://assets/art/items/icon_booster_pack_ready.png" id="3_o5gnr"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_5ss5m"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_c2mel"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("3_o5gnr")
 }],
 "loop": true,
-"name": &"new_animation",
+"name": &"default",
 "speed": 5.0
 }]
 
@@ -22,7 +22,7 @@ collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_2v8a6")
 interact_sound = ExtResource("2_4whs0")
-sprite_frames = SubResource("SpriteFrames_5ss5m")
+sprite_frames = SubResource("SpriteFrames_c2mel")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_nao04")
