@@ -61,7 +61,6 @@ func _on_enemy_death(enemy):
 	update_score(enemy.score_value)
 	
 	var drop_chance = rng.randf()
-	print(drop_chance)
 	if drop_chance < coin_percent:
 		var coin = gold.instantiate()
 		self.call_deferred("add_child",coin)

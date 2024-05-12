@@ -63,6 +63,5 @@ func destroy_spawners():
 
 func _on_spawn_timer_timeout():
 	spawn_entities()
-	print($SpawnTimer.wait_time)
 	if $SpawnTimer.wait_time - spawn_step_rate > max_spawn_rate:
 		$SpawnTimer.wait_time -= spawn_step_rate
