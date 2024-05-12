@@ -1,17 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dttu56qr7unyk"]
+[gd_scene load_steps=7 format=3 uid="uid://dttu56qr7unyk"]
 
 [ext_resource type="Script" path="res://views/main_menu/main_menu.gd" id="1_2fu1s"]
 [ext_resource type="TileSet" uid="uid://bwsy5w68molvh" path="res://assets/themes/main_menu.tres" id="2_ig17e"]
 [ext_resource type="Theme" uid="uid://blem1dnpbfmm1" path="res://assets/themes/button_theme.tres" id="3_vigk5"]
 [ext_resource type="TileSet" uid="uid://c06n4r8c3dgrm" path="res://assets/themes/main_menu_bookshelves.tres" id="5_tldyu"]
 [ext_resource type="FontFile" uid="uid://c3n3jpq87xnc5" path="res://assets/fonts/Crang.ttf" id="6_u03cu"]
-
-[sub_resource type="InputEventAction" id="InputEventAction_ysuik"]
-action = &"escape"
-pressed = true
-
-[sub_resource type="Shortcut" id="Shortcut_vu131"]
-events = [SubResource("InputEventAction_ysuik")]
 
 [sub_resource type="Theme" id="Theme_kcsvp"]
 default_font_size = 60
@@ -44,8 +37,8 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -100.0
-offset_top = -220.0
-offset_right = 100.0
+offset_top = -243.0
+offset_right = 101.0
 offset_bottom = -87.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -64,14 +57,12 @@ text = "Settings"
 [node name="Card_Collection_Btn" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_vigk5")
-text = "Card Collection"
+text = "Cards"
 
 [node name="Quit_Btn" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_vigk5")
-shortcut = SubResource("Shortcut_vu131")
-text = "Quit
-"
+text = "Quit"
 
 [node name="Label" type="Label" parent="Control"]
 layout_mode = 1
