@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://c50gxclw2vawf"]
+[gd_scene load_steps=23 format=3 uid="uid://c50gxclw2vawf"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_gu78s"]
 [ext_resource type="PackedScene" uid="uid://c1g6c6bf2rtfe" path="res://views/player_hud/player_hud.tscn" id="2_wm45i"]
 [ext_resource type="AudioStream" uid="uid://kdaumpa4un3b" path="res://assets/audio/sound_effects/Death.wav" id="3_0bchg"]
 [ext_resource type="Texture2D" uid="uid://dcqacyqjpo4b4" path="res://assets/art/entities/shopping_player.png" id="3_2q8vt"]
+[ext_resource type="AudioStream" uid="uid://dupqd1jbjroff" path="res://assets/audio/sound_effects/Player_Hurt.wav" id="4_ehqib"]
 [ext_resource type="PackedScene" uid="uid://caera8evwn5y3" path="res://characters/player/inventory/inventory.tscn" id="6_y75rb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ho52k"]
@@ -131,6 +132,7 @@ collision_mask = 53
 script = ExtResource("1_gu78s")
 player_hud_scene = ExtResource("2_wm45i")
 death_sound = ExtResource("3_0bchg")
+hurt_sound = ExtResource("4_ehqib")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_aavnv")

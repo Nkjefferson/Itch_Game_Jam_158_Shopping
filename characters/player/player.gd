@@ -9,11 +9,13 @@ signal death
 @export var player_hud_scene : PackedScene
 @export var marker_frames : SpriteFrames
 @export var death_sound : Resource
+@export var hurt_sound : Resource
 
 
 var player_camera : Camera2D
 var destination : Vector2 = Vector2.ZERO
 var moving : bool = false
+var alive : bool = true
 var speed : float = 0.0
 var health : int
 var player_hud
@@ -70,7 +72,6 @@ func _process(_delta):
 func _physics_process(delta):
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		destination = get_global_mouse_position()
-		print(destination)
 		marker.global_position = destination - Vector2(0,8)
 		if !marker.visible:
 			marker.visible = true
@@ -104,19 +105,23 @@ func shoot(slot):
 		MusicManager.play_sound_effect(c.throw_sound)
 
 func take_damage(damage):
-	health -= damage
-	if health <= 0:
-		health = 0
-		$AnimatedSprite2D.play("Die")
-		if death_sound:
-			MusicManager.play_sound_effect(death_sound)
+	if alive:
+		health -= damage
+		if health <= 0:
+			health = 0
+			$AnimatedSprite2D.play("Die")
+			if death_sound:
+				MusicManager.play_sound_effect(death_sound)
+			else:
+				printerr("No death SFX found in: ",self.name)
+			self.set_physics_process(false)
+			$CollisionShape2D.disabled=true
+			await $AnimatedSprite2D.animation_finished
+			death.emit()
 		else:
-			printerr("No death SFX found in: ",self.name)
-		self.set_physics_process(false)
-		$CollisionShape2D.disabled=true
-		await $AnimatedSprite2D.animation_finished
-		death.emit()
-	player_health_updated.emit(health)
+			MusicManager.play_sound_effect(hurt_sound)
+		player_health_updated.emit(health)
+		
 
 func heal(damage):
 	health = clamp(health+damage, health, max_health)

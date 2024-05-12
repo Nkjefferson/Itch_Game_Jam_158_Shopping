@@ -21,6 +21,7 @@ animations = [{
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_ooaci")
+juice_quality = 35
 interact_sound = ExtResource("2_j4mk7")
 sprite_frames = SubResource("SpriteFrames_bykku")
 

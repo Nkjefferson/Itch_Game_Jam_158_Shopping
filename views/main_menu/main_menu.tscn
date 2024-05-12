@@ -87,7 +87,7 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_kcsvp")
-text = "Game to be Named!"
+text = "Retailiation!"
 
 [node name="Bookshelves" type="TileMap" parent="."]
 tile_set = ExtResource("5_tldyu")
