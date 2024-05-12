@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://c7ubvsfedj1ky"]
+[gd_scene load_steps=7 format=3 uid="uid://c7ubvsfedj1ky"]
 
 [ext_resource type="Script" path="res://characters/player/cards/entangle_card/entangle_Card.gd" id="1_cvrb8"]
 [ext_resource type="PackedScene" uid="uid://bjvr1rh26bntu" path="res://characters/player/cards/entangle_card/entangle_ability.tscn" id="2_2mq3f"]
 [ext_resource type="AudioStream" uid="uid://dpiq8sjd2ra4g" path="res://assets/audio/sound_effects/Card_Throw.wav" id="2_e5k27"]
-[ext_resource type="AudioStream" uid="uid://d0jbd845ja0dm" path="res://assets/audio/sound_effects/Card_Hit_Wall.wav" id="3_y08yt"]
-[ext_resource type="AudioStream" uid="uid://b54bk2et5o0id" path="res://assets/audio/sound_effects/card_hit_enemy.wav" id="4_3ooss"]
+[ext_resource type="AudioStream" uid="uid://tjlrl21a28y0" path="res://assets/audio/sound_effects/roots_short.wav" id="4_4aw7j"]
 [ext_resource type="Texture2D" uid="uid://bn3jlthw2g4dk" path="res://assets/art/items/card_entangle.png" id="6_7pdr8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vkvix"]
@@ -17,8 +16,8 @@ script = ExtResource("1_cvrb8")
 entangle_ability = ExtResource("2_2mq3f")
 damage = 0
 throw_sound = ExtResource("2_e5k27")
-wall_hit_sound = ExtResource("3_y08yt")
-enemy_hit_sound = ExtResource("4_3ooss")
+wall_hit_sound = ExtResource("4_4aw7j")
+enemy_hit_sound = ExtResource("4_4aw7j")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708

@@ -1,9 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjvr1rh26bntu"]
+[gd_scene load_steps=5 format=3 uid="uid://bjvr1rh26bntu"]
 
 [ext_resource type="Script" path="res://characters/player/cards/entangle_card/entangle_ability.gd" id="1_rityb"]
+[ext_resource type="Texture2D" uid="uid://bn3jlthw2g4dk" path="res://assets/art/items/card_entangle.png" id="2_qfral"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_bu38j"]
-radius = 46.0435
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xi2of"]
+size = Vector2(12, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ucotk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qfral")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="EntangleAbility" type="Area2D"]
 collision_layer = 8
@@ -11,16 +23,14 @@ collision_mask = 4
 script = ExtResource("1_rityb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_bu38j")
+shape = SubResource("RectangleShape2D_xi2of")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -41.0
-offset_top = -37.0
-offset_right = 38.0
-offset_bottom = 39.0
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.501961)
+sprite_frames = SubResource("SpriteFrames_ucotk")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

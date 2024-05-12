@@ -12,6 +12,7 @@ func _on_body_entered(body):
 	if entangle_ability:
 		var ability = entangle_ability.instantiate()
 		ability.global_position = global_position
+		ability.rotation_degrees = rotation_degrees + 90
 		get_parent().call_deferred("add_child",ability)
 	else:
 		printerr("Failed to produce AOE no PackedScene selected")
