@@ -15,6 +15,7 @@ var gold = 10
 @export var max_entangle_cards : int = 5
 @export var Orbit_Card : PackedScene
 @export var max_orbit_cards : int = 5
+@export var empty_slot_sound : Resource = load("res://assets/audio/sound_effects/Bubble.wav")
 
 class Card_Slot:
 	var card : PackedScene
@@ -71,6 +72,7 @@ func shoot(index):
 		update_card_count.emit(index, loadout[index].count)
 		return loadout[index].card
 	else:
+		MusicManager.play_sound_effect(empty_slot_sound)
 		return null
 
 func add_gold(amount):
