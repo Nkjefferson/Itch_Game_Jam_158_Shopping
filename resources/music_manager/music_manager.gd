@@ -4,6 +4,10 @@ const AudioSettingsMenu = preload("res://views/settings_menu/audio_settings.gd")
 const SoundEffect = preload("res://resources/music_manager/sound_effect.tscn")
 
 var audio_settings = AudioSettingsMenu.new()
+var music_path = ""
+var music_path_chill = ""
+var song_name = ""
+var chill_state = false
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -15,10 +19,25 @@ func _ready():
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"),audio_settings.music_volume_mute_toggle)
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Sound Effects"),audio_settings.sound_effects_volume_mute_toggle)
 
-func play_music(music_path):
+func play_music(music_name):
+	song_name = music_name
+	music_path = "res://assets/audio/" + music_name + ".ogg"
+	music_path_chill = "res://assets/audio/" + music_name + "Chill.ogg"
 	if $Music.stream == null or $Music.stream.resource_path != music_path:
 		$Music.stream = load(music_path)
 		$Music.play()
+	if $MusicCalm.stream == null or $MusicCalm.stream.resource_path != music_path_chill:
+		$MusicCalm.stream = load(music_path_chill)
+		$MusicCalm.play()
+	if chill_state:
+		$Music.volume_db = -70
+		$MusicCalm.volume_db = 0
+	else:
+		$Music.volume_db = 0
+		$MusicCalm.volume_db = -70
+		
+func set_chill_state(chill):
+	chill_state = chill
 
 func play_sound_effect(sound_effect_path,volume=0.0):
 	var effect = SoundEffect.instantiate()
@@ -30,4 +49,9 @@ func _on_sound_effect_finished(effect):
 	effect.queue_free()
 
 func _on_music_finished():
-	$Music.play()
+	if song_name == "Retailiation":
+		$Music.play(4.266)
+		$MusicCalm.play(4.266)
+	if song_name == "Title":
+		$Music.play(4.8)
+		$MusicCalm.play(4.8)
