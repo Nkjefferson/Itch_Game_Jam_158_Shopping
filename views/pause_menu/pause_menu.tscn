@@ -1,45 +1,97 @@
-[gd_scene load_steps=4 format=3 uid="uid://clkoue7p445fj"]
+[gd_scene load_steps=7 format=3 uid="uid://clkoue7p445fj"]
 
 [ext_resource type="Script" path="res://views/pause_menu/pause_menu.gd" id="1_1qo2c"]
+[ext_resource type="FontFile" uid="uid://c3n3jpq87xnc5" path="res://assets/fonts/Crang.ttf" id="2_to5iw"]
+[ext_resource type="Theme" uid="uid://blem1dnpbfmm1" path="res://assets/themes/button_theme.tres" id="3_pukcj"]
 
 [sub_resource type="Gradient" id="Gradient_1ct7j"]
-offsets = PackedFloat32Array(0, 0.311688, 0.554113)
-colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0.380952, 0.380952, 0.380952, 1)
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.0472103, 0.412017, 0.725322)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_8hg3x"]
 gradient = SubResource("Gradient_1ct7j")
 width = 1280
 height = 720
 fill = 1
-fill_from = Vector2(0, 1)
+fill_from = Vector2(0.484848, 0.514777)
+
+[sub_resource type="Theme" id="Theme_22o40"]
+Label/fonts/font = ExtResource("2_to5iw")
 
 [node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_1qo2c")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="Control"]
+modulate = Color(1, 1, 1, 0.572549)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = SubResource("GradientTexture2D_8hg3x")
 
-[node name="Label" type="Label" parent="Control/TextureRect"]
+[node name="Label" type="Label" parent="Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -185.0
+offset_left = -223.0
 offset_top = -66.0
-offset_right = 185.0
+offset_right = 223.0
 offset_bottom = 66.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_22o40")
 theme_override_font_sizes/font_size = 96
 text = "PAUSED"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 132.5
+offset_right = 100.0
+offset_bottom = 265.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Resume_Btn" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_pukcj")
+text = "Resume Game"
+
+[node name="Main_Btn" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_pukcj")
+text = "Main Menu"
+
+[node name="Settings_Btn" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_pukcj")
+text = "Settings"
+
+[node name="Quit_Btn" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_pukcj")
+text = "Quit
+"
+
+[connection signal="pressed" from="Control/VBoxContainer/Resume_Btn" to="." method="_on_resume_btn_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/Main_Btn" to="." method="_on_main_btn_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/Settings_Btn" to="." method="_on_settings_btn_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/Quit_Btn" to="." method="_on_quit_btn_pressed"]
