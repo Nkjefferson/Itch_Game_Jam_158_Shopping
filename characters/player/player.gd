@@ -7,7 +7,9 @@ signal death
 @export var acceleration : int = 700
 @export var max_health : int = 100
 @export var player_hud_scene : PackedScene
+@export var marker_frames : SpriteFrames
 @export var death_sound : Resource
+
 
 var player_camera : Camera2D
 var destination : Vector2 = Vector2.ZERO
@@ -15,6 +17,8 @@ var moving : bool = false
 var speed : float = 0.0
 var health : int
 var player_hud
+var marker : AnimatedSprite2D
+
 
 func _ready():
 	self.z_index = 2
@@ -33,6 +37,13 @@ func _ready():
 	player_health_updated.emit(health)
 	$Inventory.refresh_hotbar()
 	$AnimatedSprite2D.play("Idle")
+	
+	marker = AnimatedSprite2D.new()
+	marker.sprite_frames = marker_frames
+	marker.z_index = 3
+	marker.play("default")
+	get_parent().add_child.call_deferred(marker)
+	marker.visible = false
 
 func create_player_camera():
 	player_camera = Camera2D.new()
@@ -59,6 +70,10 @@ func _process(_delta):
 func _physics_process(delta):
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		destination = get_global_mouse_position()
+		print(destination)
+		marker.global_position = destination - Vector2(0,8)
+		if !marker.visible:
+			marker.visible = true
 		moving = true
 		$AnimatedSprite2D.play("Run")
 	
@@ -75,6 +90,7 @@ func movement_loop(delta):
 	if position.distance_to(destination) > 5:
 		move_and_slide()
 	else:
+		marker.visible = false
 		moving = false
 		$AnimatedSprite2D.play("Idle")
 

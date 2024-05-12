@@ -1,15 +1,136 @@
-[gd_scene load_steps=15 format=3 uid="uid://bxojd2uxsy3rn"]
+[gd_scene load_steps=33 format=3 uid="uid://bxojd2uxsy3rn"]
 
 [ext_resource type="Script" path="res://environment/level/level.gd" id="1_hme0k"]
 [ext_resource type="PackedScene" uid="uid://fxwtdxpumr3b" path="res://views/game_over_menu/game_over.tscn" id="3_60f3n"]
 [ext_resource type="PackedScene" uid="uid://dq8rkn7bk8esv" path="res://environment/maps/map_1/map_1.tscn" id="3_o4p56"]
 [ext_resource type="PackedScene" uid="uid://c50gxclw2vawf" path="res://characters/player/player.tscn" id="4_qdl0j"]
+[ext_resource type="Texture2D" uid="uid://dhkrac2bcb1yh" path="res://assets/art/items/target_location.png" id="5_n6hmm"]
 [ext_resource type="PackedScene" uid="uid://dfyijfd4fcofb" path="res://characters/enemies/basic_enemy/BasicEnemy.tscn" id="6_8o3ex"]
 [ext_resource type="PackedScene" uid="uid://4xy0xmxmekd1" path="res://environment/spawner/spawner.tscn" id="8_73ag8"]
 [ext_resource type="Script" path="res://environment/spawner/spawned_entity.gd" id="9_55bv6"]
 [ext_resource type="PackedScene" uid="uid://bqgq34mkxbcsv" path="res://characters/enemies/strong_enemy/strong_enemy.tscn" id="9_r3dlt"]
 [ext_resource type="PackedScene" uid="uid://bd6d1s68uchgg" path="res://characters/enemies/flying_enemy/flying_enemy.tscn" id="10_mlibu"]
 [ext_resource type="PackedScene" uid="uid://dnpmbda45tv7q" path="res://characters/enemies/fast_enemy/fast_enemy.tscn" id="10_ptk4x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssla3"]
+atlas = ExtResource("5_n6hmm")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mov3j"]
+atlas = ExtResource("5_n6hmm")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xlx1x"]
+atlas = ExtResource("5_n6hmm")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_orc61"]
+atlas = ExtResource("5_n6hmm")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i1wf0"]
+atlas = ExtResource("5_n6hmm")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xevb"]
+atlas = ExtResource("5_n6hmm")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xvueg"]
+atlas = ExtResource("5_n6hmm")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhby1"]
+atlas = ExtResource("5_n6hmm")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_roprp"]
+atlas = ExtResource("5_n6hmm")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amrmt"]
+atlas = ExtResource("5_n6hmm")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2woe5"]
+atlas = ExtResource("5_n6hmm")
+region = Rect2(160, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1fxl"]
+atlas = ExtResource("5_n6hmm")
+region = Rect2(176, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30jg3"]
+atlas = ExtResource("5_n6hmm")
+region = Rect2(192, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkeg1"]
+atlas = ExtResource("5_n6hmm")
+region = Rect2(208, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_esmnu"]
+atlas = ExtResource("5_n6hmm")
+region = Rect2(224, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0cqci"]
+atlas = ExtResource("5_n6hmm")
+region = Rect2(240, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0pol6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ssla3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mov3j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xlx1x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orc61")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i1wf0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xevb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xvueg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhby1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_roprp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amrmt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2woe5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1fxl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_30jg3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fkeg1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_esmnu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0cqci")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [sub_resource type="Resource" id="Resource_8fco4"]
 script = ExtResource("9_55bv6")
@@ -39,6 +160,7 @@ game_over_scene = ExtResource("3_60f3n")
 
 [node name="Player" parent="." instance=ExtResource("4_qdl0j")]
 position = Vector2(113, 98)
+marker_frames = SubResource("SpriteFrames_0pol6")
 
 [node name="Spawner" parent="." instance=ExtResource("8_73ag8")]
 spawned_entities = Array[ExtResource("9_55bv6")]([SubResource("Resource_8fco4"), SubResource("Resource_cembe"), SubResource("Resource_xedc0"), SubResource("Resource_3ce7f")])
