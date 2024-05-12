@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://c0lmwiclxyg2n"]
+[gd_scene load_steps=14 format=3 uid="uid://c0lmwiclxyg2n"]
 
 [ext_resource type="Script" path="res://environment/gold/gold.gd" id="1_pacxi"]
+[ext_resource type="AudioStream" uid="uid://cpqpbmtdu6pbq" path="res://assets/audio/sound_effects/Coin_SFX.wav" id="2_vknqr"]
 [ext_resource type="Texture2D" uid="uid://303e88y73vww" path="res://assets/art/items/coin.png" id="2_x38em"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rqx6c"]
@@ -74,6 +75,7 @@ animations = [{
 collision_layer = 32
 collision_mask = 2
 script = ExtResource("1_pacxi")
+interact_sound = ExtResource("2_vknqr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_rqx6c")

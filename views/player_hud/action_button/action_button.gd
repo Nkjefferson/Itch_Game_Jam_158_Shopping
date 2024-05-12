@@ -13,6 +13,7 @@ var card
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	unselected_style = StyleBoxFlat.new()
+	unselected_style.bg_color = Color(0.6,0.6,0.6,0.5)
 	unselected_style.set_corner_radius_all(8)
 	hovered_style = unselected_style.duplicate()
 	hovered_style.set_border_width_all(2)

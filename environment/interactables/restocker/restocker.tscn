@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctv18vupqt8uq"]
+[gd_scene load_steps=4 format=3 uid="uid://ctv18vupqt8uq"]
 
 [ext_resource type="Script" path="res://environment/interactables/restocker/restocker.gd" id="1_s8pu0"]
+[ext_resource type="AudioStream" uid="uid://be7lydxsmv2be" path="res://assets/audio/sound_effects/Pop.wav" id="2_u423p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w8ooc"]
 
@@ -8,6 +9,7 @@
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_s8pu0")
+interact_sound = ExtResource("2_u423p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_w8ooc")

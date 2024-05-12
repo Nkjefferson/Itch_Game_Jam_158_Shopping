@@ -7,6 +7,7 @@ signal death
 @export var acceleration : int = 700
 @export var max_health : int = 100
 @export var player_hud_scene : PackedScene
+@export var death_sound : Resource
 
 var player_camera : Camera2D
 var destination : Vector2 = Vector2.ZERO
@@ -91,6 +92,10 @@ func take_damage(damage):
 	if health <= 0:
 		health = 0
 		$AnimatedSprite2D.play("Die")
+		if death_sound:
+			MusicManager.play_sound_effect(death_sound)
+		else:
+			printerr("No death SFX found in: ",self.name)
 		self.set_physics_process(false)
 		$CollisionShape2D.disabled=true
 		await $AnimatedSprite2D.animation_finished

@@ -1,6 +1,8 @@
 class_name Interactable
 extends Node2D
 
+@export var interact_sound : Resource
+
 var enable_input_monitoring : bool = false
 var hitbox_scl : int  = 1
 var player_body

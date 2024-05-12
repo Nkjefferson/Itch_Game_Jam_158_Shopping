@@ -14,7 +14,8 @@ func _update_card_hotbar(index, count):
 	hotkey_labels[index].set_count(count)
 
 func _update_health_value(health):
-	$HUD/HealthBar/Value.text = str(health)
+	$HUD/HealthBar/ValueProgressBar/Value.text = str(health) + "%"
+	$HUD/HealthBar/ValueProgressBar.value = health
 	
 func _update_score(score):
 	$HUD/ScoreTicker/Value.text = str(score)
