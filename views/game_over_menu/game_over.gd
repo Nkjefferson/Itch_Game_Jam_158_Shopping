@@ -5,7 +5,8 @@ var score_tween
 var Settings = preload("res://views/settings_menu/settings_menu_hud.tscn")
 
 func _ready():
-	MusicManager.play_music("res://assets/audio/Shop-Title.ogg")
+	MusicManager.set_chill_state(true)
+	MusicManager.play_music("Retailiation")
 	score_tween = get_tree().create_tween()
 
 func update_metrics(score):
