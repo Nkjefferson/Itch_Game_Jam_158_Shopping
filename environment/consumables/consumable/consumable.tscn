@@ -12,5 +12,5 @@ script = ExtResource("1_up4kr")
 shape = SubResource("RectangleShape2D_0xfkc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-animation = &"Idle"
+animation = &""
 autoplay = "Idle"

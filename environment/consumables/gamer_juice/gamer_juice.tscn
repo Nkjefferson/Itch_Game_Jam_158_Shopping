@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cw5vhqerv7pi2"]
+[gd_scene load_steps=7 format=3 uid="uid://cw5vhqerv7pi2"]
 
 [ext_resource type="Script" path="res://environment/consumables/gamer_juice/gamer_juice.gd" id="1_gsvwg"]
 [ext_resource type="Texture2D" uid="uid://btacdalsfaefv" path="res://assets/art/items/icon_juice_ready.png" id="2_pufct"]
+[ext_resource type="AudioStream" uid="uid://dk5semms1r581" path="res://assets/audio/sound_effects/Chug.wav" id="2_rj7sc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0nqag"]
 size = Vector2(16, 16)
@@ -25,6 +26,7 @@ animations = [{
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_gsvwg")
+interact_sound = ExtResource("2_rj7sc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0nqag")

@@ -17,5 +17,5 @@ func _on_body_entered(body):
 			printerr("No interactive SFX found in: ",self.name)
 		self.queue_free()
 		
-func do_the_thing(body):
+func do_the_thing(_body):
 	pass
