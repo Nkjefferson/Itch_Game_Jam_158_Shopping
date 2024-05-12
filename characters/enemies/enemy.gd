@@ -28,8 +28,9 @@ func _ready():
 	self.z_index = 2
 
 
-func take_damage(damage_taken):
-	health -= damage_taken
+func take_damage(damage_dealer):
+	health -= damage_dealer.damage
+	speed -= damage_dealer.velocity.length()
 	if health <= 0:
 		death.emit(self)
 		die()
@@ -38,8 +39,11 @@ func move_to_player(delta):
 	var parent = get_parent()
 	destination = parent.get_node("Player").position
 	speed += acceleration * delta
-	if speed > move_speed:
-		speed = move_speed
+	if abs(speed) > move_speed:
+		var modifier = 1
+		if speed < 0:
+			modifier = -1
+		speed = move_speed * modifier
 	velocity = position.direction_to(destination) * speed
 	$AnimatedSprite2D.flip_h = position.direction_to(destination).x < 0
 	if position.distance_to(destination) > 5 and moving:

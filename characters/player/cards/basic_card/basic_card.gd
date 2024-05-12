@@ -30,7 +30,7 @@ func _physics_process(delta):
 
 func _on_body_entered(body):
 	if body.is_in_group("enemies"):
-		body.take_damage(self.damage)
+		body.take_damage(self)
 		# Level the audio based on distance from player on impact
 		MusicManager.play_sound_effect(enemy_hit_sound,-abs((global_position-parent_object.global_position).length())/25)
 	else:
