@@ -36,3 +36,11 @@ func _unhandled_key_input(event):
 			$"HUD/Actionbar/ActionButton3".set_selected(true)
 	if event.is_action_released("ActionButton3"):
 			$"HUD/Actionbar/ActionButton3".set_selected(false)
+	if event.is_action_pressed("ActionButton4"):
+			$"HUD/Actionbar/ActionButton4".set_selected(true)
+	if event.is_action_released("ActionButton4"):
+			$"HUD/Actionbar/ActionButton4".set_selected(false)
+	if event.is_action_pressed("ActionButton5"):
+			$"HUD/Actionbar/ActionButton5".set_selected(true)
+	if event.is_action_released("ActionButton5"):
+			$"HUD/Actionbar/ActionButton5".set_selected(false)

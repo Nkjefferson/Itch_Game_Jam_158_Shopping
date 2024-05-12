@@ -1,8 +1,13 @@
-[gd_scene load_steps=18 format=3 uid="uid://c1g6c6bf2rtfe"]
+[gd_scene load_steps=32 format=3 uid="uid://c1g6c6bf2rtfe"]
 
 [ext_resource type="Script" path="res://views/player_hud/player_hud.gd" id="1_unnjh"]
 [ext_resource type="PackedScene" uid="uid://dw0a0adakonek" path="res://views/player_hud/action_button/action_button.tscn" id="2_lvbhi"]
 [ext_resource type="Texture2D" uid="uid://303e88y73vww" path="res://assets/art/items/coin.png" id="2_mpvuq"]
+[ext_resource type="Texture2D" uid="uid://cxqy6xyikgyjf" path="res://assets/art/items/icon_normal_cards.png" id="4_auvi2"]
+[ext_resource type="Texture2D" uid="uid://d074bglk8dkgj" path="res://assets/art/items/card_piercing.png" id="5_i3s3h"]
+[ext_resource type="Texture2D" uid="uid://dggvtiq4kihww" path="res://assets/art/items/card_triple.png" id="6_d5pot"]
+[ext_resource type="Texture2D" uid="uid://bn3jlthw2g4dk" path="res://assets/art/items/card_entangle.png" id="7_pj5qp"]
+[ext_resource type="Texture2D" uid="uid://dt6d2wtq5ppfl" path="res://assets/art/items/card_orbit.png" id="8_xlfa7"]
 
 [sub_resource type="Theme" id="Theme_dytfj"]
 
@@ -81,6 +86,86 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ni6wf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4evjs"]
+atlas = ExtResource("4_auvi2")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5oofn"]
+atlas = ExtResource("4_auvi2")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qdqwj"]
+atlas = ExtResource("4_auvi2")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tcdy7"]
+atlas = ExtResource("4_auvi2")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_531dq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4evjs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5oofn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qdqwj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tcdy7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_omvd1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_i3s3h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rawfw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_d5pot")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3t3ih"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_pj5qp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gu1vj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_xlfa7")
 }],
 "loop": true,
 "name": &"default",
@@ -206,15 +291,20 @@ theme_override_constants/separation = 100
 
 [node name="ActionButton1" parent="HUD/Actionbar" instance=ExtResource("2_lvbhi")]
 layout_mode = 2
+sprite_frames = SubResource("SpriteFrames_531dq")
 
 [node name="ActionButton2" parent="HUD/Actionbar" instance=ExtResource("2_lvbhi")]
 layout_mode = 2
+sprite_frames = SubResource("SpriteFrames_omvd1")
 
 [node name="ActionButton3" parent="HUD/Actionbar" instance=ExtResource("2_lvbhi")]
 layout_mode = 2
+sprite_frames = SubResource("SpriteFrames_rawfw")
 
 [node name="ActionButton4" parent="HUD/Actionbar" instance=ExtResource("2_lvbhi")]
 layout_mode = 2
+sprite_frames = SubResource("SpriteFrames_3t3ih")
 
 [node name="ActionButton5" parent="HUD/Actionbar" instance=ExtResource("2_lvbhi")]
 layout_mode = 2
+sprite_frames = SubResource("SpriteFrames_gu1vj")
