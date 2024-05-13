@@ -27,7 +27,11 @@ func _on_settings_btn_pressed():
 
 # Called when the quit button is pressed
 func _on_quit_btn_pressed():
-	get_tree().quit()
+	if OS.has_feature("web"):
+		$Control/VBoxContainer/Quit_Btn.text = "Main Menu"
+		get_tree().change_scene_to_file("res://views/main_menu/main_menu.tscn")
+	else:
+		get_tree().quit()
 
 
 func _on_card_collection_btn_pressed():

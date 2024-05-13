@@ -7,6 +7,8 @@ var Card_Collection = preload("res://views/card_binder_menu/card_binder_menu.tsc
 func _ready():
 	MusicManager.set_chill_state(false)
 	MusicManager.play_music("Title")
+	if OS.has_feature("web"):
+		$Control/VBoxContainer/Quit_Btn.queue_free()
 
 
 

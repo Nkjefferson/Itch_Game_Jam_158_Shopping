@@ -9,6 +9,8 @@ var Card_Collection = preload("res://views/card_binder_menu/card_binder_menu.tsc
 func _ready():
 	MusicManager.set_chill_state(true)
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	if OS.has_feature("web"):
+		$Control/VBoxContainer/Quit_Btn.queue_free()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
