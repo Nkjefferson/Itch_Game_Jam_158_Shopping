@@ -405,6 +405,7 @@ layer_0/tile_data = PackedInt32Array(262155, 65536, 1342177282, 327691, 65536, 1
 
 [node name="Gamer Fuel Shop" parent="." instance=ExtResource("4_ytt30")]
 position = Vector2(584, 378)
+shop_cost = 25
 shop_interactable = ExtResource("5_owwl2")
 shop_type = 1
 
