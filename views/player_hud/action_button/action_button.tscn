@@ -1,8 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dw0a0adakonek"]
+[gd_scene load_steps=2 format=3 uid="uid://dw0a0adakonek"]
 
 [ext_resource type="Script" path="res://views/player_hud/action_button/action_button.gd" id="1_b2dwe"]
-[ext_resource type="Theme" uid="uid://blem1dnpbfmm1" path="res://assets/themes/button_theme.tres" id="2_bnqch"]
-[ext_resource type="LabelSettings" uid="uid://c0sgp66c8rapj" path="res://assets/themes/card_binder_menu.tres" id="3_51okt"]
 
 [node name="ActionButton" type="Control"]
 layout_mode = 3
@@ -24,9 +22,7 @@ offset_top = -26.0
 offset_right = 44.0
 offset_bottom = -3.0
 grow_vertical = 0
-theme = ExtResource("2_bnqch")
 text = "X"
-label_settings = ExtResource("3_51okt")
 
 [node name="Count" type="Label" parent="Panel"]
 layout_mode = 1
@@ -38,7 +34,5 @@ offset_top = 4.0
 offset_right = -4.0
 offset_bottom = 27.0
 grow_horizontal = 0
-theme = ExtResource("2_bnqch")
 text = "0"
-label_settings = ExtResource("3_51okt")
 horizontal_alignment = 2
