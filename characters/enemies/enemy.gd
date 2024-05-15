@@ -12,7 +12,9 @@ signal death
 @export var gold_reward : int = 5
 @export var sprite : AnimatedSprite2D = null
 
+@onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
 
+var navtimer_waittime : float = 0.01
 
 var destination : Vector2 = Vector2.ZERO
 var moving : bool = true
@@ -26,6 +28,8 @@ func _ready():
 	$DamageTickTimer.set_one_shot(true)
 	set_motion_mode(MOTION_MODE_FLOATING)
 	self.z_index = 2
+	$NavTimer.wait_time = navtimer_waittime
+	makepath()
 
 
 func take_damage(damage_dealer):
@@ -34,20 +38,40 @@ func take_damage(damage_dealer):
 	if health <= 0:
 		death.emit(self)
 		die()
-
+	
 func move_to_player(delta):
-	var parent = get_parent()
-	destination = parent.get_node("Player").position
 	speed += acceleration * delta
 	if abs(speed) > move_speed:
 		var modifier = 1
 		if speed < 0:
 			modifier = -1
 		speed = move_speed * modifier
-	velocity = position.direction_to(destination) * speed
-	$AnimatedSprite2D.flip_h = position.direction_to(destination).x < 0
-	if position.distance_to(destination) > 5 and moving:
+		
+	var direction = to_local(nav_agent.get_next_path_position()).normalized()
+	velocity = direction * speed
+	$AnimatedSprite2D.flip_h = direction.x < 0
+	#$AnimatedSprite2D.flip_h = position.direction_to(destination).x < 0
+	if moving:
 		move_and_slide()
+	#var parent = get_parent()
+	#destination = parent.get_node("Player").position
+	#speed += acceleration * delta
+	#if abs(speed) > move_speed:
+		#var modifier = 1
+		#if speed < 0:
+			#modifier = -1
+		#speed = move_speed * modifier
+		#
+	#var direction = to_local(nav_agent.get_next_path_position()).normalized()
+	#velocity = direction * speed
+	#$AnimatedSprite2D.flip_h = position.direction_to(destination).x < 0
+	#move_and_slide()
+	#if position.distance_to(destination) > 5 and moving:
+	#	move_and_slide()
+
+func makepath():
+	var parent = get_parent()
+	nav_agent.target_position = parent.get_node("Player").global_position
 
 func check_collision():
 	if $DamageTickTimer.is_stopped():
@@ -63,3 +87,7 @@ func check_collision():
 
 func die():
 	queue_free()
+
+
+func _on_nav_timer_timeout():
+	makepath()

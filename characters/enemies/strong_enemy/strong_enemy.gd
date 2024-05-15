@@ -1,6 +1,6 @@
 extends Enemy
 
 
-func _process(delta):
+func _physics_process(delta):
 	super.move_to_player(delta)
 	check_collision()

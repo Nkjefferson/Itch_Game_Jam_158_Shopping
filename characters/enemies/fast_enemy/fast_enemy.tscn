@@ -60,11 +60,15 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_itu8h"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oec4e"]
+radius = 6.0
+height = 16.0
 
 [node name="FastEnemy" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 15
+motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_3pgb4")
 move_speed = 175
 acceleration = 40
@@ -77,7 +81,16 @@ sprite_frames = SubResource("SpriteFrames_cx2i8")
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_itu8h")
+shape = SubResource("CapsuleShape2D_oec4e")
 
 [node name="DamageTickTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_path_custom_color = Color(0.993312, 0.521598, 0.687086, 1)
+
+[node name="NavTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="NavTimer" to="." method="_on_nav_timer_timeout"]

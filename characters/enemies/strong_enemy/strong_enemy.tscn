@@ -60,8 +60,9 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_n6wwa"]
-size = Vector2(13, 14)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bejbg"]
+radius = 6.5
+height = 16.0
 
 [node name="StrongEnemy" type="CharacterBody2D"]
 collision_layer = 4
@@ -78,8 +79,15 @@ sprite_frames = SubResource("SpriteFrames_ae2hc")
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 1)
-shape = SubResource("RectangleShape2D_n6wwa")
+shape = SubResource("CapsuleShape2D_bejbg")
 
 [node name="DamageTickTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="NavTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="NavTimer" to="." method="_on_nav_timer_timeout"]

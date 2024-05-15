@@ -67,8 +67,8 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0jcij"]
-size = Vector2(14, 15)
+[sub_resource type="CircleShape2D" id="CircleShape2D_jmepc"]
+radius = 6.0208
 
 [node name="FlyingEnemy" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 4
@@ -82,8 +82,16 @@ sprite_frames = SubResource("SpriteFrames_ka77u")
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 0.5)
-shape = SubResource("RectangleShape2D_0jcij")
+position = Vector2(0, 0.5)
+shape = SubResource("CircleShape2D_jmepc")
 
 [node name="DamageTickTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="NavTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="NavTimer" to="." method="_on_nav_timer_timeout"]

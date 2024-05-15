@@ -60,12 +60,15 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jhayr"]
-size = Vector2(14, 15)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tqvoo"]
+radius = 6.0
+height = 13.0
 
 [node name="BasicEnemy" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 4
 collision_mask = 15
+motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_nccpe")
 acceleration = 300
 
@@ -74,8 +77,15 @@ sprite_frames = SubResource("SpriteFrames_rerql")
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 0.5)
-shape = SubResource("RectangleShape2D_jhayr")
+shape = SubResource("CapsuleShape2D_tqvoo")
 
 [node name="DamageTickTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="NavTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="NavTimer" to="." method="_on_nav_timer_timeout"]
