@@ -48,3 +48,12 @@ func set_selected(selected):
 	
 func set_count(num):
 	$Panel/Count.text=str(num);
+	if num == 0:
+		set_sprite_material(greyed_out_shader_material)
+	else:
+		set_sprite_material(null)
+
+func set_sprite_material(new_material):
+	if animated_sprite != null:
+		animated_sprite.material = new_material
+
