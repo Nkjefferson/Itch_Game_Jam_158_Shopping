@@ -1,4 +1,4 @@
-extends Basic_Card
+extends Card
 const DEG_OFFSET = 15
 
 func spawn(parent, initial_velocity, target):

@@ -1,4 +1,4 @@
-extends Basic_Card
+extends Card
 
 var degree_change = 500.0
 
