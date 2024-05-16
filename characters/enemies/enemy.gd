@@ -14,21 +14,23 @@ signal death
 
 @onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
 
-var navtimer_waittime : float = 0.01
+#var navtimer_waittime : float = 0.01
 
 var destination : Vector2 = Vector2.ZERO
 var moving : bool = true
 var speed : float = 0.0
+var parent
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	parent = get_parent()
 	if(sprite != null):
 		$AnimatedSprite2D.play()
 	self.add_to_group("enemies")
 	$DamageTickTimer.set_one_shot(true)
 	set_motion_mode(MOTION_MODE_FLOATING)
 	self.z_index = 2
-	$NavTimer.wait_time = navtimer_waittime
+	#$NavTimer.wait_time = navtimer_waittime
 	makepath()
 
 
@@ -46,7 +48,7 @@ func move_to_player(delta):
 		if speed < 0:
 			modifier = -1
 		speed = move_speed * modifier
-		
+	makepath()
 	var direction = to_local(nav_agent.get_next_path_position()).normalized()
 	velocity = direction * speed
 	$AnimatedSprite2D.flip_h = direction.x < 0
@@ -70,7 +72,6 @@ func move_to_player(delta):
 	#	move_and_slide()
 
 func makepath():
-	var parent = get_parent()
 	nav_agent.target_position = parent.get_node("Player").global_position
 
 func check_collision():
@@ -88,6 +89,3 @@ func check_collision():
 func die():
 	queue_free()
 
-
-func _on_nav_timer_timeout():
-	makepath()

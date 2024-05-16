@@ -88,9 +88,3 @@ one_shot = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 debug_path_custom_color = Color(0.993312, 0.521598, 0.687086, 1)
-
-[node name="NavTimer" type="Timer" parent="."]
-wait_time = 0.1
-autostart = true
-
-[connection signal="timeout" from="NavTimer" to="." method="_on_nav_timer_timeout"]

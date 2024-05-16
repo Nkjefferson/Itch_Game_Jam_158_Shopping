@@ -4,7 +4,6 @@ func _ready():
 	super._ready()
 	
 func move_to_player(delta):
-	var parent = get_parent()
 	destination = parent.get_node("Player").position
 	speed += acceleration * delta
 	if abs(speed) > move_speed:

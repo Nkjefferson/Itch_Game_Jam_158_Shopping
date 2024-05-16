@@ -67,6 +67,8 @@ height = 16.0
 [node name="StrongEnemy" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 15
+motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_phh45")
 move_speed = 50
 acceleration = 400
@@ -85,9 +87,3 @@ shape = SubResource("CapsuleShape2D_bejbg")
 one_shot = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-
-[node name="NavTimer" type="Timer" parent="."]
-wait_time = 0.1
-autostart = true
-
-[connection signal="timeout" from="NavTimer" to="." method="_on_nav_timer_timeout"]
