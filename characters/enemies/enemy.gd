@@ -108,5 +108,5 @@ func _on_nav_timer_timeout():
 
 # When the next node of the path is reached, untoggle enhanced pathfinding mode
 # to save processing performance
-func _on_navigation_agent_2d_waypoint_reached(details):
+func _on_navigation_agent_2d_waypoint_reached(_details):
 	colliding_with_wall = false
