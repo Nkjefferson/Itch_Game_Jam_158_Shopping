@@ -1,4 +1,4 @@
-extends Basic_Card
+extends Card
 
 @export var enemies_to_pierce = 3
 
