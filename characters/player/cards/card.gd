@@ -3,6 +3,9 @@ extends Area2D
 
 @export var speed: int = 250
 @export var damage: int = 1
+@export var rarity: Rarity.CardRarity
+@export var refresh_count_override: int = -1
+@export var max_count_override: int = -1
 @export var throw_sound: Resource
 @export var wall_hit_sound: Resource
 @export var enemy_hit_sound: Resource
@@ -10,6 +13,12 @@ extends Area2D
 var initial_position
 var velocity = 0
 var parent_object
+var refresh_count: int = 0
+var max_count: int = 0
+
+func _ready():
+	refresh_count = get_refresh_count()
+	max_count = get_max_count()
 
 
 func spawn(parent, initial_velocity, target):
@@ -23,7 +32,17 @@ func spawn(parent, initial_velocity, target):
 	
 	if $Sprite2D.hframes > 1:
 		$Sprite2D.frame = randi_range(0,3)
-	
+
+func get_refresh_count():
+	if refresh_count_override != -1:
+		return refresh_count_override
+	return Rarity.get_refresh_count(self.rarity)
+
+func get_max_count():
+	if max_count_override != -1:
+		return max_count_override
+	return Rarity.get_max_count(self.rarity)
+
 func _physics_process(delta):
 	if velocity:
 		position += velocity * delta
