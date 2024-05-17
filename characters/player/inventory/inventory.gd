@@ -21,6 +21,8 @@ var gold = 10
 @export var max_orbit_cards : int = 25
 @export var empty_slot_sound : Resource = load("res://assets/audio/sound_effects/Bubble.wav")
 
+var loadout : Array[PackedScene]
+
 class Card_Slot:
 	var card : PackedScene
 	var max_stack : int
@@ -30,7 +32,7 @@ class Card_Slot:
 var slots : Array[Card_Slot] = []
 
 func _ready():
-	var loadout : Array[PackedScene] = [Standard_Card,Piercing_Card,Triple_Card,Entangle_Card,Orbit_Card]
+	loadout = [Standard_Card,Piercing_Card,Triple_Card,Entangle_Card,Orbit_Card]
 	for packed_card in loadout:
 		if packed_card:
 			var slot = Card_Slot.new()

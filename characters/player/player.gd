@@ -37,6 +37,7 @@ func _ready():
 	self.connect("player_health_updated",player_hud._update_health_value)
 	# Push initial player health
 	player_health_updated.emit(health)
+	player_hud.set_action_bar_loadout($Inventory.loadout)
 	$Inventory.refresh_hotbar()
 	player_hud._update_gold($Inventory.gold)
 	$AnimatedSprite2D.play("Idle")

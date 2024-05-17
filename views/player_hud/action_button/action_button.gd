@@ -1,7 +1,6 @@
 extends Control
 
 @export var card_scene : PackedScene = null
-@export var sprite_frames : SpriteFrames
 
 var unselected_style
 var hovered_style
@@ -9,19 +8,12 @@ var selected_style
 var empty_selected_style
 var greyed_out_shader_material
 
-var animated_sprite : AnimatedSprite2D
+var sprite : Sprite2D
+var sprite_frame_count : int = 1
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if sprite_frames:
-		animated_sprite = AnimatedSprite2D.new()
-		animated_sprite.sprite_frames = sprite_frames
-		animated_sprite.position += $Panel.size/2
-		animated_sprite.z_index = 2
-		animated_sprite.play("default")
-		animated_sprite.scale = Vector2(3,3)
-		$Panel.add_child(animated_sprite)
 	unselected_style = StyleBoxFlat.new()
 	unselected_style.bg_color = Color(0.6,0.6,0.6,0.5)
 	unselected_style.set_corner_radius_all(8)
@@ -34,7 +26,21 @@ func _ready():
 	greyed_out_shader_material = ShaderMaterial.new()
 	greyed_out_shader_material.shader = load("res://views/player_hud/action_button/grey_scale.gdshader")
 	$Panel.add_theme_stylebox_override("panel",unselected_style)
-	
+
+func set_sprite(sprite_frames):
+	$AnimationTimer.stop()
+	if sprite_frames:
+		sprite = Sprite2D.new()
+		sprite.texture = sprite_frames
+		if sprite.texture.get_width() > 16:
+			sprite_frame_count = int(float(sprite.texture.get_width())/16)
+			sprite.set_hframes(sprite_frame_count)
+			$AnimationTimer.start()
+		sprite.position += $Panel.size/2
+		sprite.z_index = 2
+		sprite.scale = Vector2(3,3)
+		$Panel.add_child(sprite)
+
 func set_selected(selected):
 	var style;
 	if selected:
@@ -54,6 +60,8 @@ func set_count(num):
 		set_sprite_material(null)
 
 func set_sprite_material(new_material):
-	if animated_sprite != null:
-		animated_sprite.material = new_material
+	if sprite != null:
+		sprite.material = new_material
 
+func _on_animation_timer_timeout():
+	sprite.frame = (sprite.frame + 1) % sprite_frame_count
