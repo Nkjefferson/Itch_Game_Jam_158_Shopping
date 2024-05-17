@@ -83,3 +83,8 @@ shape = SubResource("CapsuleShape2D_tqvoo")
 one_shot = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="NavTimer" type="Timer" parent="."]
+
+[connection signal="waypoint_reached" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_waypoint_reached"]
+[connection signal="timeout" from="NavTimer" to="." method="_on_nav_timer_timeout"]

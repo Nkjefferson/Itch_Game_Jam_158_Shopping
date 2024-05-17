@@ -3,6 +3,9 @@ extends Enemy
 func _ready():
 	super._ready()
 	
+func _process(_delta):
+	pass
+	
 func move_to_player(delta):
 	destination = parent.get_node("Player").position
 	speed += acceleration * delta

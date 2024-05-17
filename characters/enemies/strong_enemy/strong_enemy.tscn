@@ -64,7 +64,7 @@ animations = [{
 radius = 6.5
 height = 16.0
 
-[node name="StrongEnemy" type="CharacterBody2D"]
+[node name="StrongEnemy" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 4
 collision_mask = 15
 motion_mode = 1
@@ -87,3 +87,9 @@ shape = SubResource("CapsuleShape2D_bejbg")
 one_shot = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_path_custom_color = Color(1, 0, 1, 1)
+
+[node name="NavTimer" type="Timer" parent="."]
+
+[connection signal="waypoint_reached" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_waypoint_reached"]
+[connection signal="timeout" from="NavTimer" to="." method="_on_nav_timer_timeout"]

@@ -89,3 +89,5 @@ shape = SubResource("CircleShape2D_jmepc")
 one_shot = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="NavTimer" type="Timer" parent="."]
