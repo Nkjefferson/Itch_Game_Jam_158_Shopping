@@ -27,62 +27,37 @@ class Card_Slot:
 	var count : int
 	var refresh_amount : int
 
-var Slot0
-var Slot1
-var Slot2
-var Slot3
-var Slot4
-var loadout
+var slots : Array[Card_Slot] = []
 
 func _ready():
-	Slot0 = Card_Slot.new()
-	Slot0.card = Standard_Card
-	Slot0.max_stack = max_basic_cards
-	Slot0.count = Slot0.max_stack
-	Slot0.refresh_amount = max_basic_cards
-	
-	Slot1 = Card_Slot.new()
-	Slot1.card = Piercing_Card
-	Slot1.refresh_amount = refresh_piercing_cards
-	Slot1.max_stack = max_piercing_cards
-	Slot1.count = Slot1.refresh_amount
-	
-	Slot2 = Card_Slot.new()
-	Slot2.card = Triple_Card
-	Slot2.refresh_amount = refresh_triple_cards
-	Slot2.max_stack = max_triple_cards
-	Slot2.count = Slot2.refresh_amount
-	
-	Slot3 = Card_Slot.new()
-	Slot3.card = Entangle_Card
-	Slot3.refresh_amount = refresh_entangle_cards
-	Slot3.max_stack = max_entangle_cards
-	Slot3.count = Slot3.refresh_amount
-	
-	Slot4 = Card_Slot.new()
-	Slot4.card = Orbit_Card
-	Slot4.refresh_amount = refresh_orbit_cards
-	Slot4.max_stack = max_orbit_cards
-	Slot4.count = Slot4.refresh_amount
-	
-	loadout = [Slot0, Slot1, Slot2, Slot3, Slot4]
+	var loadout : Array[PackedScene] = [Standard_Card,Piercing_Card,Triple_Card,Entangle_Card,Orbit_Card]
+	for packed_card in loadout:
+		if packed_card:
+			var slot = Card_Slot.new()
+			slot.card = packed_card
+			var card_scene : Card = packed_card.instantiate()
+			slot.refresh_amount = card_scene.get_refresh_count()
+			slot.max_stack = card_scene.get_max_count()
+			slot.count = card_scene.get_refresh_count()
+			slots.append(slot)
+			card_scene.queue_free()
 
 func restock(index):
-	if index >= 0 and index < loadout.size(): 
-		loadout[index].count += loadout[index].refresh_amount
-		if loadout[index].count > loadout[index].max_stack:
-			loadout[index].count = loadout[index].max_stack
-		update_card_count.emit(index, loadout[index].count)
+	if index >= 0 and index < slots.size(): 
+		slots[index].count += slots[index].refresh_amount
+		if slots[index].count > slots[index].max_stack:
+			slots[index].count = slots[index].max_stack
+		update_card_count.emit(index, slots[index].count)
 
 func refresh_hotbar():
-	for index in range(loadout.size()):
-		update_card_count.emit(index, loadout[index].count)
+	for index in range(slots.size()):
+		update_card_count.emit(index, slots[index].count)
 
 func shoot(index):
-	if loadout[index].count > 0:
-		loadout[index].count -= 1
-		update_card_count.emit(index, loadout[index].count)
-		return loadout[index].card
+	if slots[index].count > 0:
+		slots[index].count -= 1
+		update_card_count.emit(index, slots[index].count)
+		return slots[index].card
 	else:
 		MusicManager.play_sound_effect(empty_slot_sound, 20)
 		return null
