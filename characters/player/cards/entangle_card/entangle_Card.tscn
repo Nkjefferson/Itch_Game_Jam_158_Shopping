@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://c7ubvsfedj1ky"]
 
-[ext_resource type="Script" path="res://characters/player/cards/entangle_card/entangle_Card.gd" id="1_cvrb8"]
-[ext_resource type="PackedScene" uid="uid://bjvr1rh26bntu" path="res://characters/player/cards/entangle_card/entangle_ability.tscn" id="2_2mq3f"]
-[ext_resource type="AudioStream" uid="uid://dpiq8sjd2ra4g" path="res://assets/audio/sound_effects/Card_Throw.wav" id="2_e5k27"]
-[ext_resource type="AudioStream" uid="uid://tjlrl21a28y0" path="res://assets/audio/sound_effects/roots_short.wav" id="4_4aw7j"]
-[ext_resource type="Texture2D" uid="uid://bn3jlthw2g4dk" path="res://assets/art/items/card_entangle.png" id="6_7pdr8"]
+[ext_resource type="Script" path="res://characters/player/cards/entangle_card/entangle_card.gd" id="1_2udxm"]
+[ext_resource type="PackedScene" uid="uid://bjvr1rh26bntu" path="res://characters/player/cards/entangle_card/entangle_ability.tscn" id="2_lty5g"]
+[ext_resource type="AudioStream" uid="uid://dpiq8sjd2ra4g" path="res://assets/audio/sound_effects/Card_Throw.wav" id="3_g2m1a"]
+[ext_resource type="AudioStream" uid="uid://tjlrl21a28y0" path="res://assets/audio/sound_effects/roots_short.wav" id="4_lmmns"]
+[ext_resource type="Texture2D" uid="uid://bn3jlthw2g4dk" path="res://assets/art/items/card_entangle.png" id="5_oi7n1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vkvix"]
 size = Vector2(14, 12)
@@ -12,16 +12,17 @@ size = Vector2(14, 12)
 [node name="EntangleCard" type="Area2D"]
 collision_layer = 8
 collision_mask = 5
-script = ExtResource("1_cvrb8")
-entangle_ability = ExtResource("2_2mq3f")
+script = ExtResource("1_2udxm")
+entangle_ability = ExtResource("2_lty5g")
 damage = 0
-throw_sound = ExtResource("2_e5k27")
-wall_hit_sound = ExtResource("4_4aw7j")
-enemy_hit_sound = ExtResource("4_4aw7j")
+rarity = 1
+throw_sound = ExtResource("3_g2m1a")
+wall_hit_sound = ExtResource("4_lmmns")
+enemy_hit_sound = ExtResource("4_lmmns")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708
-texture = ExtResource("6_7pdr8")
+texture = ExtResource("5_oi7n1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_vkvix")
