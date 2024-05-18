@@ -1,8 +1,8 @@
-[gd_scene load_steps=33 format=3 uid="uid://bxojd2uxsy3rn"]
+[gd_scene load_steps=33 format=3 uid="uid://csoc15nlnnpyr"]
 
-[ext_resource type="Script" path="res://environment/level/level.gd" id="1_hme0k"]
+[ext_resource type="Script" path="res://environment/level_manager/level_manager.gd" id="1_hme0k"]
 [ext_resource type="PackedScene" uid="uid://fxwtdxpumr3b" path="res://views/game_over_menu/game_over.tscn" id="3_60f3n"]
-[ext_resource type="PackedScene" uid="uid://dq8rkn7bk8esv" path="res://environment/stages/stage_one/map/map_one.tscn" id="3_o4p56"]
+[ext_resource type="PackedScene" uid="uid://ck2e6mb6au2gl" path="res://environment/stages/stage_one/stage_one.tscn" id="3_i1v4r"]
 [ext_resource type="PackedScene" uid="uid://c50gxclw2vawf" path="res://characters/player/player.tscn" id="4_qdl0j"]
 [ext_resource type="Texture2D" uid="uid://dhkrac2bcb1yh" path="res://assets/art/items/target_location.png" id="5_n6hmm"]
 [ext_resource type="PackedScene" uid="uid://dfyijfd4fcofb" path="res://characters/enemies/basic_enemy/BasicEnemy.tscn" id="6_8o3ex"]
@@ -156,7 +156,7 @@ spawn_weight = 1.0
 script = ExtResource("1_hme0k")
 game_over_scene = ExtResource("3_60f3n")
 
-[node name="FirstLevelMap" parent="." instance=ExtResource("3_o4p56")]
+[node name="StageOne" parent="." instance=ExtResource("3_i1v4r")]
 
 [node name="Player" parent="." instance=ExtResource("4_qdl0j")]
 position = Vector2(623, 348)
