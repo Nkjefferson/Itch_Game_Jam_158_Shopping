@@ -14,3 +14,5 @@ shape = SubResource("RectangleShape2D_0xfkc")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 animation = &""
 autoplay = "Idle"
+
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -24,7 +24,7 @@ animations = [{
 
 [node name="BoosterPack" type="Area2D"]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 3
 script = ExtResource("1_btbeh")
 interact_sound = ExtResource("2_uqnat")
 
@@ -36,3 +36,4 @@ sprite_frames = SubResource("SpriteFrames_l2i20")
 autoplay = "default"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
