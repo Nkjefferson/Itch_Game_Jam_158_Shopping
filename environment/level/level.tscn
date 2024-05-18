@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://environment/level/level.gd" id="1_hme0k"]
 [ext_resource type="PackedScene" uid="uid://fxwtdxpumr3b" path="res://views/game_over_menu/game_over.tscn" id="3_60f3n"]
-[ext_resource type="PackedScene" uid="uid://dq8rkn7bk8esv" path="res://environment/maps/map_1/map_1.tscn" id="3_o4p56"]
+[ext_resource type="PackedScene" uid="uid://dq8rkn7bk8esv" path="res://environment/stages/stage_one/map/map_one.tscn" id="3_o4p56"]
 [ext_resource type="PackedScene" uid="uid://c50gxclw2vawf" path="res://characters/player/player.tscn" id="4_qdl0j"]
 [ext_resource type="Texture2D" uid="uid://dhkrac2bcb1yh" path="res://assets/art/items/target_location.png" id="5_n6hmm"]
 [ext_resource type="PackedScene" uid="uid://dfyijfd4fcofb" path="res://characters/enemies/basic_enemy/BasicEnemy.tscn" id="6_8o3ex"]
@@ -152,7 +152,7 @@ script = ExtResource("9_55bv6")
 entity = ExtResource("10_ptk4x")
 spawn_weight = 1.0
 
-[node name="FirstLevel" type="Node2D"]
+[node name="LevelManager" type="Node2D"]
 script = ExtResource("1_hme0k")
 game_over_scene = ExtResource("3_60f3n")
 
