@@ -10,7 +10,7 @@ func set_hotkey_labels():
 		ability_card.get_node("Panel/HotkeyLabel").text = InputMap.action_get_events(ability_card.name)[0].as_text().get_slice(" ",0)
 
 func set_action_bar_loadout(loadout:Array[PackedScene]):
-	for i in range(0,5):
+	for i in range(0,loadout.size()):
 		if loadout[i]:
 			var scene : Card = loadout[i].instantiate()
 			$HUD/Actionbar.get_node("ActionButton" + str(i+1)).set_sprite(scene.get_node("Sprite2D").texture)

@@ -56,7 +56,7 @@ func refresh_hotbar():
 		update_card_count.emit(index, slots[index].count)
 
 func shoot(index):
-	if slots[index].count > 0:
+	if slots.size() > index and slots[index].count > 0:
 		slots[index].count -= 1
 		update_card_count.emit(index, slots[index].count)
 		return slots[index].card
