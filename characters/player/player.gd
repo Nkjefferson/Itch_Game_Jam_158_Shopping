@@ -26,7 +26,7 @@ func _ready():
 	self.z_index = 2
 	health = max_health
 	self.add_to_group("player")
-	set_motion_mode(MOTION_MODE_FLOATING)
+	set_motion_mode(MOTION_MODE_GROUNDED)
 	# Create player sub-elements
 	create_player_camera()
 	create_player_hud()
@@ -103,7 +103,7 @@ func shoot(slot):
 	if card_type != null:
 		var c = card_type.instantiate()
 		get_parent().add_child(c)
-		c.spawn(self, velocity, target)
+		c.spawn(self, target)
 		MusicManager.play_sound_effect(c.throw_sound)
 
 func take_damage(damage):

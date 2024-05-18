@@ -1,8 +1,8 @@
 extends Card
 const DEG_OFFSET = 15
 
-func spawn(parent, initial_velocity, target):
-	super(parent, initial_velocity,target)
+func spawn(parent, target):
+	super(parent, target)
 	
 	var dup1 = self.duplicate()
 	parent.get_parent().add_child(dup1)

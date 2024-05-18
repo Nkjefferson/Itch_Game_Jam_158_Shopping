@@ -10,6 +10,8 @@ extends Area2D
 @export var wall_hit_sound: Resource
 @export var enemy_hit_sound: Resource
 
+const OFFSET_FROM_PLAYER : int = 5
+
 var initial_position
 var velocity = 0
 var parent_object
@@ -21,13 +23,14 @@ func _ready():
 	max_count = get_max_count()
 
 
-func spawn(parent, initial_velocity, target):
+func spawn(parent, target):
 	parent_object = parent
 	initial_position = parent_object.global_position
-	position = initial_position
+	var target_vector : Vector2 = (target - initial_position)
+	position = initial_position + (target_vector.normalized() * OFFSET_FROM_PLAYER)
 	# Add some of the players initial velocity to the cards velocity so the card isn't slower than the player
-	velocity = initial_velocity / 4
-	velocity += (target-initial_position).normalized() * speed
+	velocity = parent_object.velocity / 4
+	velocity += (target_vector).normalized() * speed
 	rotation_degrees = rad_to_deg((target - initial_position).angle())
 	
 	if $Sprite2D.hframes > 1:
