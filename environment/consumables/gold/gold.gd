@@ -6,6 +6,6 @@ func spawn(pos, val):
 	super(pos, val)
 	gold_value = val
 
-func do_the_thing(body):
+func apply_effect(body):
 	body.get_node("Inventory").add_gold(gold_value)
 

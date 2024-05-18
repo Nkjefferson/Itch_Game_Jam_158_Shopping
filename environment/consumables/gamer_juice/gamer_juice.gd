@@ -6,6 +6,6 @@ func spawn(pos, val):
 	super(pos, val)
 	heal_quality = val
 
-func do_the_thing(body):
+func apply_effect(body):
 	body.heal(heal_quality)
 	pass
