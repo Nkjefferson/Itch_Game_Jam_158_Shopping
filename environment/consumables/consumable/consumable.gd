@@ -5,7 +5,7 @@ extends Area2D
 @export var consumable_z_index : int = 1
 
 var stuck_in_wall : bool = false
-var speed = 1
+var speed = 50
 
 func spawn(pos, _val):
 	position = pos
@@ -15,7 +15,7 @@ func _process(delta):
 	if stuck_in_wall:
 		var target = get_parent().get_node("Player").position
 		var direction = position.direction_to(target).normalized()
-		var velocity = direction * speed
+		var velocity = direction * speed * delta
 		position += velocity
 	else:
 		pass
