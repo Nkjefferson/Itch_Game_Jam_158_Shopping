@@ -39,7 +39,6 @@ func _process(_delta):
 
 func start_level():
 	current_stage.start()
-	$Player.global_position = current_stage.get_player_spawn_location()
 
 func pause_level():
 	var pause_screen = load("res://views/pause_menu/pause_menu.tscn").instantiate()
@@ -59,8 +58,12 @@ func set_stage(new_stage : PackedScene):
 	current_stage = new_stage.instantiate()
 	self.add_child(current_stage)
 	current_stage.load_level(self)
+	for node in get_children():
+		if node.is_in_group("enemies") or node.is_in_group("consumable"):
+			node.queue_free()
 	if old_stage:
 		old_stage.queue_free()
+	$Player.global_position = current_stage.get_player_spawn_location()
 
 func update_score(value):
 	score += value
