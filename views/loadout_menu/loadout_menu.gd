@@ -39,10 +39,10 @@ func set_hotkey_labels():
 		ability_card.get_node("HotkeyLabel").text = InputMap.action_get_events("ActionButton" + str(i))[0].as_text().get_slice(" ",0)
 		i+=1
 
-func set_action_bar_loadout(loadout:Array[PackedScene]):
-	for i in range(0,loadout.size()):
-		if loadout[i]:
-			$Layout/Hotbar.get_node("Hotbar_Tile" + str(i+2)).get_node("SelectableTile").set_card(loadout[i])
+func set_action_bar_loadout(ldt:Array[PackedScene]):
+	for i in range(0,ldt.size()):
+		if ldt[i]:
+			$Layout/Hotbar.get_node("Hotbar_Tile" + str(i+2)).get_node("SelectableTile").set_card(ldt[i])
 
 # Functions to manage the inventory grid
 func set_grid_from_inventory(inv:Array[PackedScene]):
@@ -71,24 +71,22 @@ func update_inventory_from_grid():
 func _sell_card():
 	var tile = last_selected_tile
 	if tile != null:
-		if tile.get_parent().get_parent().name == "InventoryGrid":
-			last_selected_tile = null
-			shop_panel.add_card_to_store(tile.card_scene)
-			tile.set_card(null)
-			# Update inventory array, and then remove the clean up grid 
-			update_inventory_from_grid()
-			var new_inventory : Array[PackedScene]
-			for card in inventory:
-				if card != null:
-					new_inventory.append(card)
-			inventory = new_inventory
-			set_grid_from_inventory(inventory)
+		last_selected_tile = null
+		shop_panel.add_card_to_store(tile.card_scene)
+		tile.set_card(null)
+		# Update inventory array, and then remove the clean up grid 
+		update_inventory_from_grid()
+		var new_inventory : Array[PackedScene]
+		for card in inventory:
+			if card != null:
+				new_inventory.append(card)
+		inventory = new_inventory
+		set_grid_from_inventory(inventory)
 
 # Functions to manage interactions between the CurrentSelectionPanel and the
 # other elements on screen
 func _take_card_from_tile(source):
 	if source.card_scene != null:
-		source.changing_card = true
 		$CurrentSelectionPanel.card_scene = source.card_scene
 		$CurrentSelectionPanel.update_sprite()
 		last_selected_tile = source
