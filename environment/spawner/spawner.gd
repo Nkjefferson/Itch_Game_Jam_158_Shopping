@@ -19,11 +19,11 @@ func spawn_entities():
 		entity.global_position = spawn_location
 		if _entity_cleanup_handler:
 			entity.connect("death",_entity_cleanup_handler)
-		get_parent().add_child(entity)
+		get_parent().get_parent().add_child(entity)
 	else:
 		printerr("Failed to spawn entity: no entitys defined")
 
-func create_spawners(initial_spawn_rate:float, spawner_max_rate:float, spawner_step_rate:float, _on_entity_cleanup_handler:Callable, points:Array[Vector2]=[global_position]):
+func create_spawners(initial_spawn_rate:float, spawner_max_rate:float, spawner_step_rate:float, _on_entity_cleanup_handler:Callable, points:Array[Vector2]=[global_position], entities:Array[SpawnedEntity]=[]):
 	$SpawnTimer.wait_time = initial_spawn_rate
 	spawn_step_rate = spawner_step_rate
 	max_spawn_rate = spawner_max_rate
@@ -34,6 +34,8 @@ func create_spawners(initial_spawn_rate:float, spawner_max_rate:float, spawner_s
 		marker.global_position = point
 		spawners.append(marker)
 		add_child(marker)
+	if entities:
+		spawned_entities = entities
 	if spawned_entities:
 		for entity in spawned_entities:
 			weighted_sum += entity.spawn_weight
