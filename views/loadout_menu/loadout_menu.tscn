@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://568q3krg0bae"]
+[gd_scene load_steps=15 format=3 uid="uid://568q3krg0bae"]
 
 [ext_resource type="TileSet" uid="uid://bwsy5w68molvh" path="res://assets/themes/main_menu.tres" id="1_121gb"]
 [ext_resource type="Script" path="res://views/loadout_menu/loadout_menu.gd" id="1_igvet"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://views/loadout_menu/CurrentSelectionPanel.gd" id="9_trvlj"]
 [ext_resource type="Script" path="res://views/loadout_menu/ShopPanel.gd" id="10_1gdnj"]
 [ext_resource type="LabelSettings" uid="uid://c0sgp66c8rapj" path="res://assets/themes/card_binder_menu.tres" id="10_prgv5"]
+[ext_resource type="Theme" uid="uid://daa0y357khqwq" path="res://assets/themes/opaque_panel_theme.tres" id="11_dlhyn"]
 
 [node name="LoadoutMenu" type="CanvasLayer"]
 script = ExtResource("1_igvet")
@@ -132,7 +133,7 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("7_advdw")
+theme = ExtResource("11_dlhyn")
 text = "store
 "
 label_settings = ExtResource("10_prgv5")
@@ -142,17 +143,19 @@ vertical_alignment = 1
 [node name="Panel" type="Panel" parent="Layout/ShopPanel"]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 7
 anchor_left = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
+anchor_bottom = 1.0
 offset_left = -100.0
+offset_top = -200.0
 offset_right = 100.0
-offset_bottom = 200.0
 grow_horizontal = 2
-theme = ExtResource("7_advdw")
+grow_vertical = 0
+theme = ExtResource("11_dlhyn")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Layout/ShopPanel/Panel"]
-clip_contents = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -168,7 +171,7 @@ size_flags_horizontal = 6
 size_flags_vertical = 0
 theme_override_constants/h_separation = 50
 theme_override_constants/v_separation = 50
-columns = 3
+columns = 4
 
 [node name="ButtonContainer" type="VBoxContainer" parent="Layout"]
 layout_mode = 1

@@ -59,11 +59,10 @@ func set_grid_from_inventory(inv:Array[PackedScene]):
 	for i in range(0, inv.size()):
 		var tile = load("res://views/loadout_menu/inventory_tile/inventory_tile.tscn").instantiate()
 
-		tile.get_node("SelectableTile").set_panel_size(40,40)
-		tile.get_node("SelectableTile").set_sprite_scale(2)
+		tile.get_node("SelectableTile").set_sprite_scale(4)
 		tile.get_node("SelectableTile").set_card(inv[i])
+		tile.get_node("SelectableTile").set_scale(Vector2(0.5,0.5))
 		inventory_grid.add_child(tile)
-		#tile.queue_free()
 
 func clear_inventory_grid():
 	for grid_element in inventory_grid.get_children():
