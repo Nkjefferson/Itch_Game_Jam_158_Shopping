@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://sliwra2vcctu"]
+
+[ext_resource type="Theme" uid="uid://blem1dnpbfmm1" path="res://assets/themes/button_theme.tres" id="1_bhs1r"]
+[ext_resource type="PackedScene" uid="uid://dylnam6cwbvcg" path="res://views/loadout_menu/selectable_tile/selectable_tile.tscn" id="1_uygik"]
+[ext_resource type="LabelSettings" uid="uid://c0sgp66c8rapj" path="res://assets/themes/card_binder_menu.tres" id="2_wvusk"]
+
+[node name="HotbarTile" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 100.0
+
+[node name="HotkeyLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_bhs1r")
+theme_override_font_sizes/font_size = 0
+text = "X"
+label_settings = ExtResource("2_wvusk")
+horizontal_alignment = 1
+
+[node name="SelectableTile" parent="VBoxContainer" instance=ExtResource("1_uygik")]
+layout_mode = 2
