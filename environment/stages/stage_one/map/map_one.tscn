@@ -1,6 +1,6 @@
 [gd_scene load_steps=35 format=3 uid="uid://dq8rkn7bk8esv"]
 
-[ext_resource type="Script" path="res://environment/maps/map_1/map_1.gd" id="1_8hpxl"]
+[ext_resource type="Script" path="res://environment/stages/stage_one/map/map_one.gd" id="1_52nrq"]
 [ext_resource type="PackedScene" uid="uid://b1703q1b3fsnp" path="res://environment/shop/shop.tscn" id="4_ytt30"]
 [ext_resource type="PackedScene" uid="uid://doe5a2exfiguy" path="res://environment/interactables/gamer_supp/gamer_supp.tscn" id="5_owwl2"]
 [ext_resource type="PackedScene" uid="uid://ctv18vupqt8uq" path="res://environment/interactables/restocker/restocker.tscn" id="6_6tgeo"]
@@ -568,7 +568,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_2hcxc")
 
 [node name="MapOne" type="Node2D"]
-script = ExtResource("1_8hpxl")
+script = ExtResource("1_52nrq")
 
 [node name="Floor" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_ocvt5")
