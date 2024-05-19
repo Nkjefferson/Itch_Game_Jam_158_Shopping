@@ -25,8 +25,6 @@ func _ready():
 			current_card["Wall_Hit_Sound"],
 			current_card["Enemy_Hit_Sound"]
 			)
-			print(card,":")
-			cards[card].print()
 	else:
 		printerr("Failed to load card database")
 
