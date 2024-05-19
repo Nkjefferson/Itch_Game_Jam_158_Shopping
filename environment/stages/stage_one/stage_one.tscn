@@ -21,3 +21,18 @@ script = ExtResource("1_v2nmh")
 spawned_entities = Array[ExtResource("3_s1ngw")]([SubResource("Resource_0mcwj"), SubResource("Resource_l2spf")])
 
 [node name="MapOne" parent="." instance=ExtResource("2_v8r60")]
+
+[node name="PlayerSpawnMarker" type="Marker2D" parent="."]
+position = Vector2(623, 352)
+
+[node name="EnemySpawnLocation" type="Marker2D" parent="."]
+position = Vector2(814, -83)
+
+[node name="EnemySpawnLocation2" type="Marker2D" parent="."]
+position = Vector2(1378, 83)
+
+[node name="EnemySpawnLocation3" type="Marker2D" parent="."]
+position = Vector2(301, 844)
+
+[node name="EnemySpawnLocation4" type="Marker2D" parent="."]
+position = Vector2(-68, 275)

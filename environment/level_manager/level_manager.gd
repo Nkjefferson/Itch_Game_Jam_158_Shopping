@@ -39,6 +39,7 @@ func _process(_delta):
 
 func start_level():
 	current_stage.start()
+	$Player.global_position = current_stage.get_player_spawn_location()
 
 func pause_level():
 	var pause_screen = load("res://views/pause_menu/pause_menu.tscn").instantiate()

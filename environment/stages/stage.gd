@@ -14,6 +14,12 @@ func _ready():
 	self.add_child(spawner)
 
 func load_level(parent):
+	var spawn_locations : Array[Vector2] = []
+	for node in get_children():
+		if node is Marker2D and node.name != "PlayerSpawnMarker":
+			spawn_locations.append(node.global_position)
+	if spawn_locations.size() > 0:
+		points = spawn_locations
 	spawner.create_spawners(3.0,0.75,0.05,parent._on_enemy_death,points,spawned_entities)
 
 func start():
@@ -21,3 +27,6 @@ func start():
 
 func stop():
 	spawner.stop_spawner()
+
+func get_player_spawn_location() -> Vector2:
+	return $PlayerSpawnMarker.global_position
