@@ -1,6 +1,6 @@
 class_name Rarity
 
-enum CardRarity {COMMON,UNCOMMON,RARE}
+enum CardRarity {COMMON,UNCOMMON,RARE,NONE}
 
 static func get_refresh_count(rarity: CardRarity) -> int:
 	match rarity:
@@ -23,3 +23,15 @@ static func get_max_count(rarity: CardRarity) -> int:
 			return 5
 		_:
 			return 0
+
+static func from_string(rarity_string: String) -> CardRarity:
+	var test_name = rarity_string.to_upper()
+	match test_name:
+		"COMMON":
+			return CardRarity.COMMON
+		"UNCOMMON":
+			return CardRarity.UNCOMMON
+		"RARE":
+			return CardRarity.RARE
+		_:
+			return CardRarity.NONE

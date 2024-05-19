@@ -1,0 +1,67 @@
+{
+  "Basic_Card": {
+	"Name": "Playing Card",
+	"Expansion": "None",
+	"Rarity": "None",
+	"Description": "A basic playing card. Organized into four suites, it can satify any customers basic needs.",
+	"Speed": 250,
+	"Damage": 0,
+	"Refresh_Count": 52,
+	"Max_Count": 52,
+	"Throw_Sound": "",
+	"Wall_Hit_Sound": "",
+	"Enemy_Hit_Sound": ""
+  },
+  "Entangle_Card": {
+	"Name": "Druid's Mercy",
+	"Expansion": "Monarchs_of_the_Forest",
+	"Rarity": "Uncommon",
+	"Description": "",
+	"Speed": 250,
+	"Damage": 0,
+	"Refresh_Count": "",
+	"Max_Count": "",
+	"Throw_Sound": "",
+	"Wall_Hit_Sound": "",
+	"Enemy_Hit_Sound": ""
+  },
+  "Orbit_Card": {
+	"Name": "Orbit",
+	"Expansion": "Space_Crusaders",
+	"Rarity": "Common",
+	"Description": "",
+	"Speed": 250,
+	"Damage": 1,
+	"Refresh_Count": "",
+	"Max_Count": "",
+	"Throw_Sound": "",
+	"Wall_Hit_Sound": "",
+	"Enemy_Hit_Sound": ""
+  },
+  "Piercing_Card": {
+	"Name": "Lightning Spear",
+	"Expansion": "Fury_of_the_Elements",
+	"Rarity": "Common",
+	"Description": "",
+	"Speed": 500,
+	"Damage": 1,
+	"Refresh_Count": "",
+	"Max_Count": "",
+	"Throw_Sound": "",
+	"Wall_Hit_Sound": "",
+	"Enemy_Hit_Sound": ""
+  },
+  "Triple_Card": {
+	"Name": "Manifest Mirage",
+	"Expansion": "Twisted_Arcanum",
+	"Rarity": "Common",
+	"Description": "",
+	"Speed": 250,
+	"Damage": 1,
+	"Refresh_Count": "",
+	"Max_Count": "",
+	"Throw_Sound": "",
+	"Wall_Hit_Sound": "",
+	"Enemy_Hit_Sound": ""
+  }
+}
