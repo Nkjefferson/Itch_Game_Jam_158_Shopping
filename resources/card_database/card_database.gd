@@ -77,3 +77,10 @@ func create_card(card_name:String,
 	if enemy_hit_sound != "":
 		card_info.enemy_hit_sound = load(enemy_hit_sound)
 	return card_info
+
+func get_card_by_name(card:String) -> CardInfo:
+	if cards.has(card):
+		return cards[card]
+	else:
+		printerr("Failed to retrieve card from database: ",card)
+		return null

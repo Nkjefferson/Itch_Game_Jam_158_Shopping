@@ -17,8 +17,20 @@ var velocity = 0
 var parent_object
 var refresh_count: int = 0
 var max_count: int = 0
+var card_info : CardInfo
 
 func _ready():
+	if !card_info:
+		card_info = CardDatabase.get_card_by_name(self.name)
+	self.set_name(self.name + "Instance")
+	if card_info:
+		speed = card_info.speed
+		damage = card_info.damage
+		refresh_count_override = card_info.refresh_count_override
+		max_count_override = card_info.max_count_override
+		throw_sound = card_info.throw_sound
+		wall_hit_sound = card_info.wall_hit_sound
+		enemy_hit_sound = card_info.enemy_hit_sound
 	refresh_count = get_refresh_count()
 	max_count = get_max_count()
 

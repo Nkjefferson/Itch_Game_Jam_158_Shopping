@@ -1,5 +1,5 @@
 {
-  "Basic_Card": {
+  "BasicCard": {
 	"Name": "Playing Card",
 	"Expansion": "None",
 	"Rarity": "None",
@@ -12,7 +12,7 @@
 	"Wall_Hit_Sound": "",
 	"Enemy_Hit_Sound": ""
   },
-  "Entangle_Card": {
+  "EntangleCard": {
 	"Name": "Druid's Mercy",
 	"Expansion": "Monarchs_of_the_Forest",
 	"Rarity": "Uncommon",
@@ -25,7 +25,7 @@
 	"Wall_Hit_Sound": "",
 	"Enemy_Hit_Sound": ""
   },
-  "Orbit_Card": {
+  "OrbitCard": {
 	"Name": "Orbit",
 	"Expansion": "Space_Crusaders",
 	"Rarity": "Common",
@@ -38,7 +38,7 @@
 	"Wall_Hit_Sound": "",
 	"Enemy_Hit_Sound": ""
   },
-  "Piercing_Card": {
+  "PiercingCard": {
 	"Name": "Lightning Spear",
 	"Expansion": "Fury_of_the_Elements",
 	"Rarity": "Common",
@@ -51,7 +51,7 @@
 	"Wall_Hit_Sound": "",
 	"Enemy_Hit_Sound": ""
   },
-  "Triple_Card": {
+  "TripleCard": {
 	"Name": "Manifest Mirage",
 	"Expansion": "Twisted_Arcanum",
 	"Rarity": "Common",
