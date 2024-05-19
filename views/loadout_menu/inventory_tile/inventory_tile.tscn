@@ -7,3 +7,8 @@ layout_mode = 3
 anchors_preset = 0
 
 [node name="SelectableTile" parent="." instance=ExtResource("1_fosrv")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2

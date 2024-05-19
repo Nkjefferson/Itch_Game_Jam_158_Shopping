@@ -11,11 +11,13 @@
 [ext_resource type="Script" path="res://views/loadout_menu/CurrentSelectionPanel.gd" id="9_trvlj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vfis4"]
+content_margin_top = 15.0
 bg_color = Color(0.136826, 0.136826, 0.136826, 0.439216)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -27,7 +29,7 @@ ScrollContainer/styles/panel = SubResource("StyleBoxFlat_vfis4")
 [node name="LoadoutMenu" type="CanvasLayer"]
 script = ExtResource("1_igvet")
 temp_loadout = Array[PackedScene]([ExtResource("2_5lwvu"), ExtResource("3_m1n66"), ExtResource("4_ro6n7"), ExtResource("5_tnd2w")])
-temp_inventory = Array[PackedScene]([ExtResource("5_tnd2w"), ExtResource("2_5lwvu"), ExtResource("2_5lwvu"), ExtResource("4_ro6n7"), ExtResource("3_m1n66"), ExtResource("5_tnd2w"), ExtResource("4_ro6n7")])
+temp_inventory = Array[PackedScene]([ExtResource("5_tnd2w"), ExtResource("2_5lwvu"), ExtResource("2_5lwvu"), ExtResource("4_ro6n7"), ExtResource("3_m1n66"), ExtResource("5_tnd2w"), ExtResource("4_ro6n7"), ExtResource("3_m1n66"), ExtResource("4_ro6n7"), ExtResource("3_m1n66")])
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_121gb")
@@ -53,11 +55,11 @@ horizontal_scroll_mode = 0
 
 [node name="GridContainer" type="GridContainer" parent="Layout/ScrollContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/h_separation = 110
-theme_override_constants/v_separation = 110
-columns = 8
+size_flags_horizontal = 6
+size_flags_vertical = 2
+theme_override_constants/h_separation = 100
+theme_override_constants/v_separation = 100
+columns = 6
 
 [node name="Hotbar" type="HBoxContainer" parent="Layout"]
 layout_mode = 1

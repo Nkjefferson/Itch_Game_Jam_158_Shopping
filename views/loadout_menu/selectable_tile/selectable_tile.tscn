@@ -9,9 +9,14 @@ script = ExtResource("1_r47wr")
 
 [node name="Panel" type="Panel" parent="."]
 custom_minimum_size = Vector2(80, 80)
-layout_mode = 0
-offset_right = 80.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -40.0
+offset_right = 40.0
 offset_bottom = 80.0
+grow_horizontal = 2
 
 [node name="AnimationTimer" type="Timer" parent="."]
 
