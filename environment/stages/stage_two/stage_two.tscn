@@ -1,0 +1,44 @@
+[gd_scene load_steps=10 format=3 uid="uid://pa0p6xphwld3"]
+
+[ext_resource type="Script" path="res://environment/stages/stage_two/stage_two.gd" id="1_4lnnl"]
+[ext_resource type="PackedScene" uid="uid://cykkdxigidamj" path="res://environment/stages/stage_two/map/map_two.tscn" id="2_8cjoe"]
+[ext_resource type="PackedScene" uid="uid://dfyijfd4fcofb" path="res://characters/enemies/basic_enemy/BasicEnemy.tscn" id="2_owqk6"]
+[ext_resource type="Script" path="res://environment/spawner/spawned_entity.gd" id="3_muwd4"]
+[ext_resource type="PackedScene" uid="uid://dnpmbda45tv7q" path="res://characters/enemies/fast_enemy/fast_enemy.tscn" id="4_ueee1"]
+[ext_resource type="PackedScene" uid="uid://bd6d1s68uchgg" path="res://characters/enemies/flying_enemy/flying_enemy.tscn" id="5_l8h42"]
+
+[sub_resource type="Resource" id="Resource_dgnl2"]
+script = ExtResource("3_muwd4")
+entity = ExtResource("2_owqk6")
+spawn_weight = 5.0
+
+[sub_resource type="Resource" id="Resource_rihtf"]
+script = ExtResource("3_muwd4")
+entity = ExtResource("4_ueee1")
+spawn_weight = 2.0
+
+[sub_resource type="Resource" id="Resource_aoya6"]
+script = ExtResource("3_muwd4")
+entity = ExtResource("5_l8h42")
+spawn_weight = 1.0
+
+[node name="StageTwo" type="Node2D"]
+script = ExtResource("1_4lnnl")
+spawned_entities = Array[ExtResource("3_muwd4")]([SubResource("Resource_dgnl2"), SubResource("Resource_rihtf"), SubResource("Resource_aoya6")])
+
+[node name="MapTwo" parent="." instance=ExtResource("2_8cjoe")]
+
+[node name="PlayerSpawnMarker" type="Marker2D" parent="."]
+position = Vector2(623, 541)
+
+[node name="EnemySpawnLocation" type="Marker2D" parent="."]
+position = Vector2(835, -84)
+
+[node name="EnemySpawnLocation2" type="Marker2D" parent="."]
+position = Vector2(361, -82)
+
+[node name="EnemySpawnLocation3" type="Marker2D" parent="."]
+position = Vector2(386, 834)
+
+[node name="EnemySpawnLocation4" type="Marker2D" parent="."]
+position = Vector2(856, 837)

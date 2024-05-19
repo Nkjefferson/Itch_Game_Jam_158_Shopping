@@ -13,7 +13,7 @@ func _ready():
 
 
 func _on_start_btn_pressed():
-	get_tree().change_scene_to_file("res://environment/level/level.tscn")
+	get_tree().change_scene_to_file("res://environment/level_manager/level_manager.tscn")
 
 # Called when the settings button is pressed.
 func _on_settings_btn_pressed():

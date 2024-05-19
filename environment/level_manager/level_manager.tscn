@@ -1,16 +1,9 @@
-[gd_scene load_steps=33 format=3 uid="uid://bxojd2uxsy3rn"]
+[gd_scene load_steps=22 format=3 uid="uid://csoc15nlnnpyr"]
 
-[ext_resource type="Script" path="res://environment/level/level.gd" id="1_hme0k"]
+[ext_resource type="Script" path="res://environment/level_manager/level_manager.gd" id="1_hme0k"]
 [ext_resource type="PackedScene" uid="uid://fxwtdxpumr3b" path="res://views/game_over_menu/game_over.tscn" id="3_60f3n"]
-[ext_resource type="PackedScene" uid="uid://dq8rkn7bk8esv" path="res://environment/maps/map_1/map_1.tscn" id="3_o4p56"]
 [ext_resource type="PackedScene" uid="uid://c50gxclw2vawf" path="res://characters/player/player.tscn" id="4_qdl0j"]
 [ext_resource type="Texture2D" uid="uid://dhkrac2bcb1yh" path="res://assets/art/items/target_location.png" id="5_n6hmm"]
-[ext_resource type="PackedScene" uid="uid://dfyijfd4fcofb" path="res://characters/enemies/basic_enemy/BasicEnemy.tscn" id="6_8o3ex"]
-[ext_resource type="PackedScene" uid="uid://4xy0xmxmekd1" path="res://environment/spawner/spawner.tscn" id="8_73ag8"]
-[ext_resource type="Script" path="res://environment/spawner/spawned_entity.gd" id="9_55bv6"]
-[ext_resource type="PackedScene" uid="uid://bqgq34mkxbcsv" path="res://characters/enemies/strong_enemy/strong_enemy.tscn" id="9_r3dlt"]
-[ext_resource type="PackedScene" uid="uid://bd6d1s68uchgg" path="res://characters/enemies/flying_enemy/flying_enemy.tscn" id="10_mlibu"]
-[ext_resource type="PackedScene" uid="uid://dnpmbda45tv7q" path="res://characters/enemies/fast_enemy/fast_enemy.tscn" id="10_ptk4x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ssla3"]
 atlas = ExtResource("5_n6hmm")
@@ -132,38 +125,13 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="Resource" id="Resource_8fco4"]
-script = ExtResource("9_55bv6")
-entity = ExtResource("6_8o3ex")
-spawn_weight = 2.5
-
-[sub_resource type="Resource" id="Resource_cembe"]
-script = ExtResource("9_55bv6")
-entity = ExtResource("10_mlibu")
-spawn_weight = 2.5
-
-[sub_resource type="Resource" id="Resource_xedc0"]
-script = ExtResource("9_55bv6")
-entity = ExtResource("9_r3dlt")
-spawn_weight = 0.5
-
-[sub_resource type="Resource" id="Resource_3ce7f"]
-script = ExtResource("9_55bv6")
-entity = ExtResource("10_ptk4x")
-spawn_weight = 1.0
-
-[node name="FirstLevel" type="Node2D"]
+[node name="LevelManager" type="Node2D"]
 script = ExtResource("1_hme0k")
 game_over_scene = ExtResource("3_60f3n")
-
-[node name="FirstLevelMap" parent="." instance=ExtResource("3_o4p56")]
 
 [node name="Player" parent="." instance=ExtResource("4_qdl0j")]
 position = Vector2(623, 348)
 marker_frames = SubResource("SpriteFrames_0pol6")
-
-[node name="Spawner" parent="." instance=ExtResource("8_73ag8")]
-spawned_entities = Array[ExtResource("9_55bv6")]([SubResource("Resource_8fco4"), SubResource("Resource_cembe"), SubResource("Resource_xedc0"), SubResource("Resource_3ce7f")])
 
 [node name="ScoreTimer" type="Timer" parent="."]
 autostart = true

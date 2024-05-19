@@ -7,6 +7,9 @@ extends Area2D
 var stuck_in_wall : bool = false
 var speed = 50
 
+func _ready():
+	add_to_group("consumable")
+
 func spawn(pos, _val):
 	position = pos
 	self.z_index = consumable_z_index

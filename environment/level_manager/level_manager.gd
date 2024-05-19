@@ -5,6 +5,7 @@ extends Node2D
 @export var gold : PackedScene = preload("res://environment/consumables/gold/gold.tscn")
 @export var juice : PackedScene = preload("res://environment/consumables/gamer_juice/gamer_juice.tscn")
 @export var pack : PackedScene = preload("res://environment/consumables/booster_pack/booster_pack.tscn")
+@export var stage : PackedScene = preload("res://environment/stages/stage_one/stage_one.tscn")
 
 signal score_update
 
@@ -13,22 +14,21 @@ var score = 0
 var score_tick_count = 0
 var paused = false
 var game_over = false
-
 var rng
 var coin_percent = 0.82
 var juice_percent = 0.11
 # This doesnt actually do, anything, its drop rate is calculated by whats leftover
 # from the previous 2 things
 var pack_percent = 0.07
+var current_stage : Stage
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	set_stage(stage)
 	MusicManager.set_chill_state(false)
 	MusicManager.play_music("Retailiation")
 	$Player.connect("death",_on_game_over)
 	self.connect("score_update",$Player.player_hud._update_score)
-	var points : Array[Vector2] = [Vector2(-70,279),Vector2(816,-73),Vector2(1386,81),Vector2(304,856)]
-	$Spawner.create_spawners(3.0,0.75,0.05,_on_enemy_death,points)
 	rng = RandomNumberGenerator.new()
 	self.z_index = 0
 	start_level()
@@ -38,7 +38,7 @@ func _process(_delta):
 			pause_level()
 
 func start_level():
-	$Spawner.start_spawner()
+	current_stage.start()
 
 func pause_level():
 	var pause_screen = load("res://views/pause_menu/pause_menu.tscn").instantiate()
@@ -47,11 +47,23 @@ func pause_level():
 	get_tree().paused = true
 
 func stop_level():
-	$Spawner.stop_spawner()
+	current_stage.stop()
 
 func resume_level():
 	MusicManager.set_chill_state(false)
 	get_tree().paused = false
+
+func set_stage(new_stage : PackedScene):
+	var old_stage = current_stage
+	current_stage = new_stage.instantiate()
+	self.add_child(current_stage)
+	current_stage.load_level(self)
+	for node in get_children():
+		if node.is_in_group("enemies") or node.is_in_group("consumable"):
+			node.queue_free()
+	if old_stage:
+		old_stage.queue_free()
+	$Player.global_position = current_stage.get_player_spawn_location()
 
 func update_score(value):
 	score += value
@@ -86,7 +98,7 @@ func _on_score_timer_timeout():
 func _on_game_over():
 	if !game_over:
 		game_over = true
-		$Spawner.stop_spawner()
+		stop_level()
 		var game_over_menu = game_over_scene.instantiate()
 		self.add_child(game_over_menu)
 		game_over_menu.update_metrics(score)
