@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://568q3krg0bae"]
+[gd_scene load_steps=14 format=3 uid="uid://568q3krg0bae"]
 
 [ext_resource type="TileSet" uid="uid://bwsy5w68molvh" path="res://assets/themes/main_menu.tres" id="1_121gb"]
 [ext_resource type="Script" path="res://views/loadout_menu/loadout_menu.gd" id="1_igvet"]
@@ -6,25 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://cea66o0vd2v5n" path="res://characters/player/cards/triple_card/triple_card.tscn" id="3_m1n66"]
 [ext_resource type="PackedScene" uid="uid://c7ubvsfedj1ky" path="res://characters/player/cards/entangle_card/entangle_card.tscn" id="4_ro6n7"]
 [ext_resource type="PackedScene" uid="uid://ddgpn3j018pi3" path="res://characters/player/cards/orbit_card/orbit_card.tscn" id="5_tnd2w"]
+[ext_resource type="Theme" uid="uid://colntvk4byf73" path="res://assets/themes/transluscent_panel_theme.tres" id="7_advdw"]
+[ext_resource type="PackedScene" uid="uid://ctdhrfnn0sfax" path="res://views/loadout_menu/info_viewer/info_viewer.tscn" id="7_jpphp"]
 [ext_resource type="PackedScene" uid="uid://sliwra2vcctu" path="res://views/loadout_menu/hotbar_tile/hotbar_tile.tscn" id="7_mr1hh"]
 [ext_resource type="Theme" uid="uid://blem1dnpbfmm1" path="res://assets/themes/button_theme.tres" id="8_k0llg"]
 [ext_resource type="Script" path="res://views/loadout_menu/CurrentSelectionPanel.gd" id="9_trvlj"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vfis4"]
-content_margin_top = 15.0
-bg_color = Color(0.136826, 0.136826, 0.136826, 0.439216)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="Theme" id="Theme_iv2au"]
-ScrollContainer/styles/panel = SubResource("StyleBoxFlat_vfis4")
+[ext_resource type="Script" path="res://views/loadout_menu/ShopPanel.gd" id="10_1gdnj"]
+[ext_resource type="LabelSettings" uid="uid://c0sgp66c8rapj" path="res://assets/themes/card_binder_menu.tres" id="10_prgv5"]
 
 [node name="LoadoutMenu" type="CanvasLayer"]
 script = ExtResource("1_igvet")
@@ -44,22 +32,52 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Layout"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Layout"]
 layout_mode = 1
-offset_left = 85.0
-offset_top = 65.0
-offset_right = 833.0
-offset_bottom = 465.0
-theme = SubResource("Theme_iv2au")
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -605.0
+offset_top = 49.0
+offset_right = 605.0
+offset_bottom = 449.0
+grow_horizontal = 2
+theme_override_constants/separation = 150
+
+[node name="InventoryPanel" type="Panel" parent="Layout/HBoxContainer"]
+custom_minimum_size = Vector2(700, 400)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("7_advdw")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Layout/HBoxContainer/InventoryPanel"]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -200.0
+offset_right = 350.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+follow_focus = true
 horizontal_scroll_mode = 0
 
-[node name="GridContainer" type="GridContainer" parent="Layout/ScrollContainer"]
+[node name="InventoryGrid" type="GridContainer" parent="Layout/HBoxContainer/InventoryPanel/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 2
 theme_override_constants/h_separation = 100
 theme_override_constants/v_separation = 100
 columns = 6
+
+[node name="InfoViewer" parent="Layout/HBoxContainer" instance=ExtResource("7_jpphp")]
+layout_mode = 2
 
 [node name="Hotbar" type="HBoxContainer" parent="Layout"]
 layout_mode = 1
@@ -85,7 +103,43 @@ layout_mode = 2
 [node name="Hotbar_Tile5" parent="Layout/Hotbar" instance=ExtResource("7_mr1hh")]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Layout"]
+[node name="ShopPanel" type="Panel" parent="Layout"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 129.0
+offset_top = -171.0
+offset_right = 229.0
+offset_bottom = -71.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("10_1gdnj")
+
+[node name="ValueLabel" type="Label" parent="Layout/ShopPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("7_advdw")
+text = "store
+"
+label_settings = ExtResource("10_prgv5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonContainer" type="VBoxContainer" parent="Layout"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -100,13 +154,13 @@ grow_horizontal = 0
 grow_vertical = 0
 theme_override_constants/separation = 20
 
-[node name="AcceptButton" type="Button" parent="Layout/VBoxContainer"]
+[node name="AcceptButton" type="Button" parent="Layout/ButtonContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("8_k0llg")
 text = "Accept"
 
-[node name="CancelButton" type="Button" parent="Layout/VBoxContainer"]
+[node name="CancelButton" type="Button" parent="Layout/ButtonContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("8_k0llg")
@@ -119,6 +173,8 @@ script = ExtResource("9_trvlj")
 
 [node name="AnimationTimer" type="Timer" parent="CurrentSelectionPanel"]
 
-[connection signal="pressed" from="Layout/VBoxContainer/AcceptButton" to="." method="_on_accept_button_pressed"]
-[connection signal="pressed" from="Layout/VBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="mouse_entered" from="Layout/ShopPanel" to="Layout/ShopPanel" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Layout/ShopPanel" to="Layout/ShopPanel" method="_on_mouse_exited"]
+[connection signal="pressed" from="Layout/ButtonContainer/AcceptButton" to="." method="_on_accept_button_pressed"]
+[connection signal="pressed" from="Layout/ButtonContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
 [connection signal="timeout" from="CurrentSelectionPanel/AnimationTimer" to="CurrentSelectionPanel" method="_on_animation_timer_timeout"]
