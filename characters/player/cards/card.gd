@@ -11,6 +11,8 @@ extends Area2D
 @export var wall_hit_sound: Resource
 @export var enemy_hit_sound: Resource
 
+@onready var sprite = $Sprite2D
+
 const OFFSET_FROM_PLAYER : int = 5
 
 var initial_position
@@ -34,6 +36,12 @@ func _ready():
 		throw_sound = card_info.throw_sound
 		wall_hit_sound = card_info.wall_hit_sound
 		enemy_hit_sound = card_info.enemy_hit_sound
+		if card_info.sprite:
+			sprite.texture = card_info.sprite
+			if sprite.texture.get_width() > 16:
+				sprite.set_hframes(int(float(sprite.texture.get_width())/16))
+		else:
+			printerr("Failed to get card sprite: " + self.name)
 	value = get_value()
 	refresh_count = get_refresh_count()
 	max_count = get_max_count()

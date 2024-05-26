@@ -24,7 +24,8 @@ func _ready():
 			int(current_card["Max_Count"]),
 			current_card["Throw_Sound"],
 			current_card["Wall_Hit_Sound"],
-			current_card["Enemy_Hit_Sound"]
+			current_card["Enemy_Hit_Sound"],
+			current_card["Sprite"]
 			)
 	else:
 		printerr("Failed to load card database")
@@ -40,9 +41,9 @@ func read_card_database(file_path):
 	if error == OK:
 		card_data = json.data
 		if card_data is Dictionary:
-			print("Dictionary Found")
+			print("Card Dictionary Found")
 	else:
-		print("JSON Parse Error: ", json.get_error_message(), " in ", card_file.get_as_text(), " at line ", json.get_error_line())
+		printerr("JSON Parse Error: ", json.get_error_message(), " in ", card_file.get_as_text(), " at line ", json.get_error_line())
 		return null
 	card_file.close()
 	return card_data
@@ -59,7 +60,8 @@ func create_card(card_name:String,
 				 max_count_override = -1,
 				 throw_sound: String = "",
 				 wall_hit_sound: String = "",
-				 enemy_hit_sound: String = "") -> CardInfo:
+				 enemy_hit_sound: String = "",
+				 sprite: String = "") -> CardInfo:
 	var card_info = CardInfo.new()
 	if !card_name:
 		printerr("Card must have a name")
@@ -79,6 +81,8 @@ func create_card(card_name:String,
 		card_info.wall_hit_sound = load(wall_hit_sound)
 	if enemy_hit_sound != "":
 		card_info.enemy_hit_sound = load(enemy_hit_sound)
+	if sprite != "":
+		card_info.sprite = load("res://assets/art/items/" + sprite)
 	return card_info
 
 func get_card_by_name(card:String) -> CardInfo:

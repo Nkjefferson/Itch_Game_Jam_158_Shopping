@@ -14,19 +14,13 @@ var gold = 10
 
 var loadout : Array[PackedScene]
 
-class Card_Slot:
-	var card : PackedScene
-	var max_stack : int
-	var count : int
-	var refresh_amount : int
-
-var slots : Array[Card_Slot] = []
+var slots : Array[CardSlot] = []
 
 func _ready():
 	loadout = [Standard_Card,Piercing_Card,Triple_Card,Entangle_Card,Orbit_Card]
 	for packed_card in loadout:
 		if packed_card:
-			var slot = Card_Slot.new()
+			var slot = CardSlot.new()
 			slot.card = packed_card
 			var card_scene : Card = packed_card.instantiate()
 			slot.refresh_amount = card_scene.get_refresh_count()

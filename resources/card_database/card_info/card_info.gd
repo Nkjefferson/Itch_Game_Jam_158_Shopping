@@ -12,6 +12,7 @@ var max_count_override: int = -1
 var throw_sound: Resource = preload("res://assets/audio/sound_effects/Card_Throw.wav")
 var wall_hit_sound: Resource = preload("res://assets/audio/sound_effects/Card_Hit_Wall.wav")
 var enemy_hit_sound: Resource = preload("res://assets/audio/sound_effects/card_hit_enemy.wav")
+var sprite: Resource
 
 
 func print():
