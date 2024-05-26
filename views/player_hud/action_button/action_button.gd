@@ -1,7 +1,5 @@
 extends Control
 
-@export var card_scene : PackedScene = null
-
 var unselected_style
 var hovered_style
 var selected_style
@@ -27,19 +25,24 @@ func _ready():
 	greyed_out_shader_material.shader = load("res://views/player_hud/action_button/grey_scale.gdshader")
 	$Panel.add_theme_stylebox_override("panel",unselected_style)
 
-func set_sprite(sprite_frames):
+func set_card(card_scene):
+	var scene : Card = card_scene.card.instantiate()
+	self.get_node("Panel").add_child(scene)
+	scene.set_physics_process(false)
+	scene.get_node("CollisionShape2D").disabled = true
+	sprite = scene.get_node("Sprite2D")
 	$AnimationTimer.stop()
-	if sprite_frames:
-		sprite = Sprite2D.new()
-		sprite.texture = sprite_frames
+	if sprite and sprite.texture:
 		if sprite.texture.get_width() > 16:
 			sprite_frame_count = int(float(sprite.texture.get_width())/16)
 			sprite.set_hframes(sprite_frame_count)
 			$AnimationTimer.start()
 		sprite.position += $Panel.size/2
+		sprite.rotation_degrees = 0
 		sprite.z_index = 2
 		sprite.scale = Vector2(3,3)
-		$Panel.add_child(sprite)
+	else:
+		printerr("Failed to load sprite for action button: " + self.name)
 
 func set_selected(selected):
 	var style;
