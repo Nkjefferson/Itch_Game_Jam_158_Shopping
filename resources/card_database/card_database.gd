@@ -19,6 +19,7 @@ func _ready():
 			current_card["Description"],
 			int(current_card["Speed"]),
 			int(current_card["Damage"]),
+			int(current_card["Value"]),
 			int(current_card["Refresh_Count"]),
 			int(current_card["Max_Count"]),
 			current_card["Throw_Sound"],
@@ -53,6 +54,7 @@ func create_card(card_name:String,
 				 description: String,
 				 speed : int,
 				 damage : int,
+				 value : int = -1,
 				 refresh_count_override = -1,
 				 max_count_override = -1,
 				 throw_sound: String = "",
@@ -68,6 +70,7 @@ func create_card(card_name:String,
 	card_info.description = description
 	card_info.speed = speed
 	card_info.damage = damage
+	card_info.value_override = value
 	card_info.refresh_count_override = refresh_count_override
 	card_info.max_count_override = max_count_override
 	if throw_sound != "":

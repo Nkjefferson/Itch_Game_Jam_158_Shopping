@@ -11,6 +11,12 @@ size = Vector2(14, 12)
 
 [node name="Card" type="Area2D"]
 script = ExtResource("1_ji3su")
+speed = null
+damage = null
+rarity = null
+value_override = null
+refresh_count_override = null
+max_count_override = null
 throw_sound = ExtResource("2_kjvpk")
 wall_hit_sound = ExtResource("3_0ag3p")
 enemy_hit_sound = ExtResource("4_1oen5")

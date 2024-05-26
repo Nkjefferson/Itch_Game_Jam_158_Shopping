@@ -4,6 +4,7 @@ extends Area2D
 @export var speed: int = 250
 @export var damage: int = 1
 @export var rarity: Rarity.CardRarity
+@export var value_override: int = 0
 @export var refresh_count_override: int = -1
 @export var max_count_override: int = -1
 @export var throw_sound: Resource
@@ -15,6 +16,7 @@ const OFFSET_FROM_PLAYER : int = 5
 var initial_position
 var velocity = 0
 var parent_object
+var value: int = 0
 var refresh_count: int = 0
 var max_count: int = 0
 var card_info : CardInfo
@@ -26,11 +28,13 @@ func _ready():
 	if card_info:
 		speed = card_info.speed
 		damage = card_info.damage
+		value_override = card_info.value_override
 		refresh_count_override = card_info.refresh_count_override
 		max_count_override = card_info.max_count_override
 		throw_sound = card_info.throw_sound
 		wall_hit_sound = card_info.wall_hit_sound
 		enemy_hit_sound = card_info.enemy_hit_sound
+	value = get_value()
 	refresh_count = get_refresh_count()
 	max_count = get_max_count()
 
@@ -47,6 +51,11 @@ func spawn(parent, target):
 	
 	if $Sprite2D.hframes > 1:
 		$Sprite2D.frame = randi_range(0,3)
+
+func get_value():
+	if value_override != -1:
+		return value_override
+	return Rarity.get_value(self.rarity)
 
 func get_refresh_count():
 	if refresh_count_override != -1:

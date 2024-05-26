@@ -24,6 +24,17 @@ static func get_max_count(rarity: CardRarity) -> int:
 		_:
 			return 0
 
+static func get_value(rarity: CardRarity) -> int:
+	match rarity:
+		CardRarity.COMMON:
+			return 100
+		CardRarity.UNCOMMON:
+			return 200
+		CardRarity.RARE:
+			return 400
+		_:
+			return 0
+
 static func from_string(rarity_string: String) -> CardRarity:
 	var test_name = rarity_string.to_upper()
 	match test_name:
