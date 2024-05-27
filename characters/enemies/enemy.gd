@@ -15,11 +15,14 @@ signal death
 # global variable to hold the parent level scene
 var parent
 
+
 # variables for movement calcs
 var destination : Vector2 = Vector2.ZERO
 var direction : Vector2 = Vector2.ZERO
 var moving : bool = true
 var speed : float = 0.0
+var health_bar_scene : PackedScene = preload("res://characters/enemies/enemy_assets/health_bar/health_bar.tscn")
+var health_bar
 
 # variables for pathing and navigation
 @onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
@@ -40,10 +43,21 @@ func _ready():
 	$NavTimer.wait_time = navtimer_waittime
 	$NavTimer.one_shot = true
 	nav_agent.max_neighbors = 5
+	initialize_health_bar()
+
+func initialize_health_bar():
+	health_bar = health_bar_scene.instantiate()
+	var health_bar_size = $AnimatedSprite2D.get_sprite_frames().get_frame_texture($AnimatedSprite2D.get_sprite_frames().get_animation_names()[0],0).get_size()
+	self.add_child(health_bar)
+	health_bar.set_custom_minimum_size(Vector2(health_bar_size.x, 4))
+	health_bar.position.x -= health_bar_size.x / 2
+	health_bar.position.y -= health_bar_size.y
+	health_bar.init_health(health)
 
 func take_damage(damage_dealer):
 	health -= damage_dealer.damage
 	speed -= damage_dealer.velocity.length()
+	health_bar.health = health
 	if health <= 0:
 		death.emit(self)
 		die()
