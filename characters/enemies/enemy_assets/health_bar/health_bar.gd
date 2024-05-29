@@ -30,4 +30,5 @@ func _on_timer_timeout():
 	damage_bar.value = health
 
 func _on_tree_exiting():
-	health_tween.kill()
+	if health_tween:
+		health_tween.kill()
