@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmxfkqqdpoy31"]
+
+[ext_resource type="Script" path="res://characters/bosses/boss.gd" id="1_t2oqj"]
+[ext_resource type="Texture2D" uid="uid://du4acsvr68twy" path="res://assets/art/entities/ghost1_16x16.png" id="2_rmjlw"]
+[ext_resource type="PackedScene" uid="uid://dnx046gjbv1vx" path="res://characters/enemies/enemy_assets/health_bar/health_bar.tscn" id="3_qtyi3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g0h5n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rmjlw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sdfbg"]
+size = Vector2(71, 76)
+
+[node name="Boss" type="CharacterBody2D" groups=["enemies"]]
+z_index = 2
+collision_layer = 4
+collision_mask = 10
+script = ExtResource("1_t2oqj")
+move_speed = 275
+acceleration = 200
+health = 30
+score_value = 1000
+gold_reward = 500
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_g0h5n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, -1)
+shape = SubResource("RectangleShape2D_sdfbg")
+
+[node name="DamageTickTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="NavTimer" type="Timer" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -170.0
+offset_right = 300.0
+offset_bottom = -125.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Test Text"
+
+[node name="HealthBar" parent="CanvasLayer/VBoxContainer" instance=ExtResource("3_qtyi3")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[connection signal="target_reached" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_target_reached"]
+[connection signal="timeout" from="NavTimer" to="." method="_on_nav_timer_timeout"]
