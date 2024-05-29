@@ -86,7 +86,11 @@ func _on_enemy_death(enemy):
 		self.call_deferred("add_child", bp)
 		bp.spawn(enemy.global_position, 0)
 		
-	
+
+func _on_complete_level(enemy):
+	update_score(enemy.score_value)
+	self.call_deferred("set_stage",load("res://environment/stages/stage_two/stage_two.tscn"))
+	self.call_deferred("start_level")
 
 func _on_pack_collected_score(value):
 	update_score(value);

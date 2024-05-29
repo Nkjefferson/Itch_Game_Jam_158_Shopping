@@ -25,6 +25,7 @@ spawn_weight = 1.0
 [node name="StageTwo" type="Node2D"]
 script = ExtResource("1_4lnnl")
 spawned_entities = Array[ExtResource("3_muwd4")]([SubResource("Resource_dgnl2"), SubResource("Resource_rihtf"), SubResource("Resource_aoya6")])
+total_enemies = 60
 
 [node name="MapTwo" parent="." instance=ExtResource("2_8cjoe")]
 
