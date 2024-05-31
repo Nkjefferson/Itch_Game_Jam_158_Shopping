@@ -1,0 +1,19 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://colntvk4byf73"]
+
+[ext_resource type="FontFile" uid="uid://tqxi1opp0xpn" path="res://assets/fonts/Minecraft.ttf" id="1_20php"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wq8cu"]
+bg_color = Color(0, 0, 0, 0.45098)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[resource]
+default_font = ExtResource("1_20php")
+default_font_size = 16
+Panel/styles/panel = SubResource("StyleBoxFlat_wq8cu")

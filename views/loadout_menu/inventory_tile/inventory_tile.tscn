@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvwwcqeih2bc8"]
+
+[ext_resource type="PackedScene" uid="uid://dylnam6cwbvcg" path="res://views/loadout_menu/selectable_tile/selectable_tile.tscn" id="1_fosrv"]
+
+[node name="InventoryTile" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="SelectableTile" parent="." instance=ExtResource("1_fosrv")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2

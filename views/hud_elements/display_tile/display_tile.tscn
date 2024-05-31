@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1e2cvc3n1cvy"]
+
+[ext_resource type="Script" path="res://views/hud_elements/display_tile/display_tile.gd" id="1_f63hx"]
+
+[node name="DisplayTile" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_f63hx")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+
+[node name="AnimationTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="AnimationTimer" to="." method="_on_animation_timer_timeout"]
