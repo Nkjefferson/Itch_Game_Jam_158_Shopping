@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+
 # Inputs: Eventually replace this with importing from a linked inventory
 @export var temp_loadout : Array[PackedScene]
 @export var temp_inventory : Array[PackedScene]
@@ -10,6 +11,8 @@ extends CanvasLayer
 # Local up to date versions of the inventory and loadout for the player
 var loadout : Array[PackedScene]
 var inventory : Array[PackedScene]
+
+var inventory_focused = false
 
 # Local variables to track tile selections
 var last_selected_tile
@@ -31,7 +34,11 @@ func _ready():
 		
 	# Connect the SelectionPanel to the Shop
 	shop_panel.connect("sig_sell",_sell_card)
+	shop_panel.connect("sig_update_shop",_connect_shop_elements)
 
+func _process(_delta):
+	if Input.is_action_just_released("lclick") and inventory_focused:
+		add_card_to_inventory_grid()
 # Functions to manage the hotbar/action bar
 func set_hotkey_labels():
 	var i = 2
@@ -56,13 +63,22 @@ func set_grid_from_inventory(inv:Array[PackedScene]):
 		tile.get_node("SelectableTile").connect("sig_give",_give_card_to_tile)
 		# Connect the info viewer to the Inventory tiles
 		tile.get_node("SelectableTile").connect("sig_take",$Layout/HBoxContainer/InfoViewer._set_card)
-	
+
+func sync_inventory_grid():
+	update_inventory_from_grid()
+	var new_inventory : Array[PackedScene] = []
+	for card in inventory:
+		if card != null:
+			new_inventory.append(card)
+	inventory = new_inventory
+	set_grid_from_inventory(inventory)
+
 func clear_inventory_grid():
 	for grid_element in inventory_grid.get_children():
 		grid_element.queue_free()
 
 func update_inventory_from_grid():
-	var new_inventory : Array[PackedScene]
+	var new_inventory : Array[PackedScene] = []
 	for grid_element in inventory_grid.get_children():
 		new_inventory.append(grid_element.get_node("SelectableTile").card_scene)
 	inventory = new_inventory
@@ -75,13 +91,17 @@ func _sell_card():
 		shop_panel.add_card_to_store(tile.card_scene)
 		tile.set_card(null)
 		# Update inventory array, and then remove the clean up grid 
-		update_inventory_from_grid()
-		var new_inventory : Array[PackedScene]
-		for card in inventory:
-			if card != null:
-				new_inventory.append(card)
-		inventory = new_inventory
-		set_grid_from_inventory(inventory)
+		sync_inventory_grid()
+
+func _connect_shop_elements():
+	for element in shop_panel.inventory_grid.get_children():
+		# Connect the selection panel to the hotbar tiles
+		if not element.get_node("SelectableTile").is_connected("sig_take",_take_card_from_tile):
+			element.get_node("SelectableTile").connect("sig_take",_take_card_from_tile)
+		if not element.get_node("SelectableTile").is_connected("sig_take",_take_card_from_tile):
+			element.get_node("SelectableTile").connect("sig_give",_give_card_to_tile)
+		if not element.get_node("SelectableTile").is_connected("sig_take",$Layout/HBoxContainer/InfoViewer._set_card):
+			element.get_node("SelectableTile").connect("sig_take",$Layout/HBoxContainer/InfoViewer._set_card)
 
 # Functions to manage interactions between the CurrentSelectionPanel and the
 # other elements on screen
@@ -92,18 +112,33 @@ func _take_card_from_tile(source):
 		last_selected_tile = source
 
 func _give_card_to_tile(dest):
-	if dest != last_selected_tile:
+	if dest != last_selected_tile and last_selected_tile.get_parent().get_parent().name != "ShopGrid":
 		if $CurrentSelectionPanel.card_scene != null:
 			last_selected_tile.set_card(dest.card_scene)
 			dest.set_card(null)
 			dest.set_card($CurrentSelectionPanel.card_scene)
-			update_inventory_from_grid()
+			sync_inventory_grid()
 	$CurrentSelectionPanel.clear_card()
 	last_selected_tile = null
 
+func add_card_to_inventory_grid():
+	if $CurrentSelectionPanel.card_scene != null:
+		last_selected_tile.set_card(null)
+		if last_selected_tile.get_parent().get_parent().name == "ShopGrid":
+			shop_panel.update_shop_inventory()
+		last_selected_tile = null
+		sync_inventory_grid()
+		inventory.append($CurrentSelectionPanel.card_scene)
+		set_grid_from_inventory(inventory)
 
 func _on_accept_button_pressed():
 	pass # Replace with function body.
 
 func _on_cancel_button_pressed():
 	pass # Replace with function body.
+
+func _on_inventory_panel_mouse_entered():
+	inventory_focused = true
+
+func _on_inventory_panel_mouse_exited():
+	inventory_focused = false
