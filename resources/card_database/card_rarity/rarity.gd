@@ -46,3 +46,16 @@ static func from_string(rarity_string: String) -> CardRarity:
 			return CardRarity.RARE
 		_:
 			return CardRarity.NONE
+
+static func display_string(rarity: CardRarity) -> String:
+	match rarity:
+		CardRarity.COMMON:
+			return "Common"
+		CardRarity.UNCOMMON:
+			return "Uncommon"
+		CardRarity.RARE:
+			return "Rare"
+		CardRarity.NONE:
+			return "None"
+		_:
+			return ""

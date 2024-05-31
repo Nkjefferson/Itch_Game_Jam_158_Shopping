@@ -7,17 +7,34 @@ var sprite_frame_count : int = 1
 
 @onready var sprite_panel = $Layout/Header_Container/SpritePanel
 @onready var sprite_timer = $Layout/Header_Container/SpritePanel/AnimationTimer
+@onready var card_info_box = $Layout/Header_Container/Card_Info_Container
+@onready var card_desc_label = $Layout/Card_Description
 
 func update_fields():
 	update_sprite()
 	update_texts()
 	
 func update_texts():
-	pass
+	if card_scene:
+		var card = card_scene.instantiate()
+		self.get_node("Layout").get_node("Header_Container").get_node("SpritePanel").add_child(card)
+		# Update label text
+		card_info_box.get_node("Name_HBox").get_node("NameLabel").text = "Name: "
+		card_info_box.get_node("Pack_HBox").get_node("PackLabel").text = "Pack: "
+		card_info_box.get_node("Rarity_HBox").get_node("RarityLabel").text = "Rarity: "
+		card_info_box.get_node("Value_HBox").get_node("ValueLabel").text = "Value: "
+		# Update field text
+		card_info_box.get_node("Name_HBox").get_node("NameText").text = card.card_info.card_name
+		card_info_box.get_node("Pack_HBox").get_node("PackText").text = ExpansionSet.display_string(card.card_info.pack)
+		card_info_box.get_node("Rarity_HBox").get_node("RarityText").text = Rarity.display_string(card.rarity)
+		card_info_box.get_node("Value_HBox").get_node("ValueText").text = str(card.value)
+		card_desc_label.text = card.card_info.description
+		card.queue_free()
 
 func update_sprite():
-	if card_scene != null:
+	if card_scene:
 		var scene = card_scene.instantiate()
+		self.get_node("Layout").get_node("Header_Container").get_node("SpritePanel").add_child(scene)
 		var sprite_frames = scene.get_node("Sprite2D").texture
 		sprite_timer.stop()
 		if sprite_frames:

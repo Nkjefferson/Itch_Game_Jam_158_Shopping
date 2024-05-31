@@ -33,20 +33,26 @@ func set_sprite_scale(new_scale):
 	sprite_scale = new_scale
 	if sprite:
 		sprite.scale = Vector2(sprite_scale, sprite_scale)
-
-func set_sprite(sprite_frames):
-	$AnimationTimer.stop()
-	if sprite_frames:
-		sprite = Sprite2D.new()
-		sprite.texture = sprite_frames
-		if sprite.texture.get_width() > 16:
-			sprite_frame_count = int(float(sprite.texture.get_width())/16)
-			sprite.set_hframes(sprite_frame_count)
-			$AnimationTimer.start()
-		sprite.position += $Panel.size/2
-		sprite.z_index = z_idx
-		sprite.scale = Vector2(sprite_scale, sprite_scale)
-		$Panel.add_child(sprite)
+		
+func set_card(card_scene):
+	if card_scene:
+		var scene : Card = card_scene.instantiate()
+		self.get_node("Panel").add_child(scene)
+		scene.set_physics_process(false)
+		scene.get_node("CollisionShape2D").disabled = true
+		sprite = scene.get_node("Sprite2D")
+		$AnimationTimer.stop()
+		if sprite and sprite.texture:
+			if sprite.texture.get_width() > 16:
+				sprite_frame_count = int(float(sprite.texture.get_width())/16)
+				sprite.set_hframes(sprite_frame_count)
+				$AnimationTimer.start()
+			sprite.position += $Panel.size/2
+			sprite.rotation_degrees = 0
+			sprite.z_index = z_idx
+			sprite.scale = Vector2(sprite_scale, sprite_scale)
+		else:
+			printerr("Failed to load sprite for display tile: " + self.name)
 
 func set_selected(selected):
 	var style;

@@ -53,6 +53,7 @@ func _ready():
 func _process(_delta):
 	if Input.is_action_just_released("lclick") and inventory_focused:
 		add_card_to_inventory_grid()
+
 # Functions to manage the hotbar/action bar
 func set_hotkey_labels():
 	var i = 2
@@ -70,13 +71,13 @@ func set_grid_from_inventory(inv:Array[PackedScene]):
 	clear_inventory_grid()
 	for i in range(0, inv.size()):
 		var tile = load("res://views/loadout_menu/inventory_tile/inventory_tile.tscn").instantiate()
-		tile.get_node("SelectableTile").set_card(inv[i])
 		inventory_grid.add_child(tile)
 		# Connect the selection panel to the Inventory tiles
 		tile.get_node("SelectableTile").connect("sig_take",_take_card_from_tile)
 		tile.get_node("SelectableTile").connect("sig_give",_give_card_to_tile)
 		# Connect the info viewer to the Inventory tiles
 		tile.get_node("SelectableTile").connect("sig_take",$Layout/HBoxContainer/InfoViewer._set_card)
+		tile.get_node("SelectableTile").set_card(inv[i])
 
 func sync_inventory_grid():
 	update_inventory_from_grid()
@@ -122,17 +123,19 @@ func _connect_shop_elements():
 func _take_card_from_tile(source):
 	if source.card_scene != null:
 		$CurrentSelectionPanel.card_scene = source.card_scene
-		$CurrentSelectionPanel.update_sprite()
+		$CurrentSelectionPanel.update_card()
 		last_selected_tile = source
 
 func _give_card_to_tile(dest):
-	if dest != last_selected_tile and last_selected_tile.get_parent().get_parent().name != "ShopGrid":
-		if $CurrentSelectionPanel.card_scene != null:
-			last_selected_tile.set_card(dest.card_scene)
-			dest.set_card(null)
-			dest.set_card($CurrentSelectionPanel.card_scene)
-			sync_inventory_grid()
-	$CurrentSelectionPanel.clear_card()
+	if last_selected_tile != null:
+		if dest != last_selected_tile and last_selected_tile.get_parent().get_parent().name != "ShopGrid":
+			if $CurrentSelectionPanel.card_scene != null:
+				last_selected_tile.set_card(null)
+				last_selected_tile.set_card(dest.card_scene)
+				dest.set_card(null)
+				dest.set_card($CurrentSelectionPanel.card_scene)
+				sync_inventory_grid()
+		$CurrentSelectionPanel.clear_card()
 	last_selected_tile = null
 
 func add_card_to_inventory_grid():

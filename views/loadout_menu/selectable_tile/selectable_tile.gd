@@ -20,9 +20,7 @@ func set_card(card):
 	
 func update_sprite():
 	if card_scene != null:
-		var scene = card_scene.instantiate()
-		var sprite_frames = scene.get_node("Sprite2D").texture
-		super.set_sprite(sprite_frames)
+		super.set_card(card_scene)
 	else:
 		$AnimationTimer.stop()
 		if sprite != null:

@@ -12,7 +12,7 @@ func set_hotkey_labels():
 func set_action_bar_loadout(loadout:Array[CardSlot]):
 	for i in range(0,loadout.size()):
 		if loadout[i]:
-			$HUD/Actionbar.get_node("ActionButton" + str(i+1)).set_card(loadout[i])
+			$HUD/Actionbar.get_node("ActionButton" + str(i+1)).set_card(loadout[i].card)
 
 func _update_card_hotbar(index, count):
 	var hotkey_labels = $HUD/Actionbar.get_children()

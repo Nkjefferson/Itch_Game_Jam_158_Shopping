@@ -44,7 +44,7 @@ offset_top = 49.0
 offset_right = 605.0
 offset_bottom = 449.0
 grow_horizontal = 2
-theme_override_constants/separation = 150
+theme_override_constants/separation = 124
 
 [node name="InventoryPanel" type="Panel" parent="Layout/HBoxContainer"]
 custom_minimum_size = Vector2(700, 400)
@@ -225,6 +225,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("9_trvlj")
+z_idx = 100
 
 [node name="Panel" type="Panel" parent="CurrentSelectionPanel"]
 layout_mode = 0

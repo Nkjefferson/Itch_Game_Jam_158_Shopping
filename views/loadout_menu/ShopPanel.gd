@@ -50,7 +50,10 @@ func calculate_store_value():
 	current_shop_value = 0
 	for card in current_inventory:
 		# Replace 1 with whatever the cards value is
-		current_shop_value += 1
+		var c = card.instantiate()
+		self.add_child(c)
+		current_shop_value += c.value
+		c.queue_free()
 	$ValueLabel.text = str(current_shop_value)
 
 func update_shop_inventory():
@@ -80,10 +83,11 @@ func set_grid_from_inventory(inv:Array[PackedScene]):
 	clear_inventory_grid()
 	for i in range(0, inv.size()):
 		var tile = load("res://views/loadout_menu/inventory_tile/inventory_tile.tscn").instantiate()
+		inventory_grid.add_child(tile)
 		tile.get_node("SelectableTile").set_sprite_scale(4)
 		tile.get_node("SelectableTile").set_card(inv[i])
 		tile.get_node("SelectableTile").set_scale(Vector2(0.5,0.5))
-		inventory_grid.add_child(tile)
+
 
 func clear_inventory_grid():
 	for grid_element in inventory_grid.get_children():

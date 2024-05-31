@@ -10,7 +10,7 @@
 Panel/styles/panel = SubResource("StyleBoxEmpty_6smgh")
 
 [node name="InfoViewer" type="Panel"]
-custom_minimum_size = Vector2(360, 400)
+custom_minimum_size = Vector2(400, 400)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("1_n150s")
@@ -37,66 +37,74 @@ theme = SubResource("Theme_04o7a")
 
 [node name="Card_Info_Container" type="VBoxContainer" parent="Layout/Header_Container"]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Name_HBox" type="HBoxContainer" parent="Layout/Header_Container/Card_Info_Container"]
 layout_mode = 2
 
 [node name="NameLabel" type="Label" parent="Layout/Header_Container/Card_Info_Container/Name_HBox"]
 layout_mode = 2
-text = "Name:"
 label_settings = ExtResource("3_0rcru")
 
 [node name="NameText" type="Label" parent="Layout/Header_Container/Card_Info_Container/Name_HBox"]
+custom_minimum_size = Vector2(150, 20)
 layout_mode = 2
-text = "example"
+size_flags_horizontal = 3
 label_settings = ExtResource("3_0rcru")
+vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Pack_HBox" type="HBoxContainer" parent="Layout/Header_Container/Card_Info_Container"]
 layout_mode = 2
 
 [node name="PackLabel" type="Label" parent="Layout/Header_Container/Card_Info_Container/Pack_HBox"]
 layout_mode = 2
-text = "Pack:
+text = "
 "
 label_settings = ExtResource("3_0rcru")
 
 [node name="PackText" type="Label" parent="Layout/Header_Container/Card_Info_Container/Pack_HBox"]
+custom_minimum_size = Vector2(150, 20)
 layout_mode = 2
-text = "example pack"
+size_flags_horizontal = 3
 label_settings = ExtResource("3_0rcru")
+vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Rarity_HBox" type="HBoxContainer" parent="Layout/Header_Container/Card_Info_Container"]
 layout_mode = 2
 
 [node name="RarityLabel" type="Label" parent="Layout/Header_Container/Card_Info_Container/Rarity_HBox"]
 layout_mode = 2
-text = "Rarity:"
 label_settings = ExtResource("3_0rcru")
 
 [node name="RarityText" type="Label" parent="Layout/Header_Container/Card_Info_Container/Rarity_HBox"]
+custom_minimum_size = Vector2(150, 20)
 layout_mode = 2
-text = "common"
+size_flags_horizontal = 3
 label_settings = ExtResource("3_0rcru")
+vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Value_HBox" type="HBoxContainer" parent="Layout/Header_Container/Card_Info_Container"]
 layout_mode = 2
 
 [node name="ValueLabel" type="Label" parent="Layout/Header_Container/Card_Info_Container/Value_HBox"]
 layout_mode = 2
-text = "Value:"
 label_settings = ExtResource("3_0rcru")
 
 [node name="ValueText" type="Label" parent="Layout/Header_Container/Card_Info_Container/Value_HBox"]
+custom_minimum_size = Vector2(150, 20)
 layout_mode = 2
-text = "$1000000000"
+size_flags_horizontal = 3
 label_settings = ExtResource("3_0rcru")
+vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Card_Description" type="Label" parent="Layout"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 3
-text = "This is an example of a card's description.
-Hopefully it is enough text to get the point across. Blah blah blah blah blah blah blah blah blah blah."
 label_settings = ExtResource("3_0rcru")
 autowrap_mode = 3
 

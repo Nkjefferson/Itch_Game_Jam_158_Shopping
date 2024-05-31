@@ -4,7 +4,7 @@ extends Area2D
 @export var speed: int = 250
 @export var damage: int = 1
 @export var rarity: Rarity.CardRarity
-@export var value_override: int = 0
+@export var value_override: int = -1
 @export var refresh_count_override: int = -1
 @export var max_count_override: int = -1
 @export var throw_sound: Resource
@@ -30,6 +30,7 @@ func _ready():
 	if card_info:
 		speed = card_info.speed
 		damage = card_info.damage
+		rarity = card_info.rarity
 		value_override = card_info.value_override
 		refresh_count_override = card_info.refresh_count_override
 		max_count_override = card_info.max_count_override

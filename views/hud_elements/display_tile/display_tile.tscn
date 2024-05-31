@@ -8,6 +8,7 @@ anchors_preset = 0
 script = ExtResource("1_f63hx")
 
 [node name="Panel" type="Panel" parent="."]
+layout_mode = 0
 offset_right = 80.0
 offset_bottom = 80.0
 

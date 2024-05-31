@@ -21,18 +21,16 @@ func _process(_delta):
 func clear_card():
 	card_scene = null
 	$Panel.size = Vector2.ZERO
-	update_sprite()
+	update_card()
 
-func set_sprite(sprite_frames):
-	if sprite_frames:
+func set_card(card):
+	if card:
 		$Panel.size = Vector2(length,length)
-	super(sprite_frames)
+	super(card)
 
-func update_sprite():
+func update_card():
 	if card_scene != null:
-		var scene = card_scene.instantiate()
-		var sprite_frames = scene.get_node("Sprite2D").texture
-		set_sprite(sprite_frames)
+		set_card(card_scene)
 	else:
 		$AnimationTimer.stop()
 		if sprite != null:
