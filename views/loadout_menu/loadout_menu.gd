@@ -4,13 +4,19 @@ extends CanvasLayer
 # Inputs: Eventually replace this with importing from a linked inventory
 @export var temp_loadout : Array[PackedScene]
 @export var temp_inventory : Array[PackedScene]
+@export var temp_starting_gold : int
 
 @onready var shop_panel = $Layout/ShopPanel
 @onready var inventory_grid = $Layout/HBoxContainer/InventoryPanel/ScrollContainer/InventoryGrid
-
+@onready var player_gold_display = $Layout/ShopPanel/PlayerGoldLabel
 # Local up to date versions of the inventory and loadout for the player
-var loadout : Array[PackedScene]
-var inventory : Array[PackedScene]
+var loadout : Array[PackedScene] = []
+var inventory : Array[PackedScene] = []
+var player_wallet : int = 0
+# Load these values in ready and DO NOT edit them, so that the 'cancel' button
+# can reload the original player values
+var original_loadout : Array[PackedScene] = []
+var original_inventory : Array[PackedScene] = []
 
 var inventory_focused = false
 
@@ -18,11 +24,19 @@ var inventory_focused = false
 var last_selected_tile
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# Load values from player
+	#TODO: Replace the "temp" values with the real deal once connected
 	loadout = temp_loadout
+	original_loadout = temp_loadout
 	inventory = temp_inventory
+	original_inventory = temp_inventory
+	player_wallet = temp_starting_gold
+	
+	# Initialize various elements of screen
 	set_hotkey_labels()
 	set_action_bar_loadout(loadout)
 	set_grid_from_inventory(inventory)
+	player_gold_display.text = str(player_wallet)
 	
 	# Connect Signals
 	for ability_card in $Layout/Hotbar.get_children():
@@ -132,7 +146,11 @@ func add_card_to_inventory_grid():
 		set_grid_from_inventory(inventory)
 
 func _on_accept_button_pressed():
-	pass # Replace with function body.
+	# Remove everything in the store's inventory and add the value to the players
+	# cash money
+	var shop_val = shop_panel.sell_all_items()
+	player_wallet += shop_val
+	player_gold_display.text = str(player_wallet)
 
 func _on_cancel_button_pressed():
 	pass # Replace with function body.

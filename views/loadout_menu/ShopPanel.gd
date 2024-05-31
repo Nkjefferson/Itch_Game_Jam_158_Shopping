@@ -37,8 +37,14 @@ func add_card_to_store(card_to_sell : PackedScene):
 		if toggle_shop:
 			set_grid_from_inventory(current_inventory)
 
-func remove_card_from_store():
+func sell_all_items():
 	calculate_store_value()
+	var retval = current_shop_value
+	current_inventory.clear()
+	clear_inventory_grid()
+	calculate_store_value()
+	sig_update_shop.emit()
+	return retval
 
 func calculate_store_value():
 	current_shop_value = 0
@@ -48,7 +54,6 @@ func calculate_store_value():
 	$ValueLabel.text = str(current_shop_value)
 
 func update_shop_inventory():
-	print("updating shop")
 	update_inventory_from_grid()
 	var new_inventory : Array[PackedScene] = []
 	for card in current_inventory:
