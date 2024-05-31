@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://cyoxxofptlb7o"]
+[gd_scene load_steps=6 format=3 uid="uid://cyoxxofptlb7o"]
 
 [ext_resource type="Script" path="res://characters/player/cards/card.gd" id="1_ji3su"]
-[ext_resource type="Texture2D" uid="uid://cxqy6xyikgyjf" path="res://assets/art/items/icon_normal_cards.png" id="2_48jh7"]
 [ext_resource type="AudioStream" uid="uid://dpiq8sjd2ra4g" path="res://assets/audio/sound_effects/Card_Throw.wav" id="2_kjvpk"]
 [ext_resource type="AudioStream" uid="uid://d0jbd845ja0dm" path="res://assets/audio/sound_effects/Card_Hit_Wall.wav" id="3_0ag3p"]
 [ext_resource type="AudioStream" uid="uid://b54bk2et5o0id" path="res://assets/audio/sound_effects/card_hit_enemy.wav" id="4_1oen5"]
@@ -17,7 +16,6 @@ enemy_hit_sound = ExtResource("4_1oen5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708
-texture = ExtResource("2_48jh7")
 hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

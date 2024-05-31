@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://ck2e6mb6au2gl"]
+
+[ext_resource type="Script" path="res://environment/stages/stage_one/stage_one.gd" id="1_v2nmh"]
+[ext_resource type="PackedScene" uid="uid://dfyijfd4fcofb" path="res://characters/enemies/basic_enemy/BasicEnemy.tscn" id="2_7r6ro"]
+[ext_resource type="PackedScene" uid="uid://dq8rkn7bk8esv" path="res://environment/stages/stage_one/map/map_one.tscn" id="2_v8r60"]
+[ext_resource type="Script" path="res://environment/spawner/spawned_entity.gd" id="3_s1ngw"]
+[ext_resource type="PackedScene" uid="uid://dnpmbda45tv7q" path="res://characters/enemies/fast_enemy/fast_enemy.tscn" id="4_sg1vd"]
+
+[sub_resource type="Resource" id="Resource_gqlqs"]
+script = ExtResource("3_s1ngw")
+entity = ExtResource("2_7r6ro")
+spawn_weight = 5.0
+
+[sub_resource type="Resource" id="Resource_2er46"]
+script = ExtResource("3_s1ngw")
+entity = ExtResource("4_sg1vd")
+spawn_weight = 1.0
+
+[node name="StageOne" type="Node2D"]
+script = ExtResource("1_v2nmh")
+spawned_entities = Array[ExtResource("3_s1ngw")]([SubResource("Resource_gqlqs"), SubResource("Resource_2er46")])
+initial_spawn_interval = 5.0
+spawn_increase_rate = 0.15
+
+[node name="MapOne" parent="." instance=ExtResource("2_v8r60")]
+
+[node name="PlayerSpawnMarker" type="Marker2D" parent="."]
+position = Vector2(623, 352)
+
+[node name="EnemySpawnLocation" type="Marker2D" parent="."]
+position = Vector2(814, -83)
+
+[node name="EnemySpawnLocation2" type="Marker2D" parent="."]
+position = Vector2(1378, 83)
+
+[node name="EnemySpawnLocation3" type="Marker2D" parent="."]
+position = Vector2(301, 844)
+
+[node name="EnemySpawnLocation4" type="Marker2D" parent="."]
+position = Vector2(-68, 275)

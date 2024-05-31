@@ -6,36 +6,21 @@ signal update_gold_amount(amount)
 var gold = 10
 
 @export var Standard_Card : PackedScene
-@export var max_basic_cards : int = 52
 @export var Piercing_Card : PackedScene
-@export var refresh_piercing_cards : int = 10
-@export var max_piercing_cards : int = 50
 @export var Triple_Card : PackedScene
-@export var refresh_triple_cards : int = 5
-@export var max_triple_cards : int = 25
 @export var Entangle_Card : PackedScene
-@export var refresh_entangle_cards : int = 5
-@export var max_entangle_cards : int = 15
 @export var Orbit_Card : PackedScene
-@export var refresh_orbit_cards : int = 5
-@export var max_orbit_cards : int = 25
 @export var empty_slot_sound : Resource = load("res://assets/audio/sound_effects/Bubble.wav")
 
 var loadout : Array[PackedScene]
 
-class Card_Slot:
-	var card : PackedScene
-	var max_stack : int
-	var count : int
-	var refresh_amount : int
-
-var slots : Array[Card_Slot] = []
+var slots : Array[CardSlot] = []
 
 func _ready():
 	loadout = [Standard_Card,Piercing_Card,Triple_Card,Entangle_Card,Orbit_Card]
 	for packed_card in loadout:
 		if packed_card:
-			var slot = Card_Slot.new()
+			var slot = CardSlot.new()
 			slot.card = packed_card
 			var card_scene : Card = packed_card.instantiate()
 			slot.refresh_amount = card_scene.get_refresh_count()

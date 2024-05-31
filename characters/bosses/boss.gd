@@ -1,8 +1,10 @@
-class_name Enemy
 extends CharacterBody2D
+
+class_name Boss
 
 signal death
 
+@export var boss_name : String = "Boss"
 @export var move_speed : int = 100
 @export var acceleration : int = 50
 @export var health : int = 3
@@ -22,7 +24,10 @@ var direction : Vector2 = Vector2.ZERO
 var moving : bool = true
 var speed : float = 0.0
 var health_bar_scene : PackedScene = preload("res://characters/enemies/enemy_assets/health_bar/health_bar.tscn")
-var health_bar
+
+@onready var canvas_layer = $CanvasLayer
+@onready var boss_name_label = $CanvasLayer/VBoxContainer/Label
+@onready var health_bar = $CanvasLayer/VBoxContainer/HealthBar
 
 # variables for pathing and navigation
 @onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
@@ -46,12 +51,7 @@ func _ready():
 	initialize_health_bar()
 
 func initialize_health_bar():
-	health_bar = health_bar_scene.instantiate()
-	var health_bar_size = $AnimatedSprite2D.get_sprite_frames().get_frame_texture($AnimatedSprite2D.get_sprite_frames().get_animation_names()[0],0).get_size()
-	self.add_child(health_bar)
-	health_bar.set_custom_minimum_size(Vector2(health_bar_size.x, 4))
-	health_bar.position.x -= health_bar_size.x / 2
-	health_bar.position.y -= health_bar_size.y
+	boss_name_label.text = boss_name
 	health_bar.init_health(health)
 
 func take_damage(damage_dealer):
@@ -124,3 +124,8 @@ func _on_nav_timer_timeout():
 # to save processing performance
 func _on_navigation_agent_2d_waypoint_reached(_details):
 	colliding_with_wall = false
+
+
+
+func _on_navigation_agent_2d_target_reached():
+	pass # Replace with function body.

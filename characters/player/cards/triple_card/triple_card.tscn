@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cea66o0vd2v5n"]
+[gd_scene load_steps=6 format=3 uid="uid://cea66o0vd2v5n"]
 
 [ext_resource type="Script" path="res://characters/player/cards/triple_card/triple_card.gd" id="1_u735k"]
 [ext_resource type="AudioStream" uid="uid://dpiq8sjd2ra4g" path="res://assets/audio/sound_effects/Card_Throw.wav" id="2_65upf"]
 [ext_resource type="AudioStream" uid="uid://d0jbd845ja0dm" path="res://assets/audio/sound_effects/Card_Hit_Wall.wav" id="3_lntxp"]
 [ext_resource type="AudioStream" uid="uid://b54bk2et5o0id" path="res://assets/audio/sound_effects/card_hit_enemy.wav" id="4_8uefw"]
-[ext_resource type="Texture2D" uid="uid://dggvtiq4kihww" path="res://assets/art/items/card_triple.png" id="5_nif8h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dotsp"]
 size = Vector2(14, 12)
@@ -19,7 +18,6 @@ enemy_hit_sound = ExtResource("4_8uefw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708
-texture = ExtResource("5_nif8h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_dotsp")

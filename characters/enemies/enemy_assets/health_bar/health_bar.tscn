@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://dnx046gjbv1vx"]
+
+[ext_resource type="StyleBox" uid="uid://ckbqoxy2and2m" path="res://characters/enemies/enemy_assets/health_bar/health_bar_background.tres" id="1_j5nbo"]
+[ext_resource type="Script" path="res://characters/enemies/enemy_assets/health_bar/health_bar.gd" id="1_p0ukv"]
+[ext_resource type="StyleBox" uid="uid://b26crx4uicldp" path="res://characters/enemies/enemy_assets/health_bar/health_bar_fill.tres" id="2_dp66x"]
+[ext_resource type="StyleBox" uid="uid://fbsjj6l4obkg" path="res://characters/enemies/enemy_assets/health_bar/damage_bar_background.tres" id="4_chvmq"]
+[ext_resource type="StyleBox" uid="uid://cw1y5yl81jgra" path="res://characters/enemies/enemy_assets/health_bar/damage_bar_fill.tres" id="5_0ws81"]
+
+[node name="HealthBar" type="ProgressBar"]
+z_index = 2
+offset_right = 1.0
+offset_bottom = 4.0
+theme_override_styles/background = ExtResource("1_j5nbo")
+theme_override_styles/fill = ExtResource("2_dp66x")
+value = 60.0
+show_percentage = false
+script = ExtResource("1_p0ukv")
+
+[node name="DamageBar" type="ProgressBar" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = ExtResource("4_chvmq")
+theme_override_styles/fill = ExtResource("5_0ws81")
+value = 70.0
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
