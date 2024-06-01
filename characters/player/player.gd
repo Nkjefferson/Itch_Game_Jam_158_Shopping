@@ -18,7 +18,7 @@ var moving : bool = false
 var alive : bool = true
 var speed : float = 0.0
 var health : int
-var player_hud
+@onready var player_hud = $PlayerHud
 var marker : AnimatedSprite2D
 
 
@@ -27,9 +27,7 @@ func _ready():
 	health = max_health
 	self.add_to_group("player")
 	set_motion_mode(MOTION_MODE_GROUNDED)
-	# Create player sub-elements
-	create_player_camera()
-	create_player_hud()
+	
 	# Inventory and signal management
 	$Inventory.update_gold_amount.emit($Inventory.gold)
 	$Inventory.connect("update_card_count", player_hud._update_card_hotbar)
@@ -48,21 +46,6 @@ func _ready():
 	marker.play("default")
 	get_parent().add_child.call_deferred(marker)
 	marker.visible = false
-
-func create_player_camera():
-	player_camera = Camera2D.new()
-	player_camera.zoom = (Vector2(2,2))
-	self.add_child(player_camera)
-
-func create_player_hud():
-	if player_camera:
-		if player_hud_scene:
-			player_hud = player_hud_scene.instantiate()
-			player_camera.add_child(player_hud)
-		else:
-			printerr("Could not create player HUD: no PackedScene provided")
-	else:
-		printerr("Could not create player HUD, no camera to attach to")
 
 func _process(_delta):
 	var mouse_direction = position.direction_to(get_global_mouse_position()).x
