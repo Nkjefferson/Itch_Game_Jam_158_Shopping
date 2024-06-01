@@ -4,6 +4,7 @@ extends Control
 # Variables for sprite setup and control
 @export var sprite_scale : int = 3
 @export var z_idx : int = 2
+var scene : Card
 var sprite : Sprite2D
 var sprite_frame_count : int = 1
 
@@ -36,7 +37,9 @@ func set_sprite_scale(new_scale):
 		
 func set_card(card_scene):
 	if card_scene:
-		var scene : Card = card_scene.instantiate()
+		if scene:
+			scene.queue_free()
+		scene = card_scene.instantiate()
 		self.get_node("Panel").add_child(scene)
 		scene.set_physics_process(false)
 		scene.get_node("CollisionShape2D").disabled = true

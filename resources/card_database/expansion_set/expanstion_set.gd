@@ -13,7 +13,7 @@ static func display_string(expac: Expansion) -> String:
 		Expansion.SPACE_CRUSADERS:
 			return "Space Crusaders"
 		_:
-			return ""
+			return "None"
 
 static func from_string(string_name:String) -> Expansion:
 	var test_name = string_name.to_upper()
