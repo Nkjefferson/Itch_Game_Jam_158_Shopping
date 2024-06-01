@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://colntvk4byf73"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://ci7slv8tiyyad"]
 
 [ext_resource type="FontFile" uid="uid://tqxi1opp0xpn" path="res://assets/fonts/Minecraft.ttf" id="1_20php"]
 
@@ -17,3 +17,4 @@ expand_margin_bottom = 10.0
 default_font = ExtResource("1_20php")
 default_font_size = 16
 Panel/styles/panel = SubResource("StyleBoxFlat_wq8cu")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_wq8cu")
