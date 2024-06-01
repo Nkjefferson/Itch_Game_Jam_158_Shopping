@@ -1,29 +1,18 @@
-[gd_scene load_steps=20 format=3 uid="uid://c1g6c6bf2rtfe"]
+[gd_scene load_steps=22 format=3 uid="uid://c1g6c6bf2rtfe"]
 
 [ext_resource type="Script" path="res://views/player_hud/player_hud.gd" id="1_unnjh"]
+[ext_resource type="FontFile" uid="uid://tqxi1opp0xpn" path="res://assets/fonts/Minecraft.ttf" id="2_5colf"]
 [ext_resource type="Theme" uid="uid://blem1dnpbfmm1" path="res://assets/themes/button_theme.tres" id="2_7xjn2"]
 [ext_resource type="LabelSettings" uid="uid://c0sgp66c8rapj" path="res://assets/themes/card_binder_menu.tres" id="2_jklyp"]
 [ext_resource type="PackedScene" uid="uid://dw0a0adakonek" path="res://views/player_hud/action_button/action_button.tscn" id="2_lvbhi"]
 [ext_resource type="Texture2D" uid="uid://303e88y73vww" path="res://assets/art/items/coin.png" id="2_mpvuq"]
+[ext_resource type="PackedScene" uid="uid://dnx046gjbv1vx" path="res://characters/enemies/enemy_assets/health_bar/health_bar.tscn" id="2_ubjkd"]
+[ext_resource type="StyleBox" uid="uid://ckbqoxy2and2m" path="res://characters/enemies/enemy_assets/health_bar/health_bar_background.tres" id="3_fktly"]
+[ext_resource type="StyleBox" uid="uid://b26crx4uicldp" path="res://characters/enemies/enemy_assets/health_bar/health_bar_fill.tres" id="4_fwxer"]
+[ext_resource type="StyleBox" uid="uid://fbsjj6l4obkg" path="res://characters/enemies/enemy_assets/health_bar/damage_bar_background.tres" id="5_wg8lk"]
+[ext_resource type="StyleBox" uid="uid://cw1y5yl81jgra" path="res://characters/enemies/enemy_assets/health_bar/damage_bar_fill.tres" id="6_3xaa5"]
 
 [sub_resource type="Theme" id="Theme_dytfj"]
-
-[sub_resource type="Gradient" id="Gradient_2gi3w"]
-colors = PackedColorArray(0, 0, 0, 0.517647, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_i8vkl"]
-gradient = SubResource("Gradient_2gi3w")
-width = 440
-fill_from = Vector2(1, 0)
-
-[sub_resource type="Gradient" id="Gradient_dbvaf"]
-offsets = PackedFloat32Array(0, 0.0234742, 0.056338)
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_lnmww"]
-gradient = SubResource("Gradient_dbvaf")
-width = 440
-fill_from = Vector2(1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1lpr5"]
 atlas = ExtResource("2_mpvuq")
@@ -100,53 +89,63 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HealthBar" type="HBoxContainer" parent="HUD"]
+[node name="HealthBar" parent="HUD" instance=ExtResource("2_ubjkd")]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 10.0
 offset_right = 510.0
-offset_bottom = 37.0
+offset_bottom = 50.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_5colf")
+show_percentage = true
 
-[node name="ValueProgressBar" type="TextureProgressBar" parent="HUD/HealthBar"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = SubResource("Theme_dytfj")
-value = 50.0
-texture_under = SubResource("GradientTexture2D_i8vkl")
-texture_progress = SubResource("GradientTexture2D_lnmww")
-tint_over = Color(1, 1, 1, 0)
-tint_progress = Color(0.709804, 0.00784314, 0, 0.760784)
-
-[node name="Label" type="Label" parent="HUD/HealthBar/ValueProgressBar"]
+[node name="Label" type="Label" parent="HUD/HealthBar"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 4.0
-offset_top = -11.5
-offset_right = 60.0
-offset_bottom = 11.5
+offset_left = 5.0
+offset_top = -8.0
+offset_right = 118.0
+offset_bottom = 8.0
 grow_vertical = 2
 theme = ExtResource("2_7xjn2")
 text = "Social Battery:"
 label_settings = ExtResource("2_jklyp")
+vertical_alignment = 1
 
-[node name="Value" type="Label" parent="HUD/HealthBar/ValueProgressBar"]
+[node name="HealthBar3" type="ProgressBar" parent="HUD"]
+visible = false
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 510.0
+offset_bottom = 33.0
+size_flags_horizontal = 3
+theme = SubResource("Theme_dytfj")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_5colf")
+theme_override_styles/background = ExtResource("3_fktly")
+theme_override_styles/fill = ExtResource("4_fwxer")
+value = 50.0
+
+[node name="ProgressBar" type="ProgressBar" parent="HUD/HealthBar3"]
+z_index = -1
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -0.5
-offset_top = -11.5
-offset_right = 0.5
-offset_bottom = 11.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_7xjn2")
-text = "0%"
-label_settings = ExtResource("2_jklyp")
+theme_override_styles/background = ExtResource("5_wg8lk")
+theme_override_styles/fill = ExtResource("6_3xaa5")
+value = 70.0
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="HUD/HealthBar3"]
 
 [node name="CurrencyTicker" type="HBoxContainer" parent="HUD"]
 layout_mode = 1
