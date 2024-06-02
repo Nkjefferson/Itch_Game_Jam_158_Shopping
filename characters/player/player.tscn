@@ -150,5 +150,3 @@ shape = SubResource("RectangleShape2D_p2ioo")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
-
-[connection signal="input_event" from="." to="." method="_on_input_event"]
