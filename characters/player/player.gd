@@ -91,8 +91,11 @@ func shoot(slot):
 
 func take_damage(damage):
 	if alive:
+		$AnimatedSprite2D.material.set_shader_parameter("DamageTaken",true)
+		$DamageIndicationTimer.start()
 		health -= damage
 		if health <= 0:
+			$AnimatedSprite2D.material.set_shader_parameter("DamageTaken",false)
 			alive = false
 			health = 0
 			$AnimatedSprite2D.play("Die")
@@ -112,3 +115,7 @@ func take_damage(damage):
 func heal(damage):
 	health = clamp(health+damage, health, max_health)
 	player_health_updated.emit(health)
+
+
+func _on_damage_indication_timer_timeout():
+	$AnimatedSprite2D.material.set_shader_parameter("DamageTaken",false)

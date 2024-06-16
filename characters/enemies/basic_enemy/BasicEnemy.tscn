@@ -1,7 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://dfyijfd4fcofb"]
+[gd_scene load_steps=14 format=3 uid="uid://dfyijfd4fcofb"]
 
 [ext_resource type="Script" path="res://characters/enemies/basic_enemy/BasicEnemy.gd" id="1_nccpe"]
+[ext_resource type="Shader" uid="uid://btgap2n4ro8ye" path="res://resources/shaders/character_shaders/damage_taken.tres" id="2_akc4h"]
 [ext_resource type="Texture2D" uid="uid://bplic2rbc5ijp" path="res://assets/art/entities/enemy_nerd.png" id="2_qifdd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cmj3p"]
+resource_local_to_scene = true
+shader = ExtResource("2_akc4h")
+shader_parameter/DamageTaken = null
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1c6cf"]
 atlas = ExtResource("2_qifdd")
@@ -73,6 +79,7 @@ script = ExtResource("1_nccpe")
 acceleration = 300
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_cmj3p")
 sprite_frames = SubResource("SpriteFrames_rerql")
 autoplay = "default"
 
@@ -86,5 +93,10 @@ one_shot = true
 
 [node name="NavTimer" type="Timer" parent="."]
 
+[node name="DamageIndicationTimer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
 [connection signal="waypoint_reached" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_waypoint_reached"]
 [connection signal="timeout" from="NavTimer" to="." method="_on_nav_timer_timeout"]
+[connection signal="timeout" from="DamageIndicationTimer" to="." method="_on_damage_indication_timer_timeout"]
