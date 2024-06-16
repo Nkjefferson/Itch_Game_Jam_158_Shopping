@@ -1,7 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://bd6d1s68uchgg"]
+[gd_scene load_steps=15 format=3 uid="uid://bd6d1s68uchgg"]
 
 [ext_resource type="Script" path="res://characters/enemies/flying_enemy/flying_enemy.gd" id="1_ym7nv"]
+[ext_resource type="Shader" uid="uid://btgap2n4ro8ye" path="res://resources/shaders/character_shaders/damage_taken.tres" id="2_tdxfm"]
 [ext_resource type="Texture2D" uid="uid://ccfkf1mm36eeb" path="res://assets/art/entities/enemy_fedora.png" id="2_xeq5q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5atpr"]
+resource_local_to_scene = true
+shader = ExtResource("2_tdxfm")
+shader_parameter/DamageTaken = null
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ciyb"]
 atlas = ExtResource("2_xeq5q")
@@ -78,6 +84,7 @@ acceleration = 150
 health = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_5atpr")
 sprite_frames = SubResource("SpriteFrames_ka77u")
 autoplay = "default"
 
@@ -91,3 +98,9 @@ one_shot = true
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [node name="NavTimer" type="Timer" parent="."]
+
+[node name="DamageIndicationTimer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[connection signal="timeout" from="DamageIndicationTimer" to="." method="_on_damage_indication_timer_timeout"]

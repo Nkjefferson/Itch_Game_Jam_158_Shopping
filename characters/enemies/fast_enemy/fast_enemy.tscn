@@ -1,7 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://dnpmbda45tv7q"]
+[gd_scene load_steps=14 format=3 uid="uid://dnpmbda45tv7q"]
 
 [ext_resource type="Script" path="res://characters/enemies/fast_enemy/fast_enemy.gd" id="1_3pgb4"]
 [ext_resource type="Texture2D" uid="uid://kmxgbxsib8r5" path="res://assets/art/entities/enemy_karen.png" id="2_1q0y5"]
+[ext_resource type="Shader" uid="uid://btgap2n4ro8ye" path="res://resources/shaders/character_shaders/damage_taken.tres" id="2_t3f0f"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ntskn"]
+resource_local_to_scene = true
+shader = ExtResource("2_t3f0f")
+shader_parameter/DamageTaken = null
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_32i3b"]
 atlas = ExtResource("2_1q0y5")
@@ -77,6 +83,7 @@ damage = 7
 damage_tick_rate = 0.25
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_ntskn")
 sprite_frames = SubResource("SpriteFrames_cx2i8")
 autoplay = "default"
 
@@ -91,5 +98,10 @@ debug_path_custom_color = Color(0.993312, 0.521598, 0.687086, 1)
 
 [node name="NavTimer" type="Timer" parent="."]
 
+[node name="DamageIndicationTimer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
 [connection signal="waypoint_reached" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_waypoint_reached"]
 [connection signal="timeout" from="NavTimer" to="." method="_on_nav_timer_timeout"]
+[connection signal="timeout" from="DamageIndicationTimer" to="." method="_on_damage_indication_timer_timeout"]

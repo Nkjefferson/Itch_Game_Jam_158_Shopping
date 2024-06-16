@@ -23,6 +23,7 @@ var moving : bool = true
 var speed : float = 0.0
 var health_bar_scene : PackedScene = preload("res://characters/enemies/enemy_assets/health_bar/health_bar.tscn")
 var health_bar
+var damage_indication_timer : Timer
 
 # variables for pathing and navigation
 @onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
@@ -37,7 +38,6 @@ func _ready():
 	if(sprite != null):
 		$AnimatedSprite2D.play()
 	self.add_to_group("enemies")
-	$DamageTickTimer.set_one_shot(true)
 	set_motion_mode(MOTION_MODE_FLOATING)
 	self.z_index = 2
 	$NavTimer.wait_time = navtimer_waittime
@@ -55,6 +55,8 @@ func initialize_health_bar():
 	health_bar.init_health(health)
 
 func take_damage(damage_dealer):
+	$AnimatedSprite2D.material.set_shader_parameter("DamageTaken",true)
+	$DamageIndicationTimer.start()
 	health -= damage_dealer.damage
 	speed -= damage_dealer.velocity.length()
 	health_bar.health = health
@@ -124,3 +126,7 @@ func _on_nav_timer_timeout():
 # to save processing performance
 func _on_navigation_agent_2d_waypoint_reached(_details):
 	colliding_with_wall = false
+
+
+func _on_damage_indication_timer_timeout():
+	$AnimatedSprite2D.material.set_shader_parameter("DamageTaken",false)

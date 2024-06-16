@@ -22,3 +22,4 @@ func move_to_player(delta):
 func _physics_process(delta):
 	move_to_player(delta)
 	check_collision()
+
